@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Klickzone Hotspot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:#000;
+    position:relative;
+}
+
+/* VIDEO BACKGROUND */
+
+video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    min-width:100%;
+    min-height:100%;
+    transform:translate(-50%,-50%);
+    object-fit:cover;
+    z-index:-2;
+}
+
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+    z-index:-1;
+}
+
+/* MAIN */
+
+.container{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    width:100%;
+    max-width:420px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(0,255,255,0.2);
+}
+
+/* LOGO */
+
+.logo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:15px;
+    border:3px solid #00ffff;
+    box-shadow:0 0 25px #00ffff;
+}
+
+/* TEXT */
+
+h1{
+    color:#fff;
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    color:#00ffff;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.desc{
+    color:#ddd;
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+/* BUTTONS */
+
+.btn{
+    width:100%;
+    border:none;
+    padding:16px;
+    border-radius:15px;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    margin-bottom:15px;
+    transition:0.3s;
+}
+
+/* LOGIN BUTTON */
+
+.connect-btn{
+    background:linear-gradient(45deg,#00ffff,#0099ff);
+    color:#000;
+    box-shadow:0 0 25px #00ffff;
+}
+
+.connect-btn:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 40px #00ffff;
+}
+
+/* FREE WIFI */
+
+.free-btn{
+    background:transparent;
+    color:#fff;
+    border:2px solid #00ffff;
+}
+
+.free-btn:hover{
+    background:#00ffff;
+    color:#000;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:20px;
+    color:#aaa;
+    font-size:12px;
+}
+
+/* WIFI ICON */
+
+.wifi{
+    font-size:55px;
+    color:#00ffff;
+    margin-bottom:15px;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+    50%{
+        transform:scale(1.1);
+        opacity:0.7;
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:500px){
+
+    h1{
+        font-size:27px;
+    }
+
+    .card{
+        padding:30px 20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO BACKGROUND -->
+<video autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+    <div class="card">
+
+        <!-- LOGO -->
+        <img src="logo.png" class="logo">
+
+        <!-- WIFI ICON -->
+        <div class="wifi">📶</div>
+
+        <!-- TITLE -->
+        <h1>KLICKZONE</h1>
+        <div class="subtitle">HOTSPOT INTERNET</div>
+
+        <!-- DESCRIPTION -->
+        <div class="desc">
+            Welcome to Klickzone Hotspot.<br>
+            Enjoy fast, smooth and stable internet connection.
+        </div>
+
+        <!-- CONNECT BUTTON -->
+        <button class="btn connect-btn"
+        onclick="window.location.href='http://10.0.0.1/login'">
+            CONNECT WIFI
+        </button>
+
+        <!-- FREE WIFI BUTTON -->
+        <button class="btn free-btn"
+        onclick="window.location.href='http://10.0.0.1/login'">
+            FREE 15 MINUTES WIFI
+        </button>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            Powered by Klickzone Hotspot
+        </div>
+
+    </div>
+
+</div>
+
+<!-- OPTIONAL AUTO REDIRECT -->
+<script>
+
+// AUTO REDIRECT AFTER 30 SECONDS
+// Uncomment if gusto mo auto redirect
+
+/*
+setTimeout(function(){
+    window.location.href = "http://10.0.0.1/login";
+},30000);
+*/
+
+</script>
+
+</body>
+</html>
