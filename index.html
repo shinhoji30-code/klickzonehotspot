@@ -9,6 +9,7 @@
 
 <style>
 
+/* RESET */
 *{
     margin:0;
     padding:0;
@@ -24,8 +25,7 @@ body{
     position:relative;
 }
 
-/* VIDEO BACKGROUND */
-
+/* VIDEO BACKGROUND (desktop default) */
 video{
     position:absolute;
     top:50%;
@@ -37,6 +37,7 @@ video{
     z-index:-2;
 }
 
+/* DARK OVERLAY */
 .overlay{
     position:absolute;
     width:100%;
@@ -45,8 +46,7 @@ video{
     z-index:-1;
 }
 
-/* MAIN */
-
+/* MAIN CONTAINER */
 .container{
     width:100%;
     height:100vh;
@@ -56,6 +56,7 @@ video{
     padding:20px;
 }
 
+/* CARD */
 .card{
     width:100%;
     max-width:420px;
@@ -69,7 +70,6 @@ video{
 }
 
 /* LOGO */
-
 .logo{
     width:110px;
     height:110px;
@@ -81,7 +81,6 @@ video{
 }
 
 /* TEXT */
-
 h1{
     color:#fff;
     font-size:32px;
@@ -103,7 +102,6 @@ h1{
 }
 
 /* BUTTONS */
-
 .btn{
     width:100%;
     border:none;
@@ -116,8 +114,7 @@ h1{
     transition:0.3s;
 }
 
-/* LOGIN BUTTON */
-
+/* CONNECT BUTTON */
 .connect-btn{
     background:linear-gradient(45deg,#00ffff,#0099ff);
     color:#000;
@@ -129,8 +126,7 @@ h1{
     box-shadow:0 0 40px #00ffff;
 }
 
-/* FREE WIFI */
-
+/* FREE WIFI BUTTON */
 .free-btn{
     background:transparent;
     color:#fff;
@@ -143,7 +139,6 @@ h1{
 }
 
 /* FOOTER */
-
 .footer{
     margin-top:20px;
     color:#aaa;
@@ -151,7 +146,6 @@ h1{
 }
 
 /* WIFI ICON */
-
 .wifi{
     font-size:55px;
     color:#00ffff;
@@ -160,22 +154,25 @@ h1{
 }
 
 @keyframes pulse{
-    0%{
-        transform:scale(1);
-        opacity:1;
-    }
-    50%{
-        transform:scale(1.1);
-        opacity:0.7;
-    }
-    100%{
-        transform:scale(1);
-        opacity:1;
-    }
+    0%{transform:scale(1);opacity:1;}
+    50%{transform:scale(1.1);opacity:0.7;}
+    100%{transform:scale(1);opacity:1;}
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
+/* TABLET */
+@media(max-width:768px){
+
+    video{
+        object-position:center;
+    }
+
+}
+
+/* MOBILE */
 @media(max-width:500px){
 
     h1{
@@ -184,6 +181,22 @@ h1{
 
     .card{
         padding:30px 20px;
+    }
+
+    .wifi{
+        font-size:48px;
+    }
+}
+
+/* SMALL PHONES */
+@media(max-width:360px){
+
+    h1{
+        font-size:24px;
+    }
+
+    .subtitle{
+        font-size:12px;
     }
 
 }
@@ -217,18 +230,18 @@ h1{
         <!-- DESCRIPTION -->
         <div class="desc">
             Welcome to Klickzone Hotspot.<br>
-            Enjoy fast, smooth and stable internet connection.
+            Fast, stable and smooth internet experience.
         </div>
 
         <!-- CONNECT BUTTON -->
         <button class="btn connect-btn"
-        onclick="window.location.href='http://10.0.0.1/login'">
+        onclick="window.location.href='http://120.10.10.1/login.html'">
             CONNECT WIFI
         </button>
 
         <!-- FREE WIFI BUTTON -->
         <button class="btn free-btn"
-        onclick="window.location.href='http://10.0.0.1/login'">
+        onclick="window.location.href='http://120.10.10.1/login.html'">
             FREE 15 MINUTES WIFI
         </button>
 
@@ -240,20 +253,6 @@ h1{
     </div>
 
 </div>
-
-<!-- OPTIONAL AUTO REDIRECT -->
-<script>
-
-// AUTO REDIRECT AFTER 30 SECONDS
-// Uncomment if gusto mo auto redirect
-
-/*
-setTimeout(function(){
-    window.location.href = "http://10.0.0.1/login";
-},30000);
-*/
-
-</script>
 
 </body>
 </html>
