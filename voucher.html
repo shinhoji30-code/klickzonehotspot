@@ -22,18 +22,23 @@ body{
   border:1px solid #00ffcc;
   border-radius:15px;
   padding:20px;
+  box-shadow:0 0 20px rgba(0,255,204,0.2);
 }
 
 h1{
   color:#00ffcc;
+  margin-bottom:10px;
 }
 
 .voucher{
-  font-size:28px;
+  font-size:30px;
   font-weight:bold;
   color:#00ffcc;
-  margin:15px 0;
+  margin:20px 0;
   letter-spacing:3px;
+  padding:10px;
+  border:1px dashed #00ffcc;
+  border-radius:10px;
 }
 
 button{
@@ -47,6 +52,16 @@ button{
   cursor:pointer;
   margin-top:10px;
 }
+
+button:hover{
+  opacity:0.8;
+}
+
+.info{
+  font-size:13px;
+  opacity:0.8;
+  margin-top:10px;
+}
 </style>
 </head>
 
@@ -54,26 +69,48 @@ button{
 
 <div class="box">
 
-<h1>🎫 YOUR VOUCHER</h1>
+<h1>🎫 YOUR WIFI VOUCHER</h1>
 
-<p>Copy this code:</p>
+<p>Copy your code below:</p>
 
-<div class="voucher" id="code">KLICK-1234</div>
+<div class="voucher" id="code"></div>
 
-<button onclick="copyCode()">COPY CODE</button>
+<button onclick="copyCode()">📋 COPY VOUCHER</button>
 
 <button onclick="location.href='http://120.10.10.1/login2.html'">
-CONNECT WIFI
+⚡ CONNECT WIFI
 </button>
+
+<div class="info">
+Valid for MikroTik Hotspot Login
+</div>
 
 </div>
 
 <script>
+
+/* GENERATE RANDOM VOUCHER */
+function generateCode(){
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let code = "KLICK-";
+
+  for(let i=0;i<6;i++){
+    code += chars[Math.floor(Math.random() * chars.length)];
+  }
+
+  document.getElementById("code").innerText = code;
+}
+
+/* COPY FUNCTION */
 function copyCode(){
   const code = document.getElementById("code").innerText;
   navigator.clipboard.writeText(code);
   alert("Voucher copied: " + code);
 }
+
+/* RUN ON LOAD */
+generateCode();
+
 </script>
 
 </body>
