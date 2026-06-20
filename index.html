@@ -3,165 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KLICKZONE HOTSPOT AND PRINTING</title>
+<title>WiFi Access</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#000;color:#fff;overflow-x:hidden}
-
-.video-bg,.overlay{position:fixed;inset:0}
-.video-bg video{width:100%;height:100%;object-fit:cover}
-.overlay{background:rgba(0,0,0,.7)}
-
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
-
-.card{
-width:100%;
-max-width:600px;
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(12px);
-border-radius:25px;
-padding:30px;
-text-align:center;
-border:1px solid rgba(255,255,255,.15);
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
-.logo{
-width:120px;
-height:120px;
-border-radius:50%;
-border:3px solid #00ffff;
-object-fit:cover;
+body{
+  background:#000;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
 }
 
-h1{margin:15px 0}
-.subtitle{color:#00ffff}
-
-.btn{
-display:block;
-width:100%;
-padding:15px;
-margin-top:12px;
-border:none;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
+/* CONTAINER */
+.container{
+  width:95%;
+  max-width:500px;
+  text-align:center;
 }
 
-.connect{
-background:#00ffff;
-color:#000;
+/* ADS SCREEN */
+.video-box video{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  border-radius:12px;
+  border:2px solid #00ffcc;
+  box-shadow:0 0 20px rgba(0,255,204,0.3);
 }
 
-.section{
-padding:60px 20px;
-max-width:1200px;
-margin:auto;
-position:relative;
+/* TIMER */
+.timer{
+  margin-top:12px;
+  font-size:18px;
+  color:#00ffcc;
+  font-weight:bold;
 }
 
-.title{
-text-align:center;
-color:#00ffff;
-margin-bottom:25px;
+/* CONNECT BUTTON */
+button{
+  width:100%;
+  padding:15px;
+  margin-top:15px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  font-weight:bold;
+  background:#00ffcc;
+  color:#000;
+  cursor:not-allowed;
+  opacity:0.5;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
+button.enabled{
+  cursor:pointer;
+  opacity:1;
 }
 
-.box{
-background:rgba(255,255,255,.05);
-padding:20px;
-border-radius:15px;
-text-align:center;
-}
-
-.price{
-font-size:40px;
-color:#00ffff;
-font-weight:bold;
-}
-
-.footer{
-text-align:center;
-padding:25px;
-color:#aaa;
-}
-
-@media(max-width:768px){
-.card{padding:20px}
-h1{font-size:28px}
-.logo{width:90px;height:90px}
-}
 </style>
 </head>
 
 <body>
 
-<div class="video-bg">
-<video autoplay muted loop playsinline>
-<source src="video.mp4" type="video/mp4">
-</video>
-</div>
+<div class="container">
 
-<div class="overlay"></div>
+  <!-- ADS VIDEO (BIG SCREEN) -->
+  <div class="video-box">
+    <video id="adsVideo" autoplay muted playsinline>
+      <source src="ads.mp4" type="video/mp4">
+    </video>
+  </div>
 
-<section class="hero">
-<div class="card">
+  <!-- TIMER -->
+  <div class="timer">
+    Please wait: <span id="count">30</span>s
+  </div>
 
-<img src="logo.png" class="logo">
-<h1>KLICKZONE HOTSPOT AND PRINTING</h1>
-<p class="subtitle">Fast Internet • Printing • Repair Services</p>
-
-<!-- CONNECT NOW BUTTON -->
-<button class="btn connect"
-onclick="location.href='http://120.10.10.1/login2.html'">
-CONNECT NOW
-</button>
+  <!-- CONNECT -->
+  <button id="connectBtn" disabled onclick="location.href='http://120.10.10.1/login2.html'">
+    CONNECT NOW
+  </button>
 
 </div>
-</section>
 
-<section class="section">
-<h2 class="title">OUR SERVICES</h2>
-<div class="grid">
-<div class="box">🖨️ Printing</div>
-<div class="box">📄 Xerox</div>
-<div class="box">📠 Scanning</div>
-<div class="box">🛡️ Laminating</div>
-<div class="box">💻 Computer Rental</div>
-<div class="box">🌐 Internet Browsing</div>
-<div class="box">🛠️ Laptop Repair</div>
-<div class="box">🖥️ Desktop Repair</div>
-<div class="box">📱 Phone Services</div>
-<div class="box">🎨 Photo Editing</div>
-<div class="box">📂 Online Assistance</div>
-<div class="box">📶 WiFi Vouchers</div>
-</div>
-</section>
+<script>
 
-<section class="section">
-<h2 class="title">WIFI PACKAGES</h2>
-<div class="grid">
-<div class="box"><div class="price">₱10</div><p>8 HOURS</p></div>
-<div class="box"><div class="price">₱20</div><p>1 DAY</p></div>
-<div class="box"><div class="price">₱100</div><p>1 MONTH</p></div>
-</div>
-</section>
+let timeLeft = 30;
 
-<section class="section">
-<h2 class="title">CONTACT US</h2>
-<div class="box">
-📍 3282-A 1st Street V. Mapa, Sta. Mesa, Manila<br><br>
-📞 0962-282-2617<br><br>
-💳 GCash: 0962-282-2617
-</div>
-</section>
+const count = document.getElementById("count");
+const btn = document.getElementById("connectBtn");
+const video = document.getElementById("adsVideo");
 
-<div class="footer">© 2026 KLICKZONE HOTSPOT AND PRINTING</div>
+function unlock(){
+  btn.disabled = false;
+  btn.classList.add("enabled");
+  btn.innerText = "CONNECT NOW";
+}
+
+/* TIMER */
+const interval = setInterval(()=>{
+  timeLeft--;
+  count.innerText = timeLeft;
+
+  if(timeLeft <= 0){
+    clearInterval(interval);
+    unlock();
+  }
+},1000);
+
+/* VIDEO END UNLOCK */
+video.addEventListener("ended", ()=>{
+  clearInterval(interval);
+  unlock();
+});
+
+</script>
 
 </body>
 </html>
