@@ -65,8 +65,8 @@ body{
   font-weight:bold;
 }
 
-/* BUTTON */
-button{
+/* CONNECT BUTTON */
+button.connect{
   width:100%;
   padding:15px;
   margin-top:15px;
@@ -80,9 +80,61 @@ button{
   opacity:0.5;
 }
 
-button.enabled{
+button.connect.enabled{
   cursor:pointer;
   opacity:1;
+}
+
+/* VOUCHER SECTION */
+.voucher-section{
+  margin-top:30px;
+  padding:10px;
+}
+
+.voucher-title{
+  color:#00ffcc;
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;
+}
+
+.card{
+  background:rgba(0,255,204,0.08);
+  border:1px solid #00ffcc;
+  border-radius:12px;
+  padding:15px;
+}
+
+.price{
+  font-size:28px;
+  color:#00ffcc;
+  font-weight:bold;
+}
+
+.desc{
+  font-size:13px;
+  margin:8px 0;
+  opacity:0.8;
+}
+
+.buy{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#00ffcc;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.buy:hover{
+  opacity:0.8;
 }
 
 </style>
@@ -114,9 +166,44 @@ button.enabled{
   </div>
 
   <!-- CONNECT -->
-  <button id="connectBtn" disabled onclick="location.href='http://120.10.10.1/login2.html'">
+  <button id="connectBtn" class="connect" disabled onclick="location.href='http://120.10.10.1/login2.html'">
     CONNECT NOW
   </button>
+
+  <!-- VOUCHER MENU -->
+  <div class="voucher-section">
+
+    <div class="voucher-title">💳 WIFI VOUCHER PRICES</div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="price">₱10</div>
+        <div class="desc">8 HOURS ACCESS</div>
+        <button class="buy" onclick="location.href='payment.html'">BUY NOW</button>
+      </div>
+
+      <div class="card">
+        <div class="price">₱20</div>
+        <div class="desc">1 DAY ACCESS</div>
+        <button class="buy" onclick="location.href='payment.html'">BUY NOW</button>
+      </div>
+
+      <div class="card">
+        <div class="price">₱50</div>
+        <div class="desc">3 DAYS ACCESS</div>
+        <button class="buy" onclick="location.href='payment.html'">BUY NOW</button>
+      </div>
+
+      <div class="card">
+        <div class="price">₱100</div>
+        <div class="desc">1 MONTH ACCESS</div>
+        <button class="buy" onclick="location.href='payment.html'">BUY NOW</button>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
