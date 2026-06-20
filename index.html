@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WiFi Access</title>
+<title>Klickzone Hotspot</title>
 
 <style>
 *{
@@ -18,10 +18,45 @@ body{
   color:#fff;
 }
 
+/* 🔥 BRAND HEADER (LOGO STYLE) */
+.brand-header{
+  text-align:center;
+  padding:18px 10px;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:#00ffcc;
+  text-transform:uppercase;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:20;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,255,204,0.3);
+  text-shadow:
+    0 0 5px #00ffcc,
+    0 0 10px #00ffcc,
+    0 0 20px #00ffcc;
+  animation:glowMove 3s infinite alternate;
+}
+
+@keyframes glowMove{
+  0%{
+    text-shadow:0 0 5px #00ffcc,0 0 10px #00ffcc;
+    letter-spacing:3px;
+  }
+  100%{
+    text-shadow:0 0 15px #00ffcc,0 0 30px #00ffcc;
+    letter-spacing:5px;
+  }
+}
+
 /* TOP MENU */
 .nav{
   position:fixed;
-  top:0;
+  top:60px;
   left:0;
   width:100%;
   background:rgba(0,0,0,0.7);
@@ -42,7 +77,7 @@ body{
 
 /* MAIN */
 .container{
-  padding-top:70px;
+  padding-top:140px;
   max-width:500px;
   margin:auto;
   text-align:center;
@@ -142,7 +177,12 @@ button.connect.enabled{
 
 <body>
 
-<!-- TOP MENU SERVICES -->
+<!-- 🔥 BRAND HEADER -->
+<div class="brand-header">
+  KLICKZONE HOTSPOT & DIGITAL PRINT
+</div>
+
+<!-- TOP MENU -->
 <div class="nav">
   <a href="#">Printing</a>
   <a href="#">Xerox</a>
