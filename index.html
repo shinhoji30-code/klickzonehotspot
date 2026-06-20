@@ -4,27 +4,93 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KLICKZONE HOTSPOT AND PRINTING</title>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#000;color:#fff;overflow-x:hidden}
+
 .video-bg,.overlay{position:fixed;inset:0}
 .video-bg video{width:100%;height:100%;object-fit:cover}
 .overlay{background:rgba(0,0,0,.7)}
+
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
-.card{width:100%;max-width:600px;background:rgba(255,255,255,.06);backdrop-filter:blur(12px);border-radius:25px;padding:30px;text-align:center;border:1px solid rgba(255,255,255,.15)}
-.logo{width:120px;height:120px;border-radius:50%;border:3px solid #00ffff;object-fit:cover}
+
+.card{
+width:100%;
+max-width:600px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(12px);
+border-radius:25px;
+padding:30px;
+text-align:center;
+border:1px solid rgba(255,255,255,.15);
+}
+
+.logo{
+width:120px;
+height:120px;
+border-radius:50%;
+border:3px solid #00ffff;
+object-fit:cover;
+}
+
 h1{margin:15px 0}
 .subtitle{color:#00ffff}
-.btn{display:block;width:100%;padding:15px;margin-top:12px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
-.connect{background:#00ffff;color:#000}
-.free{background:transparent;color:#fff;border:2px solid #00ffff}
-.fb{background:#1877f2;color:#fff}
-.section{padding:60px 20px;max-width:1200px;margin:auto;position:relative}
-.title{text-align:center;color:#00ffff;margin-bottom:25px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.box{background:rgba(255,255,255,.05);padding:20px;border-radius:15px;text-align:center}
-.price{font-size:40px;color:#00ffff;font-weight:bold}
-.footer{text-align:center;padding:25px;color:#aaa}
+
+.btn{
+display:block;
+width:100%;
+padding:15px;
+margin-top:12px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.connect{
+background:#00ffff;
+color:#000;
+}
+
+.section{
+padding:60px 20px;
+max-width:1200px;
+margin:auto;
+position:relative;
+}
+
+.title{
+text-align:center;
+color:#00ffff;
+margin-bottom:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.box{
+background:rgba(255,255,255,.05);
+padding:20px;
+border-radius:15px;
+text-align:center;
+}
+
+.price{
+font-size:40px;
+color:#00ffff;
+font-weight:bold;
+}
+
+.footer{
+text-align:center;
+padding:25px;
+color:#aaa;
+}
+
 @media(max-width:768px){
 .card{padding:20px}
 h1{font-size:28px}
@@ -32,6 +98,7 @@ h1{font-size:28px}
 }
 </style>
 </head>
+
 <body>
 
 <div class="video-bg">
@@ -39,17 +106,22 @@ h1{font-size:28px}
 <source src="video.mp4" type="video/mp4">
 </video>
 </div>
+
 <div class="overlay"></div>
 
 <section class="hero">
 <div class="card">
+
 <img src="logo.png" class="logo">
 <h1>KLICKZONE HOTSPOT AND PRINTING</h1>
 <p class="subtitle">Fast Internet • Printing • Repair Services</p>
 
-<button class="btn connect" onclick="location.href='http://120.10.10.1/login2.html'">CONNECT WIFI</button>
-<button class="btn free" onclick="location.href='http://120.10.10.1/login2.html'">FREE 15 MINUTES WIFI</button>
-<button class="btn fb" onclick="window.open('https://www.facebook.com/groups/341065062592393/user/100090893313062')">FACEBOOK</button>
+<!-- CONNECT NOW BUTTON -->
+<button class="btn connect"
+onclick="location.href='http://120.10.10.1/login2.html'">
+CONNECT NOW
+</button>
+
 </div>
 </section>
 
@@ -90,5 +162,6 @@ h1{font-size:28px}
 </section>
 
 <div class="footer">© 2026 KLICKZONE HOTSPOT AND PRINTING</div>
+
 </body>
 </html>
