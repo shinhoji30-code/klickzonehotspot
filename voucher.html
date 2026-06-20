@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voucher Code</title>
+<title>Voucher System</title>
 
 <style>
 body{
@@ -12,11 +12,11 @@ body{
   background:#000;
   color:#fff;
   text-align:center;
-  padding:30px;
+  padding:25px;
 }
 
 .box{
-  max-width:400px;
+  max-width:420px;
   margin:auto;
   background:rgba(0,255,204,0.08);
   border:1px solid #00ffcc;
@@ -25,41 +25,49 @@ body{
   box-shadow:0 0 20px rgba(0,255,204,0.2);
 }
 
-h1{
+h2{
   color:#00ffcc;
-  margin-bottom:10px;
 }
 
-.voucher{
-  font-size:30px;
-  font-weight:bold;
-  color:#00ffcc;
-  margin:20px 0;
-  letter-spacing:3px;
-  padding:10px;
-  border:1px dashed #00ffcc;
+input, select{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
   border-radius:10px;
+  border:none;
+  outline:none;
+  background:#111;
+  color:#fff;
+  border:1px solid #00ffcc;
 }
 
 button{
   width:100%;
   padding:12px;
+  margin-top:12px;
   border:none;
   border-radius:10px;
   background:#00ffcc;
   color:#000;
   font-weight:bold;
   cursor:pointer;
-  margin-top:10px;
 }
 
-button:hover{
-  opacity:0.8;
+.voucher{
+  font-size:28px;
+  font-weight:bold;
+  color:#00ffcc;
+  margin-top:20px;
+  letter-spacing:3px;
+  border:1px dashed #00ffcc;
+  padding:10px;
+  border-radius:10px;
+  display:none;
 }
 
-.info{
-  font-size:13px;
-  opacity:0.8;
+.small{
+  font-size:12px;
+  opacity:0.7;
   margin-top:10px;
 }
 </style>
@@ -69,47 +77,64 @@ button:hover{
 
 <div class="box">
 
-<h1>🎫 YOUR WIFI VOUCHER</h1>
+<h2>💳 PAYMENT VERIFICATION</h2>
 
-<p>Copy your code below:</p>
+<form id="payForm">
 
-<div class="voucher" id="code"></div>
+<input type="text" placeholder="Full Name" required>
 
-<button onclick="copyCode()">📋 COPY VOUCHER</button>
+<input type="text" placeholder="GCash Reference #" required>
 
-<button onclick="location.href='http://120.10.10.1/login2.html'">
+<select required>
+  <option value="">Select Plan</option>
+  <option value="10">₱10 - 8 Hours</option>
+  <option value="20">₱20 - 1 Day</option>
+  <option value="50">₱50 - 3 Days</option>
+  <option value="100">₱100 - 1 Month</option>
+</select>
+
+<button type="submit">SUBMIT FOR VERIFICATION</button>
+
+</form>
+
+<!-- VOUCHER RESULT -->
+<div class="voucher" id="voucherBox"></div>
+
+<button id="connectBtn" style="display:none;" onclick="location.href='http://120.10.10.1/login2.html'">
 ⚡ CONNECT WIFI
 </button>
 
-<div class="info">
-Valid for MikroTik Hotspot Login
+<div class="small">
+We will verify your GCash payment before activating voucher.
 </div>
 
 </div>
 
 <script>
 
-/* GENERATE RANDOM VOUCHER */
-function generateCode(){
+/* FORM SUBMIT */
+document.getElementById("payForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  generateVoucher();
+});
+
+/* GENERATE VOUCHER */
+function generateVoucher(){
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let code = "KLICK-";
 
   for(let i=0;i<6;i++){
-    code += chars[Math.floor(Math.random() * chars.length)];
+    code += chars[Math.floor(Math.random()*chars.length)];
   }
 
-  document.getElementById("code").innerText = code;
-}
+  document.getElementById("voucherBox").innerText = code;
+  document.getElementById("voucherBox").style.display = "block";
 
-/* COPY FUNCTION */
-function copyCode(){
-  const code = document.getElementById("code").innerText;
-  navigator.clipboard.writeText(code);
-  alert("Voucher copied: " + code);
-}
+  document.getElementById("connectBtn").style.display = "block";
 
-/* RUN ON LOAD */
-generateCode();
+  alert("Payment submitted! Wait for verification.");
+}
 
 </script>
 
