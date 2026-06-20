@@ -1,15 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Klickzone Hotspot</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLICKZONE HOTSPOT AND PRINTING</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-/* RESET */
 *{
     margin:0;
     padding:0;
@@ -17,216 +16,343 @@
     font-family:'Poppins',sans-serif;
 }
 
-body{
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-    background:#000;
-    position:relative;
+html{
+    scroll-behavior:smooth;
 }
 
-/* VIDEO BACKGROUND */
-video{
-    position:absolute;
-    top:50%;
-    left:50%;
-    min-width:100%;
-    min-height:100%;
-    transform:translate(-50%,-50%);
-    object-fit:cover;
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* VIDEO */
+.video-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
     z-index:-2;
 }
 
-/* OVERLAY */
-.overlay{
-    position:absolute;
+.video-bg video{
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.65);
+    object-fit:cover;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
     z-index:-1;
 }
 
-/* CONTAINER */
-.container{
-    width:100%;
-    height:100vh;
+/* HEADER */
+.hero{
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     padding:20px;
 }
 
-/* CARD */
 .card{
     width:100%;
-    max-width:420px;
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
+    max-width:520px;
+    text-align:center;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
     backdrop-filter:blur(15px);
     border-radius:25px;
-    padding:35px 25px;
-    text-align:center;
-    box-shadow:0 0 30px rgba(0,255,255,0.2);
+    padding:30px;
+    box-shadow:0 0 30px rgba(0,255,255,.25);
 }
 
-/* LOGO */
 .logo{
-    width:110px;
-    height:110px;
+    width:120px;
+    height:120px;
     border-radius:50%;
     object-fit:cover;
-    margin-bottom:15px;
     border:3px solid #00ffff;
     box-shadow:0 0 25px #00ffff;
+    margin-bottom:15px;
 }
 
-/* TEXT */
+.wifi{
+    font-size:55px;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.1)}
+    100%{transform:scale(1)}
+}
+
 h1{
-    color:#fff;
-    font-size:32px;
-    font-weight:700;
-    margin-bottom:5px;
+    font-size:34px;
+    margin-top:10px;
 }
 
 .subtitle{
     color:#00ffff;
-    font-size:14px;
-    margin-bottom:25px;
+    margin-bottom:15px;
+    font-weight:600;
 }
 
 .desc{
     color:#ddd;
-    font-size:14px;
     line-height:1.7;
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 
-/* BUTTONS */
 .btn{
     width:100%;
+    padding:15px;
     border:none;
-    padding:16px;
     border-radius:15px;
-    font-size:17px;
+    font-size:16px;
     font-weight:700;
     cursor:pointer;
-    margin-bottom:15px;
-    transition:0.3s;
+    margin-top:12px;
+    transition:.3s;
 }
 
-/* CONNECT BUTTON */
-.connect-btn{
+.connect{
     background:linear-gradient(45deg,#00ffff,#0099ff);
     color:#000;
-    box-shadow:0 0 25px #00ffff;
 }
 
-.connect-btn:hover{
-    transform:scale(1.03);
-    box-shadow:0 0 40px #00ffff;
-}
-
-/* FREE WIFI BUTTON */
-.free-btn{
+.free{
     background:transparent;
     color:#fff;
     border:2px solid #00ffff;
 }
 
-.free-btn:hover{
+.fb{
+    background:#1877f2;
+    color:#fff;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* SECTION */
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:35px;
+    color:#00ffff;
+}
+
+/* SERVICES */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.box{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    transition:.3s;
+}
+
+.box:hover{
+    transform:translateY(-5px);
+    border-color:#00ffff;
+}
+
+.box span{
+    display:block;
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+/* PRICES */
+.price-card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(0,255,255,.2);
+    border-radius:20px;
+    text-align:center;
+    padding:25px;
+}
+
+.price{
+    font-size:40px;
+    color:#00ffff;
+    font-weight:800;
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+    line-height:2;
+    font-size:17px;
+}
+
+.footer{
+    text-align:center;
+    padding:25px;
+    color:#aaa;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+marquee{
     background:#00ffff;
     color:#000;
+    padding:10px;
+    font-weight:700;
 }
-
-/* FOOTER */
-.footer{
-    margin-top:20px;
-    color:#aaa;
-    font-size:12px;
-}
-
-/* WIFI ICON */
-.wifi{
-    font-size:55px;
-    color:#00ffff;
-    margin-bottom:15px;
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-    0%{transform:scale(1);opacity:1;}
-    50%{transform:scale(1.1);opacity:0.7;}
-    100%{transform:scale(1);opacity:1;}
-}
-
-@media(max-width:500px){
-    h1{font-size:27px;}
-    .card{padding:30px 20px;}
-    .wifi{font-size:48px;}
-}
-
 </style>
 </head>
-
 <body>
 
 <!-- VIDEO BACKGROUND -->
-<video autoplay muted loop playsinline>
-    <source src="video.mp4" type="video/mp4">
-</video>
+<div class="video-bg">
+    <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+</div>
 
 <div class="overlay"></div>
 
-<div class="container">
+<marquee>
+WELCOME TO KLICKZONE HOTSPOT AND PRINTING • FAST INTERNET • PRINT • XEROX • SCAN • LAMINATE • REPAIR SERVICES
+</marquee>
+
+<!-- HERO -->
+<section class="hero">
 
 <div class="card">
 
-    <!-- LOGO -->
-    <img src="logo.png" class="logo">
+<img src="logo.png" class="logo" alt="Logo">
 
-    <!-- WIFI ICON -->
-    <div class="wifi">📶</div>
+<div class="wifi">📶</div>
 
-    <!-- TITLE -->
-    <h1>KLICKZONE</h1>
-    <div class="subtitle">HOTSPOT INTERNET</div>
+<h1>KLICKZONE</h1>
 
-    <!-- DESCRIPTION -->
-    <div class="desc">
-        Welcome to Klickzone Hotspot.<br>
-        Fast, stable and smooth internet experience.
-    </div>
+<div class="subtitle">
+HOTSPOT AND PRINTING
+</div>
 
-    <!-- CONNECT BUTTON -->
-    <button class="btn connect-btn"
-    onclick="window.location.href='http://120.10.10.1/login2.html'">
-        CONNECT WIFI
-    </button>
+<div class="desc">
+Fast Internet • Printing • Repair Services • Online Assistance
+</div>
 
-    <!-- FREE WIFI BUTTON -->
-    <button class="btn free-btn"
-    onclick="window.location.href='http://120.10.10.1/login2.html'">
-        FREE 15 MINUTES WIFI
-    </button>
+<button class="btn connect"
+onclick="window.location.href='http://120.10.10.1/login2.html'">
+CONNECT WIFI
+</button>
 
-    <!-- FOOTER -->
-    <div class="footer">
-        Powered by Klickzone Hotspot
-    </div>
+<button class="btn free"
+onclick="window.location.href='http://120.10.10.1/login2.html'">
+FREE 15 MINUTES WIFI
+</button>
 
+<button class="btn fb"
+onclick="window.open('https://www.facebook.com/groups/341065062592393/user/100090893313062')">
+FACEBOOK PAGE
+</button>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+
+<h2 class="section-title">OUR SERVICES</h2>
+
+<div class="grid">
+
+<div class="box"><span>🖨️</span>Printing</div>
+<div class="box"><span>📄</span>Xerox</div>
+<div class="box"><span>📠</span>Scanning</div>
+<div class="box"><span>🛡️</span>Laminating</div>
+<div class="box"><span>💻</span>Computer Rental</div>
+<div class="box"><span>🌐</span>Internet Browsing</div>
+<div class="box"><span>🛠️</span>Laptop Repair</div>
+<div class="box"><span>🖥️</span>Desktop Repair</div>
+<div class="box"><span>📱</span>Phone Services</div>
+<div class="box"><span>🎨</span>Photo Editing</div>
+<div class="box"><span>📂</span>Online Assistance</div>
+<div class="box"><span>📶</span>WiFi Vouchers</div>
+
+</div>
+
+</section>
+
+<!-- WIFI RATES -->
+<section class="section">
+
+<h2 class="section-title">WIFI PACKAGES</h2>
+
+<div class="grid">
+
+<div class="price-card">
+<div class="price">₱10</div>
+<h3>8 HOURS</h3>
+</div>
+
+<div class="price-card">
+<div class="price">₱20</div>
+<h3>1 DAY</h3>
+</div>
+
+<div class="price-card">
+<div class="price">₱100</div>
+<h3>1 MONTH</h3>
 </div>
 
 </div>
 
-<!-- ========================= -->
-<!-- MONETAG SCRIPT (SAFE) -->
-<!-- ========================= -->
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+
+<h2 class="section-title">CONTACT US</h2>
+
+<div class="contact">
+
+📍 3282-A 1st Street V. Mapa, Sta. Mesa, Manila<br>
+
+📞 0962-282-2617<br>
+
+💳 GCash: 0962-282-2617<br>
+
+🕒 Open Daily
+
+</div>
+
+</section>
+
+<footer class="footer">
+© 2026 KLICKZONE HOTSPOT AND PRINTING<br>
+Fast • Reliable • Affordable
+</footer>
+
+<!-- MONETAG -->
 <script>
 (function(s){
-    s.dataset.zone='10985504',
-    s.src='https://nap5k.com/tag.min.js'
+s.dataset.zone='10985504',
+s.src='https://nap5k.com/tag.min.js'
 })(document.body.appendChild(document.createElement('script')));
 </script>
 
 </body>
 </html>
+```
