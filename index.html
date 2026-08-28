@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@ body{
   color:#fff;
 }
 
-/* 🔥 BRAND HEADER (LOGO STYLE) */
+/* BRAND HEADER */
 .brand-header{
   text-align:center;
   padding:18px 10px;
@@ -181,7 +182,7 @@ button.connect.enabled:hover{
 
 <body>
 
-<!-- 🔥 BRAND HEADER -->
+<!-- BRAND HEADER -->
 <div class="brand-header">
   KLICKZONE HOTSPOT & DIGITAL PRINT
 </div>
@@ -206,11 +207,12 @@ button.connect.enabled:hover{
 
   <!-- TIMER -->
   <div class="timer">
-    Please wait: <span id="count">20</span>s
+    Please wait: <span id="count">10</span>s
   </div>
 
   <!-- CONNECT BUTTON -->
-  <button id="connectBtn" class="connect" disabled onclick="location.href='http://120.10.10.1/login2.html'">
+  <button id="connectBtn" class="connect" disabled
+    onclick="location.href='http://120.10.10.1/login2.html'">
     CONNECT NOW
   </button>
 
@@ -224,37 +226,44 @@ button.connect.enabled:hover{
       <div class="card">
         <div class="price">₱10</div>
         <div class="desc">8 HOURS ACCESS</div>
-        <button class="buy" onclick="location.href='payment.html'">BUY NOW</button>
+        <button class="buy" onclick="location.href='payment.html'">
+          BUY NOW
+        </button>
       </div>
 
       <div class="card">
         <div class="price">₱20</div>
         <div class="desc">1 DAY ACCESS</div>
-        <button class="buy" onclick="location.href='payment.html'">BUY NOW</button>
+        <button class="buy" onclick="location.href='payment.html'">
+          BUY NOW
+        </button>
       </div>
 
       <div class="card">
         <div class="price">₱50</div>
         <div class="desc">3 DAYS ACCESS</div>
-        <button class="buy" onclick="location.href='payment.html'">BUY NOW</button>
+        <button class="buy" onclick="location.href='payment.html'">
+          BUY NOW
+        </button>
       </div>
 
       <div class="card">
         <div class="price">₱100</div>
         <div class="desc">1 MONTH ACCESS</div>
-        <button class="buy" onclick="location.href='payment.html'">BUY NOW</button>
+        <button class="buy" onclick="location.href='payment.html'">
+          BUY NOW
+        </button>
       </div>
 
     </div>
-
   </div>
 
 </div>
 
 <script>
 
-// 🔥 20-SECOND COUNTDOWN
-let timeLeft = 20;
+// 🔥 10-SECOND COUNTDOWN
+let timeLeft = 10;
 
 const count = document.getElementById("count");
 const btn = document.getElementById("connectBtn");
@@ -287,3 +296,4 @@ video.addEventListener("ended", () => {
 
 </body>
 </html>
+```
