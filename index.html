@@ -1,7 +1,9 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -12,7 +14,12 @@
 
 <title>Klickzone Hotspot</title>
 
+
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
   margin:0;
@@ -26,30 +33,42 @@ body{
   color:#fff;
 }
 
+
 /* =========================
    BRAND HEADER
 ========================= */
 
 .brand-header{
+
   text-align:center;
+
   padding:18px 10px;
+
   font-size:22px;
+
   font-weight:900;
+
   letter-spacing:3px;
+
   color:#00ffcc;
+
   text-transform:uppercase;
 
   position:fixed;
+
   top:0;
   left:0;
+
   width:100%;
 
   z-index:20;
 
   background:rgba(0,0,0,0.6);
+
   backdrop-filter:blur(12px);
 
-  border-bottom:1px solid rgba(0,255,204,0.3);
+  border-bottom:
+    1px solid rgba(0,255,204,0.3);
 
   text-shadow:
     0 0 5px #00ffcc,
@@ -59,62 +78,81 @@ body{
   animation:glowMove 3s infinite alternate;
 }
 
+
 @keyframes glowMove{
 
   0%{
+
     text-shadow:
       0 0 5px #00ffcc,
       0 0 10px #00ffcc;
 
     letter-spacing:3px;
+
   }
 
   100%{
+
     text-shadow:
       0 0 15px #00ffcc,
       0 0 30px #00ffcc;
 
     letter-spacing:5px;
+
   }
 
 }
 
+
 /* =========================
-   TOP MENU
+   MENU
 ========================= */
 
 .nav{
+
   position:fixed;
+
   top:60px;
   left:0;
+
   width:100%;
 
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.75);
+
   backdrop-filter:blur(10px);
 
   display:flex;
+
   justify-content:space-around;
 
   padding:12px 5px;
 
   z-index:10;
 
-  border-bottom:1px solid rgba(0,255,204,0.3);
+  border-bottom:
+    1px solid rgba(0,255,204,0.3);
 }
 
+
 .nav a{
+
   color:#00ffcc;
+
   text-decoration:none;
 
   font-size:12px;
+
   font-weight:bold;
+
 }
 
+
 /* =========================
-   MAIN CONTAINER
+   MAIN
 ========================= */
 
 .container{
+
   padding-top:140px;
 
   max-width:500px;
@@ -124,15 +162,20 @@ body{
   text-align:center;
 
   padding-left:10px;
+
   padding-right:10px;
+
 }
+
 
 /* =========================
    VIDEO
 ========================= */
 
 .video-box video{
+
   width:100%;
+
   height:260px;
 
   object-fit:cover;
@@ -142,13 +185,16 @@ body{
   border:2px solid #00ffcc;
 
   background:#111;
+
 }
+
 
 /* =========================
    TIMER
 ========================= */
 
 .timer{
+
   margin-top:10px;
 
   font-size:16px;
@@ -156,10 +202,12 @@ body{
   color:#00ffcc;
 
   font-weight:bold;
+
 }
 
+
 /* =========================
-   CONNECT BUTTON
+   CONNECT
 ========================= */
 
 button.connect{
@@ -184,10 +232,12 @@ button.connect{
 
   cursor:not-allowed;
 
-  opacity:0.5;
+  opacity:.5;
 
-  transition:0.3s;
+  transition:.3s;
+
 }
+
 
 button.connect.enabled{
 
@@ -197,17 +247,20 @@ button.connect.enabled{
 
 }
 
+
 button.connect.enabled:hover{
 
   transform:scale(1.03);
 
   box-shadow:
     0 0 10px #00ffcc,
-    0 0 25px rgba(0,255,204,0.5);
+    0 0 25px rgba(0,255,204,.5);
+
 }
 
+
 /* =========================
-   VOUCHER SECTION
+   VOUCHERS
 ========================= */
 
 .voucher-section{
@@ -215,7 +268,9 @@ button.connect.enabled:hover{
   margin-top:30px;
 
   padding:10px;
+
 }
+
 
 .voucher-title{
 
@@ -224,7 +279,9 @@ button.connect.enabled:hover{
   font-size:18px;
 
   margin-bottom:10px;
+
 }
+
 
 .grid{
 
@@ -234,22 +291,24 @@ button.connect.enabled:hover{
     repeat(auto-fit,minmax(200px,1fr));
 
   gap:10px;
+
 }
+
 
 .card{
 
   background:
-    rgba(0,255,204,0.08);
+    rgba(0,255,204,.08);
 
-  border:1px solid #00ffcc;
+  border:
+    1px solid #00ffcc;
 
   border-radius:12px;
 
   padding:15px;
 
-  box-shadow:
-    0 0 8px rgba(0,255,204,0.15);
 }
+
 
 .price{
 
@@ -258,7 +317,9 @@ button.connect.enabled:hover{
   color:#00ffcc;
 
   font-weight:bold;
+
 }
+
 
 .desc{
 
@@ -266,8 +327,10 @@ button.connect.enabled:hover{
 
   margin:8px 0;
 
-  opacity:0.8;
+  opacity:.8;
+
 }
+
 
 .buy{
 
@@ -287,36 +350,25 @@ button.connect.enabled:hover{
 
   cursor:pointer;
 
-  transition:0.2s;
 }
 
-.buy:hover{
 
-  opacity:0.8;
+/* =================================================
+   LOGIN POPUP
+================================================= */
 
-  transform:scale(1.02);
-}
-
-/* =========================
-   LOGIN MODAL
-========================= */
-
-.modal{
+.login-modal{
 
   display:none;
 
   position:fixed;
 
+  inset:0;
+
   z-index:9999;
 
-  left:0;
-  top:0;
-
-  width:100%;
-  height:100%;
-
   background:
-    rgba(0,0,0,0.88);
+    rgba(0,0,0,.92);
 
   backdrop-filter:blur(8px);
 
@@ -325,51 +377,61 @@ button.connect.enabled:hover{
   align-items:center;
 
   padding:15px;
+
 }
 
-.modal.show{
+
+.login-modal.show{
 
   display:flex;
+
 }
+
 
 /* =========================
    LOGIN BOX
 ========================= */
 
-.modal-box{
+.login-box{
 
   position:relative;
 
   width:100%;
 
-  max-width:400px;
+  max-width:390px;
 
-  background:#050505;
+  max-height:90vh;
 
-  border:2px solid #00ffcc;
+  overflow:auto;
+
+  background:
+    rgba(0,0,0,.92);
+
+  border:
+    1px solid rgba(0,255,100,.4);
 
   border-radius:18px;
 
-  padding:20px 15px;
+  padding:20px;
+
+  text-align:center;
 
   box-shadow:
+    0 0 25px rgba(0,255,100,.25);
 
-    0 0 15px #00ffcc,
+  animation:popup .3s ease;
 
-    0 0 40px
-    rgba(0,255,204,0.4);
-
-  animation:
-    popup 0.3s ease;
 }
+
 
 @keyframes popup{
 
   from{
 
-    transform:scale(0.7);
+    transform:scale(.7);
 
     opacity:0;
+
   }
 
   to{
@@ -377,15 +439,17 @@ button.connect.enabled:hover{
     transform:scale(1);
 
     opacity:1;
+
   }
 
 }
 
+
 /* =========================
-   CLOSE BUTTON
+   CLOSE
 ========================= */
 
-.close-btn{
+.close-login{
 
   position:absolute;
 
@@ -401,7 +465,7 @@ button.connect.enabled:hover{
 
   border-radius:50%;
 
-  background:#00ffcc;
+  background:#00ff66;
 
   color:#000;
 
@@ -413,14 +477,40 @@ button.connect.enabled:hover{
 
   z-index:20;
 
-  line-height:35px;
 }
 
-.close-btn:hover{
 
-  transform:rotate(90deg);
+/* =========================
+   MATRIX
+========================= */
+
+#matrix{
+
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+
+  height:100%;
+
+  border-radius:18px;
+
+  z-index:0;
+
+  opacity:.25;
 
 }
+
+
+.login-content{
+
+  position:relative;
+
+  z-index:2;
+
+}
+
 
 /* =========================
    LOGIN TITLE
@@ -428,50 +518,188 @@ button.connect.enabled:hover{
 
 .login-title{
 
-  text-align:center;
+  font-size:24px;
 
-  color:#00ffcc;
+  letter-spacing:6px;
 
-  font-size:20px;
+  color:#00ff66;
 
-  font-weight:bold;
+  text-shadow:
+    0 0 10px #00ff66,
+    0 0 20px #00ff66;
 
-  margin-bottom:5px;
+  margin-bottom:15px;
 
-  letter-spacing:1px;
 }
 
-.login-subtitle{
 
-  text-align:center;
+#clock{
 
-  color:#fff;
+  font-size:13px;
 
-  font-size:12px;
+  color:#00ff66;
 
-  margin-bottom:12px;
+  margin-bottom:10px;
 
-  opacity:0.8;
 }
+
+
+.status{
+
+  font-size:13px;
+
+  color:#00ff88;
+
+  margin-bottom:10px;
+
+}
+
+
+.online-dot{
+
+  display:inline-block;
+
+  width:8px;
+
+  height:8px;
+
+  background:#00ff66;
+
+  border-radius:50%;
+
+  margin-right:5px;
+
+  box-shadow:0 0 10px #00ff66;
+
+}
+
 
 /* =========================
-   LOGIN IFRAME
+   INPUT
 ========================= */
 
-.login-frame{
+.login-box input[type="text"],
+.login-box input[type="password"]{
 
   width:100%;
 
-  height:330px;
+  padding:12px;
+
+  margin:6px 0;
+
+  border-radius:10px;
+
+  border:none;
+
+  background:
+    rgba(0,255,100,.08);
+
+  color:#fff;
+
+  outline:none;
+
+}
+
+
+.login-box input:focus{
+
+  box-shadow:
+    0 0 10px #00ff66;
+
+}
+
+
+.login-box input::placeholder{
+
+  color:#aaa;
+
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-submit{
+
+  width:100%;
+
+  padding:13px;
+
+  margin-top:8px;
 
   border:none;
 
   border-radius:10px;
 
-  background:#fff;
+  background:
+    linear-gradient(
+      45deg,
+      #00ff66,
+      #00cc44
+    );
 
-  display:block;
+  color:#000;
+
+  font-size:15px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
 }
+
+
+/* =========================
+   BUY VOUCHER
+========================= */
+
+.buy-voucher{
+
+  width:100%;
+
+  padding:13px;
+
+  margin-top:12px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      45deg,
+      #00ffaa,
+      #00ff66
+    );
+
+  color:#000;
+
+  font-weight:bold;
+
+  font-size:15px;
+
+  cursor:pointer;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.login-footer{
+
+  margin-top:14px;
+
+  font-size:11px;
+
+  opacity:.7;
+
+  color:#99ffbb;
+
+}
+
 
 /* =========================
    MOBILE
@@ -486,45 +714,53 @@ button.connect.enabled:hover{
     letter-spacing:2px;
 
     padding:17px 5px;
+
   }
+
 
   .nav{
 
     top:53px;
 
     padding:10px 3px;
+
   }
+
 
   .nav a{
 
     font-size:10px;
+
   }
+
 
   .container{
 
     padding-top:125px;
+
   }
+
 
   .video-box video{
 
     height:220px;
+
   }
 
-  .modal{
 
-    padding:10px;
+  .login-box{
+
+    padding:18px;
+
   }
 
-  .modal-box{
 
-    max-width:360px;
+  .login-title{
 
-    padding:18px 10px;
-  }
+    font-size:21px;
 
-  .login-frame{
+    letter-spacing:4px;
 
-    height:320px;
   }
 
 }
@@ -533,11 +769,12 @@ button.connect.enabled:hover{
 
 </head>
 
+
 <body>
 
 
 <!-- =========================
-     BRAND HEADER
+     HEADER
 ========================= -->
 
 <div class="brand-header">
@@ -548,7 +785,7 @@ button.connect.enabled:hover{
 
 
 <!-- =========================
-     TOP MENU
+     MENU
 ========================= -->
 
 <div class="nav">
@@ -573,7 +810,7 @@ button.connect.enabled:hover{
 <div class="container">
 
 
-  <!-- VIDEO AD -->
+  <!-- VIDEO -->
 
   <div class="video-box">
 
@@ -586,9 +823,6 @@ button.connect.enabled:hover{
       <source
         src="ads.mp4"
         type="video/mp4">
-
-      Your browser does not support
-      the video tag.
 
     </video>
 
@@ -634,8 +868,6 @@ button.connect.enabled:hover{
     <div class="grid">
 
 
-      <!-- ₱10 -->
-
       <div class="card">
 
         <div class="price">
@@ -656,8 +888,6 @@ button.connect.enabled:hover{
 
       </div>
 
-
-      <!-- ₱20 -->
 
       <div class="card">
 
@@ -680,8 +910,6 @@ button.connect.enabled:hover{
       </div>
 
 
-      <!-- ₱50 -->
-
       <div class="card">
 
         <div class="price">
@@ -702,8 +930,6 @@ button.connect.enabled:hover{
 
       </div>
 
-
-      <!-- ₱100 -->
 
       <div class="card">
 
@@ -730,26 +956,24 @@ button.connect.enabled:hover{
 
   </div>
 
-
 </div>
 
 
-<!-- =========================
+<!-- =================================================
      LOGIN POPUP
-========================= -->
+================================================= -->
 
 <div
   id="loginModal"
-  class="modal">
+  class="login-modal">
 
 
-  <div class="modal-box">
+  <div class="login-box">
 
-
-    <!-- CLOSE -->
 
     <button
-      class="close-btn"
+      type="button"
+      class="close-login"
       onclick="closeLogin()">
 
       ×
@@ -757,31 +981,98 @@ button.connect.enabled:hover{
     </button>
 
 
-    <!-- TITLE -->
+    <canvas id="matrix"></canvas>
 
-    <div class="login-title">
 
-      KLICKZONE HOTSPOT
+    <div class="login-content">
+
+
+      <div class="login-title">
+
+        KLICKZONE
+
+      </div>
+
+
+      <div id="clock"></div>
+
+
+      <div class="status">
+
+        <span class="online-dot"></span>
+
+        SYSTEM ONLINE
+
+      </div>
+
+
+      <!-- =========================
+           MIKROTIK LOGIN
+      ========================= -->
+
+      <form
+        name="login"
+        action="$(link-login-only)"
+        method="post">
+
+
+        <input
+          type="hidden"
+          name="dst"
+          value="$(link-orig)">
+
+
+        <input
+          type="hidden"
+          name="popup"
+          value="false">
+
+
+        <input
+          name="username"
+          type="text"
+          placeholder="USERNAME"
+          autocomplete="username"
+          required>
+
+
+        <input
+          name="password"
+          type="password"
+          placeholder="PASSWORD"
+          autocomplete="current-password"
+          required>
+
+
+        <input
+          type="submit"
+          class="login-submit"
+          value="⚡ CONNECT">
+
+
+      </form>
+
+
+      <!-- BUY VOUCHER -->
+
+      <button
+        type="button"
+        class="buy-voucher"
+        onclick="buyVoucher()">
+
+        🎫 BUY VOUCHER
+
+      </button>
+
+
+      <div class="login-footer">
+
+        Klickzone Network © 2026
+
+      </div>
+
 
     </div>
-
-
-    <div class="login-subtitle">
-
-      ENTER YOUR WIFI VOUCHER
-
-    </div>
-
-
-    <!-- MIKROTIK LOGIN -->
-
-    <iframe
-      src="http://120.10.10.1/login2.html"
-      class="login-frame"
-      frameborder="0">
-
-    </iframe>
-
 
   </div>
 
@@ -810,10 +1101,6 @@ const video =
   document.getElementById("adsVideo");
 
 
-/* =========================
-   UNLOCK
-========================= */
-
 function unlock(){
 
   btn.disabled = false;
@@ -826,36 +1113,35 @@ function unlock(){
 
 
 /* =========================
-   COUNTDOWN TIMER
+   TIMER
 ========================= */
 
-const interval =
-  setInterval(() => {
+const interval = setInterval(()=>{
 
-    timeLeft--;
+  timeLeft--;
 
-    count.innerText =
-      timeLeft;
+  count.innerText =
+    timeLeft;
 
 
-    if(timeLeft <= 0){
+  if(timeLeft <= 0){
 
-      clearInterval(interval);
+    clearInterval(interval);
 
-      unlock();
+    unlock();
 
-    }
+  }
 
-  },1000);
+},1000);
 
 
 /* =========================
-   VIDEO FINISHED
+   VIDEO END
 ========================= */
 
 video.addEventListener(
   "ended",
-  () => {
+  ()=>{
 
     clearInterval(interval);
 
@@ -905,9 +1191,9 @@ document
   .getElementById("loginModal")
   .addEventListener(
     "click",
-    function(event){
+    function(e){
 
-      if(event.target === this){
+      if(e.target === this){
 
         closeLogin();
 
@@ -918,14 +1204,14 @@ document
 
 
 /* =========================
-   ESC KEY
+   ESC
 ========================= */
 
 document.addEventListener(
   "keydown",
-  function(event){
+  function(e){
 
-    if(event.key === "Escape"){
+    if(e.key === "Escape"){
 
       closeLogin();
 
@@ -934,9 +1220,166 @@ document.addEventListener(
   }
 );
 
+
+/* =========================
+   CLOCK
+========================= */
+
+function updateClock(){
+
+  document.getElementById("clock").innerHTML =
+    "🕒 " +
+    new Date().toLocaleTimeString();
+
+}
+
+
+updateClock();
+
+
+setInterval(
+  updateClock,
+  1000
+);
+
+
+/* =========================
+   BUY VOUCHER
+========================= */
+
+function buyVoucher(){
+
+  window.location.href =
+    "http://120.10.10.1/voucher.html";
+
+}
+
+
+/* =========================
+   MATRIX
+========================= */
+
+const canvas =
+  document.getElementById("matrix");
+
+const ctx =
+  canvas.getContext("2d");
+
+
+function resizeMatrix(){
+
+  canvas.width =
+    canvas.offsetWidth;
+
+  canvas.height =
+    canvas.offsetHeight;
+
+  columns =
+    Math.floor(
+      canvas.width / fontSize
+    );
+
+  drops =
+    Array(columns).fill(1);
+
+}
+
+
+const letters =
+  "01KLICKZONENETWORKCYBERMATRIX";
+
+const arr =
+  letters.split("");
+
+const fontSize = 14;
+
+let columns =
+  Math.floor(
+    canvas.offsetWidth / fontSize
+  );
+
+let drops =
+  Array(columns).fill(1);
+
+
+resizeMatrix();
+
+
+window.addEventListener(
+  "resize",
+  resizeMatrix
+);
+
+
+function drawMatrix(){
+
+  ctx.fillStyle =
+    "rgba(0,0,0,.08)";
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+
+  ctx.fillStyle =
+    "#00ff66";
+
+  ctx.font =
+    fontSize + "px monospace";
+
+
+  for(
+    let i=0;
+    i<drops.length;
+    i++
+  ){
+
+    const text =
+      arr[
+        Math.floor(
+          Math.random()*arr.length
+        )
+      ];
+
+
+    ctx.fillText(
+      text,
+      i*fontSize,
+      drops[i]*fontSize
+    );
+
+
+    if(
+      drops[i]*fontSize >
+      canvas.height &&
+      Math.random() > .975
+    ){
+
+      drops[i]=0;
+
+    }
+
+
+    drops[i]++;
+
+  }
+
+}
+
+
+setInterval(
+  drawMatrix,
+  35
+);
+
+
 </script>
 
 
 </body>
+
 </html>
 ```
