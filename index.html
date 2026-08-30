@@ -6,20 +6,20 @@
 
 <meta charset="UTF-8">
 
+<title>Klickzone Hotspot</title>
+
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="-1">
 
-<title>Klickzone Hotspot</title>
-
 
 <style>
 
-/* =========================
+/* =====================================================
    RESET
-========================= */
+===================================================== */
 
 *{
   margin:0;
@@ -31,12 +31,13 @@
 body{
   background:#000;
   color:#fff;
+  min-height:100vh;
 }
 
 
-/* =========================
+/* =====================================================
    BRAND HEADER
-========================= */
+===================================================== */
 
 .brand-header{
 
@@ -44,15 +45,13 @@ body{
 
   padding:18px 10px;
 
-  font-size:22px;
+  font-size:21px;
 
   font-weight:900;
 
   letter-spacing:3px;
 
   color:#00ffcc;
-
-  text-transform:uppercase;
 
   position:fixed;
 
@@ -61,25 +60,25 @@ body{
 
   width:100%;
 
-  z-index:20;
+  z-index:100;
 
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,.65);
 
   backdrop-filter:blur(12px);
 
   border-bottom:
-    1px solid rgba(0,255,204,0.3);
+    1px solid rgba(0,255,204,.3);
 
   text-shadow:
     0 0 5px #00ffcc,
     0 0 10px #00ffcc,
     0 0 20px #00ffcc;
 
-  animation:glowMove 3s infinite alternate;
+  animation:brandGlow 3s infinite alternate;
 }
 
 
-@keyframes glowMove{
+@keyframes brandGlow{
 
   0%{
 
@@ -104,33 +103,33 @@ body{
 }
 
 
-/* =========================
-   MENU
-========================= */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 .nav{
 
   position:fixed;
 
-  top:60px;
+  top:59px;
   left:0;
 
   width:100%;
 
-  background:rgba(0,0,0,0.75);
-
-  backdrop-filter:blur(10px);
+  z-index:90;
 
   display:flex;
 
   justify-content:space-around;
 
-  padding:12px 5px;
+  padding:11px 4px;
 
-  z-index:10;
+  background:rgba(0,0,0,.75);
+
+  backdrop-filter:blur(10px);
 
   border-bottom:
-    1px solid rgba(0,255,204,0.3);
+    1px solid rgba(0,255,204,.25);
 }
 
 
@@ -140,39 +139,54 @@ body{
 
   text-decoration:none;
 
-  font-size:12px;
+  font-size:11px;
 
   font-weight:bold;
 
 }
 
 
-/* =========================
+/* =====================================================
    MAIN
-========================= */
+===================================================== */
 
 .container{
 
-  padding-top:140px;
+  width:100%;
 
   max-width:500px;
 
   margin:auto;
 
+  padding:
+
+    130px
+
+    10px
+
+    40px;
+
   text-align:center;
-
-  padding-left:10px;
-
-  padding-right:10px;
 
 }
 
 
-/* =========================
+/* =====================================================
    VIDEO
-========================= */
+===================================================== */
+
+.video-box{
+
+  width:100%;
+
+  position:relative;
+
+}
+
 
 .video-box video{
+
+  display:block;
 
   width:100%;
 
@@ -180,94 +194,107 @@ body{
 
   object-fit:cover;
 
+  background:#111;
+
+  border:
+
+    2px solid #00ffcc;
+
   border-radius:12px;
 
-  border:2px solid #00ffcc;
-
-  background:#111;
+  box-shadow:
+    0 0 15px
+    rgba(0,255,204,.25);
 
 }
 
 
-/* =========================
+/* =====================================================
    TIMER
-========================= */
+===================================================== */
 
 .timer{
 
   margin-top:10px;
 
-  font-size:16px;
-
   color:#00ffcc;
+
+  font-size:16px;
 
   font-weight:bold;
 
 }
 
 
-/* =========================
-   CONNECT
-========================= */
+#count{
 
-button.connect{
+  font-size:18px;
+
+}
+
+
+/* =====================================================
+   CONNECT BUTTON
+===================================================== */
+
+.connect{
 
   width:100%;
 
-  padding:15px;
-
   margin-top:15px;
+
+  padding:15px;
 
   border:none;
 
   border-radius:10px;
 
-  font-size:16px;
-
-  font-weight:bold;
-
   background:#00ffcc;
 
   color:#000;
 
-  cursor:not-allowed;
+  font-size:16px;
 
-  opacity:.5;
+  font-weight:bold;
+
+  opacity:.45;
+
+  cursor:not-allowed;
 
   transition:.3s;
 
 }
 
 
-button.connect.enabled{
-
-  cursor:pointer;
+.connect.enabled{
 
   opacity:1;
 
-}
-
-
-button.connect.enabled:hover{
-
-  transform:scale(1.03);
+  cursor:pointer;
 
   box-shadow:
-    0 0 10px #00ffcc,
-    0 0 25px rgba(0,255,204,.5);
+    0 0 10px #00ffcc;
 
 }
 
 
-/* =========================
-   VOUCHERS
-========================= */
+.connect.enabled:hover{
+
+  transform:scale(1.02);
+
+  box-shadow:
+    0 0 20px #00ffcc;
+
+}
+
+
+/* =====================================================
+   VOUCHER SECTION
+===================================================== */
 
 .voucher-section{
 
   margin-top:30px;
-
-  padding:10px;
 
 }
 
@@ -278,7 +305,9 @@ button.connect.enabled:hover{
 
   font-size:18px;
 
-  margin-bottom:10px;
+  font-weight:bold;
+
+  margin-bottom:12px;
 
 }
 
@@ -288,7 +317,7 @@ button.connect.enabled:hover{
   display:grid;
 
   grid-template-columns:
-    repeat(auto-fit,minmax(200px,1fr));
+    repeat(2,1fr);
 
   gap:10px;
 
@@ -297,15 +326,16 @@ button.connect.enabled:hover{
 
 .card{
 
-  background:
-    rgba(0,255,204,.08);
+  padding:15px;
 
   border:
+
     1px solid #00ffcc;
 
   border-radius:12px;
 
-  padding:15px;
+  background:
+    rgba(0,255,204,.07);
 
 }
 
@@ -314,16 +344,16 @@ button.connect.enabled:hover{
 
   font-size:28px;
 
-  color:#00ffcc;
-
   font-weight:bold;
+
+  color:#00ffcc;
 
 }
 
 
 .desc{
 
-  font-size:13px;
+  font-size:12px;
 
   margin:8px 0;
 
@@ -353,9 +383,9 @@ button.connect.enabled:hover{
 }
 
 
-/* =================================================
-   LOGIN POPUP
-================================================= */
+/* =====================================================
+   LOGIN MODAL
+===================================================== */
 
 .login-modal{
 
@@ -368,7 +398,7 @@ button.connect.enabled:hover{
   z-index:9999;
 
   background:
-    rgba(0,0,0,.92);
+    rgba(0,0,0,.90);
 
   backdrop-filter:blur(8px);
 
@@ -388,9 +418,9 @@ button.connect.enabled:hover{
 }
 
 
-/* =========================
+/* =====================================================
    LOGIN BOX
-========================= */
+===================================================== */
 
 .login-box{
 
@@ -404,22 +434,28 @@ button.connect.enabled:hover{
 
   overflow:auto;
 
-  background:
-    rgba(0,0,0,.92);
+  padding:22px 20px;
 
   border:
-    1px solid rgba(0,255,100,.4);
+
+    1px solid
+    rgba(0,255,100,.4);
 
   border-radius:18px;
 
-  padding:20px;
-
-  text-align:center;
+  background:
+    rgba(0,0,0,.92);
 
   box-shadow:
-    0 0 25px rgba(0,255,100,.25);
 
-  animation:popup .3s ease;
+    0 0 20px
+    rgba(0,255,100,.25),
+
+    0 0 50px
+    rgba(0,255,100,.10);
+
+  animation:
+    popup .3s ease;
 
 }
 
@@ -445,21 +481,19 @@ button.connect.enabled:hover{
 }
 
 
-/* =========================
+/* =====================================================
    CLOSE
-========================= */
+===================================================== */
 
 .close-login{
 
   position:absolute;
 
-  right:10px;
-
   top:8px;
+  right:8px;
 
-  width:35px;
-
-  height:35px;
+  width:34px;
+  height:34px;
 
   border:none;
 
@@ -469,7 +503,7 @@ button.connect.enabled:hover{
 
   color:#000;
 
-  font-size:25px;
+  font-size:24px;
 
   font-weight:bold;
 
@@ -480,9 +514,9 @@ button.connect.enabled:hover{
 }
 
 
-/* =========================
+/* =====================================================
    MATRIX
-========================= */
+===================================================== */
 
 #matrix{
 
@@ -494,11 +528,13 @@ button.connect.enabled:hover{
 
   height:100%;
 
-  border-radius:18px;
-
   z-index:0;
 
-  opacity:.25;
+  border-radius:18px;
+
+  opacity:.18;
+
+  pointer-events:none;
 
 }
 
@@ -512,32 +548,36 @@ button.connect.enabled:hover{
 }
 
 
-/* =========================
+/* =====================================================
    LOGIN TITLE
-========================= */
+===================================================== */
 
 .login-title{
 
+  text-align:center;
+
+  color:#00ff66;
+
   font-size:24px;
+
+  font-weight:bold;
 
   letter-spacing:6px;
 
-  color:#00ff66;
+  margin-bottom:10px;
 
   text-shadow:
     0 0 10px #00ff66,
     0 0 20px #00ff66;
-
-  margin-bottom:15px;
 
 }
 
 
 #clock{
 
-  font-size:13px;
-
   color:#00ff66;
+
+  font-size:13px;
 
   margin-bottom:10px;
 
@@ -546,11 +586,11 @@ button.connect.enabled:hover{
 
 .status{
 
-  font-size:13px;
-
   color:#00ff88;
 
-  margin-bottom:10px;
+  font-size:13px;
+
+  margin-bottom:12px;
 
 }
 
@@ -563,20 +603,21 @@ button.connect.enabled:hover{
 
   height:8px;
 
-  background:#00ff66;
+  margin-right:5px;
 
   border-radius:50%;
 
-  margin-right:5px;
+  background:#00ff66;
 
-  box-shadow:0 0 10px #00ff66;
+  box-shadow:
+    0 0 10px #00ff66;
 
 }
 
 
-/* =========================
-   INPUT
-========================= */
+/* =====================================================
+   LOGIN INPUTS
+===================================================== */
 
 .login-box input[type="text"],
 .login-box input[type="password"]{
@@ -587,16 +628,16 @@ button.connect.enabled:hover{
 
   margin:6px 0;
 
+  border:none;
+
   border-radius:10px;
 
-  border:none;
+  outline:none;
 
   background:
     rgba(0,255,100,.08);
 
   color:#fff;
-
-  outline:none;
 
 }
 
@@ -616,9 +657,9 @@ button.connect.enabled:hover{
 }
 
 
-/* =========================
-   LOGIN BUTTON
-========================= */
+/* =====================================================
+   LOGIN SUBMIT
+===================================================== */
 
 .login-submit{
 
@@ -650,9 +691,17 @@ button.connect.enabled:hover{
 }
 
 
-/* =========================
-   BUY VOUCHER
-========================= */
+.login-submit:hover{
+
+  box-shadow:
+    0 0 15px #00ff66;
+
+}
+
+
+/* =====================================================
+   BUY VOUCHER BUTTON
+===================================================== */
 
 .buy-voucher{
 
@@ -675,35 +724,35 @@ button.connect.enabled:hover{
 
   color:#000;
 
-  font-weight:bold;
-
   font-size:15px;
+
+  font-weight:bold;
 
   cursor:pointer;
 
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 .login-footer{
 
   margin-top:14px;
 
+  color:#99ffbb;
+
   font-size:11px;
 
   opacity:.7;
 
-  color:#99ffbb;
-
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:500px){
 
@@ -721,8 +770,6 @@ button.connect.enabled:hover{
   .nav{
 
     top:53px;
-
-    padding:10px 3px;
 
   }
 
@@ -748,18 +795,16 @@ button.connect.enabled:hover{
   }
 
 
-  .login-box{
+  .grid{
 
-    padding:18px;
+    grid-template-columns:1fr 1fr;
 
   }
 
 
-  .login-title{
+  .login-box{
 
-    font-size:21px;
-
-    letter-spacing:4px;
+    padding:20px 15px;
 
   }
 
@@ -773,329 +818,343 @@ button.connect.enabled:hover{
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <div class="brand-header">
 
-  KLICKZONE HOTSPOT & DIGITAL PRINT
+KLICKZONE HOTSPOT & DIGITAL PRINT
 
 </div>
 
 
-<!-- =========================
-     MENU
-========================= -->
+<!-- =====================================================
+     NAV
+===================================================== -->
 
 <div class="nav">
 
-  <a href="#">Printing</a>
+<a href="#">Printing</a>
 
-  <a href="#">Xerox</a>
+<a href="#">Xerox</a>
 
-  <a href="#">Scanning</a>
+<a href="#">Scanning</a>
 
-  <a href="#">Repair</a>
+<a href="#">Repair</a>
 
-  <a href="#">WiFi</a>
+<a href="#">WiFi</a>
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      MAIN
-========================= -->
+===================================================== -->
 
 <div class="container">
 
 
-  <!-- VIDEO -->
+<!-- VIDEO -->
 
-  <div class="video-box">
+<div class="video-box">
 
-    <video
-      id="adsVideo"
-      autoplay
-      muted
-      playsinline>
+<video
+  id="adsVideo"
+  autoplay
+  muted
+  playsinline
+  preload="auto">
 
-      <source
-        src="ads.mp4"
-        type="video/mp4">
+  <source
+    src="ads.mp4"
+    type="video/mp4">
 
-    </video>
-
-  </div>
-
-
-  <!-- TIMER -->
-
-  <div class="timer">
-
-    Please wait:
-    <span id="count">10</span>s
-
-  </div>
-
-
-  <!-- CONNECT -->
-
-  <button
-    id="connectBtn"
-    class="connect"
-    disabled
-    onclick="openLogin()">
-
-    CONNECT NOW
-
-  </button>
-
-
-  <!-- =========================
-       VOUCHERS
-  ========================= -->
-
-  <div class="voucher-section">
-
-    <div class="voucher-title">
-
-      💳 WIFI VOUCHER PRICES
-
-    </div>
-
-
-    <div class="grid">
-
-
-      <div class="card">
-
-        <div class="price">
-          ₱10
-        </div>
-
-        <div class="desc">
-          8 HOURS ACCESS
-        </div>
-
-        <button
-          class="buy"
-          onclick="location.href='payment.html'">
-
-          BUY NOW
-
-        </button>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="price">
-          ₱20
-        </div>
-
-        <div class="desc">
-          1 DAY ACCESS
-        </div>
-
-        <button
-          class="buy"
-          onclick="location.href='payment.html'">
-
-          BUY NOW
-
-        </button>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="price">
-          ₱50
-        </div>
-
-        <div class="desc">
-          3 DAYS ACCESS
-        </div>
-
-        <button
-          class="buy"
-          onclick="location.href='payment.html'">
-
-          BUY NOW
-
-        </button>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="price">
-          ₱100
-        </div>
-
-        <div class="desc">
-          1 MONTH ACCESS
-        </div>
-
-        <button
-          class="buy"
-          onclick="location.href='payment.html'">
-
-          BUY NOW
-
-        </button>
-
-      </div>
-
-
-    </div>
-
-  </div>
+</video>
 
 </div>
 
 
-<!-- =================================================
+<!-- TIMER -->
+
+<div class="timer">
+
+Please wait:
+<span id="count">10</span>s
+
+</div>
+
+
+<!-- CONNECT -->
+
+<button
+  id="connectBtn"
+  class="connect"
+  disabled
+  type="button"
+  onclick="openLogin()">
+
+CONNECT NOW
+
+</button>
+
+
+<!-- =====================================================
+     VOUCHERS
+===================================================== -->
+
+<div class="voucher-section">
+
+
+<div class="voucher-title">
+
+💳 WIFI VOUCHER PRICES
+
+</div>
+
+
+<div class="grid">
+
+
+<!-- ₱10 -->
+
+<div class="card">
+
+<div class="price">₱10</div>
+
+<div class="desc">
+8 HOURS ACCESS
+</div>
+
+<button
+  class="buy"
+  type="button"
+  onclick="buyVoucher()">
+
+BUY NOW
+
+</button>
+
+</div>
+
+
+<!-- ₱20 -->
+
+<div class="card">
+
+<div class="price">₱20</div>
+
+<div class="desc">
+1 DAY ACCESS
+</div>
+
+<button
+  class="buy"
+  type="button"
+  onclick="buyVoucher()">
+
+BUY NOW
+
+</button>
+
+</div>
+
+
+<!-- ₱50 -->
+
+<div class="card">
+
+<div class="price">₱50</div>
+
+<div class="desc">
+3 DAYS ACCESS
+</div>
+
+<button
+  class="buy"
+  type="button"
+  onclick="buyVoucher()">
+
+BUY NOW
+
+</button>
+
+</div>
+
+
+<!-- ₱100 -->
+
+<div class="card">
+
+<div class="price">₱100</div>
+
+<div class="desc">
+1 MONTH ACCESS
+</div>
+
+<button
+  class="buy"
+  type="button"
+  onclick="buyVoucher()">
+
+BUY NOW
+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
      LOGIN POPUP
-================================================= -->
+===================================================== -->
 
 <div
   id="loginModal"
   class="login-modal">
 
 
-  <div class="login-box">
+<div class="login-box">
 
 
-    <button
-      type="button"
-      class="close-login"
-      onclick="closeLogin()">
+<!-- CLOSE -->
 
-      ×
+<button
+  type="button"
+  class="close-login"
+  onclick="closeLogin()">
 
-    </button>
+×
 
-
-    <canvas id="matrix"></canvas>
-
-
-    <div class="login-content">
+</button>
 
 
-      <div class="login-title">
+<!-- MATRIX -->
 
-        KLICKZONE
-
-      </div>
+<canvas id="matrix"></canvas>
 
 
-      <div id="clock"></div>
+<div class="login-content">
 
 
-      <div class="status">
+<!-- TITLE -->
 
-        <span class="online-dot"></span>
+<div class="login-title">
 
-        SYSTEM ONLINE
+KLICKZONE
 
-      </div>
-
-
-      <!-- =========================
-           MIKROTIK LOGIN
-      ========================= -->
-
-      <form
-        name="login"
-        action="$(link-login-only)"
-        method="post">
+</div>
 
 
-        <input
-          type="hidden"
-          name="dst"
-          value="$(link-orig)">
+<!-- CLOCK -->
+
+<div id="clock"></div>
 
 
-        <input
-          type="hidden"
-          name="popup"
-          value="false">
+<!-- STATUS -->
+
+<div class="status">
+
+<span class="online-dot"></span>
+
+SYSTEM ONLINE
+
+</div>
 
 
-        <input
-          name="username"
-          type="text"
-          placeholder="USERNAME"
-          autocomplete="username"
-          required>
+<!-- =================================================
+     IMPORTANT:
+     MIKROTIK VARIABLES ARE USED HERE
+================================================= -->
+
+<form
+  name="login"
+  action="$(link-login-only)"
+  method="post">
 
 
-        <input
-          name="password"
-          type="password"
-          placeholder="PASSWORD"
-          autocomplete="current-password"
-          required>
+<input
+  type="hidden"
+  name="dst"
+  value="$(link-orig)">
 
 
-        <input
-          type="submit"
-          class="login-submit"
-          value="⚡ CONNECT">
+<input
+  type="hidden"
+  name="popup"
+  value="false">
 
 
-      </form>
+<input
+  name="username"
+  type="text"
+  placeholder="USERNAME"
+  autocomplete="username"
+  required>
 
 
-      <!-- BUY VOUCHER -->
-
-      <button
-        type="button"
-        class="buy-voucher"
-        onclick="buyVoucher()">
-
-        🎫 BUY VOUCHER
-
-      </button>
+<input
+  name="password"
+  type="password"
+  placeholder="PASSWORD"
+  autocomplete="current-password"
+  required>
 
 
-      <div class="login-footer">
+<input
+  type="submit"
+  class="login-submit"
+  value="⚡ CONNECT">
 
-        Klickzone Network © 2026
 
-      </div>
+</form>
 
 
-    </div>
+<!-- BUY VOUCHER -->
 
-  </div>
+<button
+  type="button"
+  class="buy-voucher"
+  onclick="buyVoucher()">
+
+🎫 BUY VOUCHER
+
+</button>
+
+
+<div class="login-footer">
+
+Klickzone Network © 2026
+
+</div>
+
+
+</div>
+
+</div>
 
 </div>
 
 
 <script>
 
-
-/* =========================
+/* =====================================================
    COUNTDOWN
-========================= */
+===================================================== */
 
 let timeLeft = 10;
-
 
 const count =
   document.getElementById("count");
 
-
-const btn =
+const connectBtn =
   document.getElementById("connectBtn");
-
 
 const video =
   document.getElementById("adsVideo");
@@ -1103,20 +1162,21 @@ const video =
 
 function unlock(){
 
-  btn.disabled = false;
+  connectBtn.disabled = false;
 
-  btn.classList.add("enabled");
+  connectBtn.classList.add("enabled");
 
   count.innerText = "0";
 
 }
 
 
-/* =========================
-   TIMER
-========================= */
+/* =====================================================
+   COUNTDOWN
+===================================================== */
 
-const interval = setInterval(()=>{
+const timer =
+setInterval(function(){
 
   timeLeft--;
 
@@ -1126,7 +1186,7 @@ const interval = setInterval(()=>{
 
   if(timeLeft <= 0){
 
-    clearInterval(interval);
+    clearInterval(timer);
 
     unlock();
 
@@ -1135,15 +1195,15 @@ const interval = setInterval(()=>{
 },1000);
 
 
-/* =========================
-   VIDEO END
-========================= */
+/* =====================================================
+   VIDEO FINISHED
+===================================================== */
 
 video.addEventListener(
   "ended",
-  ()=>{
+  function(){
 
-    clearInterval(interval);
+    clearInterval(timer);
 
     unlock();
 
@@ -1151,28 +1211,32 @@ video.addEventListener(
 );
 
 
-/* =========================
+/* =====================================================
    OPEN LOGIN
-========================= */
+===================================================== */
 
 function openLogin(){
 
-  if(btn.disabled){
+  if(connectBtn.disabled){
 
     return;
 
   }
 
+
   document
     .getElementById("loginModal")
     .classList.add("show");
 
+
+  startMatrix();
+
 }
 
 
-/* =========================
+/* =====================================================
    CLOSE LOGIN
-========================= */
+===================================================== */
 
 function closeLogin(){
 
@@ -1183,9 +1247,9 @@ function closeLogin(){
 }
 
 
-/* =========================
+/* =====================================================
    CLICK OUTSIDE
-========================= */
+===================================================== */
 
 document
   .getElementById("loginModal")
@@ -1203,9 +1267,9 @@ document
   );
 
 
-/* =========================
+/* =====================================================
    ESC
-========================= */
+===================================================== */
 
 document.addEventListener(
   "keydown",
@@ -1221,9 +1285,9 @@ document.addEventListener(
 );
 
 
-/* =========================
+/* =====================================================
    CLOCK
-========================= */
+===================================================== */
 
 function updateClock(){
 
@@ -1243,9 +1307,9 @@ setInterval(
 );
 
 
-/* =========================
+/* =====================================================
    BUY VOUCHER
-========================= */
+===================================================== */
 
 function buyVoucher(){
 
@@ -1255,15 +1319,27 @@ function buyVoucher(){
 }
 
 
-/* =========================
+/* =====================================================
    MATRIX
-========================= */
+===================================================== */
 
 const canvas =
   document.getElementById("matrix");
 
 const ctx =
   canvas.getContext("2d");
+
+
+const letters =
+  "01KLICKZONENETWORKCYBERMATRIX";
+
+const arr =
+  letters.split("");
+
+
+const fontSize = 14;
+
+let matrixStarted = false;
 
 
 function resizeMatrix(){
@@ -1274,35 +1350,96 @@ function resizeMatrix(){
   canvas.height =
     canvas.offsetHeight;
 
-  columns =
+}
+
+
+function startMatrix(){
+
+  if(matrixStarted){
+
+    return;
+
+  }
+
+  matrixStarted = true;
+
+  resizeMatrix();
+
+  let columns =
     Math.floor(
       canvas.width / fontSize
     );
 
-  drops =
+
+  let drops =
     Array(columns).fill(1);
 
-}
+
+  function draw(){
+
+    ctx.fillStyle =
+      "rgba(0,0,0,.08)";
+
+    ctx.fillRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
 
 
-const letters =
-  "01KLICKZONENETWORKCYBERMATRIX";
+    ctx.fillStyle =
+      "#00ff66";
 
-const arr =
-  letters.split("");
+    ctx.font =
+      fontSize + "px monospace";
 
-const fontSize = 14;
 
-let columns =
-  Math.floor(
-    canvas.offsetWidth / fontSize
+    for(
+      let i=0;
+      i<drops.length;
+      i++
+    ){
+
+      const text =
+        arr[
+          Math.floor(
+            Math.random()*arr.length
+          )
+        ];
+
+
+      ctx.fillText(
+        text,
+        i*fontSize,
+        drops[i]*fontSize
+      );
+
+
+      if(
+        drops[i]*fontSize >
+        canvas.height &&
+        Math.random() > .975
+      ){
+
+        drops[i] = 0;
+
+      }
+
+
+      drops[i]++;
+
+    }
+
+  }
+
+
+  setInterval(
+    draw,
+    35
   );
 
-let drops =
-  Array(columns).fill(1);
-
-
-resizeMatrix();
+}
 
 
 window.addEventListener(
@@ -1310,74 +1447,7 @@ window.addEventListener(
   resizeMatrix
 );
 
-
-function drawMatrix(){
-
-  ctx.fillStyle =
-    "rgba(0,0,0,.08)";
-
-  ctx.fillRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
-
-
-  ctx.fillStyle =
-    "#00ff66";
-
-  ctx.font =
-    fontSize + "px monospace";
-
-
-  for(
-    let i=0;
-    i<drops.length;
-    i++
-  ){
-
-    const text =
-      arr[
-        Math.floor(
-          Math.random()*arr.length
-        )
-      ];
-
-
-    ctx.fillText(
-      text,
-      i*fontSize,
-      drops[i]*fontSize
-    );
-
-
-    if(
-      drops[i]*fontSize >
-      canvas.height &&
-      Math.random() > .975
-    ){
-
-      drops[i]=0;
-
-    }
-
-
-    drops[i]++;
-
-  }
-
-}
-
-
-setInterval(
-  drawMatrix,
-  35
-);
-
-
 </script>
-
 
 </body>
 
