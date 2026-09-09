@@ -1,350 +1,1557 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
 <title>Renson Farm Inventory</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#07110b;color:#fff;min-height:100vh}
-.header{
-  position:sticky;top:0;z-index:10;text-align:center;padding:18px 10px;
-  background:rgba(0,0,0,.9);border-bottom:1px solid #19d66b;
-  color:#39ff88;font-size:22px;font-weight:900;letter-spacing:2px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
-.container{width:100%;max-width:650px;margin:auto;padding:20px 12px 40px}
-.card{
-  background:#0d1b12;border:1px solid rgba(57,255,136,.35);
-  border-radius:16px;padding:18px;margin-bottom:15px;
-  box-shadow:0 0 20px rgba(57,255,136,.08)
+
+body {
+  background: #07110b;
+  color: #fff;
+  min-height: 100vh;
 }
-.title{color:#39ff88;font-size:18px;font-weight:bold;margin-bottom:14px}
-label{display:block;color:#b8cdbf;font-size:13px;margin:12px 0 6px}
-input,textarea,button{
-  width:100%;border:0;border-radius:10px;padding:12px;font-size:15px
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  text-align: center;
+
+  padding: 18px 10px;
+
+  background: rgba(0,0,0,.92);
+
+  border-bottom: 1px solid #19d66b;
+
+  color: #39ff88;
+
+  font-size: 22px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
 }
-input,textarea{background:#14251a;color:#fff;outline:none;border:1px solid #284b34}
-input:focus,textarea:focus{border-color:#39ff88;box-shadow:0 0 8px rgba(57,255,136,.2)}
-input[type=file]{padding:10px;background:#14251a}
-.row{
-  display:grid;grid-template-columns:1fr 120px 42px;gap:8px;
-  margin-bottom:9px;align-items:center
+
+.container {
+  width: 100%;
+  max-width: 700px;
+
+  margin: auto;
+
+  padding: 20px 12px 40px;
 }
-.row input{width:100%}
-.remove{
-  background:#d93636;color:#fff;padding:10px 0;cursor:pointer;font-weight:bold
+
+.card {
+  background: #0d1b12;
+
+  border: 1px solid rgba(57,255,136,.35);
+
+  border-radius: 16px;
+
+  padding: 18px;
+
+  margin-bottom: 15px;
+
+  box-shadow:
+    0 0 20px rgba(57,255,136,.08);
 }
-.add{
-  margin-top:5px;background:#163b24;color:#39ff88;
-  border:1px solid #39ff88;cursor:pointer;font-weight:bold
+
+.title {
+  color: #39ff88;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  margin-bottom: 14px;
 }
-.total{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-top:16px;padding:16px;border-radius:12px;
-  background:#071b0e;border:1px solid #39ff88
+
+label {
+  display: block;
+
+  color: #b8cdbf;
+
+  font-size: 13px;
+
+  margin: 12px 0 6px;
 }
-.total span:first-child{font-weight:bold}
-#grandTotal{font-size:25px;color:#39ff88;font-weight:900}
-.save{
-  margin-top:15px;background:#39ff88;color:#031008;
-  font-weight:900;cursor:pointer
+
+input,
+textarea,
+button {
+  width: 100%;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  padding: 12px;
+
+  font-size: 15px;
 }
-.clear{margin-top:8px;background:#333;color:#fff;cursor:pointer}
-.preview{display:none;margin-top:12px;text-align:center}
-.preview img{max-width:100%;max-height:300px;border-radius:10px;border:1px solid #39ff88}
-.history-item{
-  padding:12px;border-bottom:1px solid #203a28;font-size:14px
+
+input,
+textarea {
+  background: #14251a;
+
+  color: #fff;
+
+  outline: none;
+
+  border: 1px solid #284b34;
 }
-.actions{display:flex;gap:7px;margin-top:9px}
-.actions button{padding:8px;font-size:12px;cursor:pointer}
-.edit-btn{background:#294d35;color:#39ff88;border:1px solid #39ff88}
-.delete-btn{background:#4a2020;color:#ff8b8b;border:1px solid #ff6666}
-.history-item:last-child{border-bottom:0}
-.muted{color:#91a699;font-size:12px}
-@media(max-width:520px){
-  .row{grid-template-columns:1fr 100px 38px}
-  .header{font-size:18px}
+
+input:focus,
+textarea:focus {
+  border-color: #39ff88;
+
+  box-shadow:
+    0 0 8px rgba(57,255,136,.2);
 }
+
+input[type=file] {
+  padding: 10px;
+
+  background: #14251a;
+}
+
+
+/* RECEIPT */
+
+.receipt-name {
+  margin-top: 8px;
+
+  color: #91a699;
+
+  font-size: 12px;
+}
+
+
+/* ITEMS */
+
+.row {
+  display: grid;
+
+  grid-template-columns:
+    1fr 130px 42px;
+
+  gap: 8px;
+
+  margin-bottom: 9px;
+
+  align-items: center;
+}
+
+.row input {
+  width: 100%;
+}
+
+.remove {
+  background: #d93636;
+
+  color: #fff;
+
+  padding: 10px 0;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.add {
+  margin-top: 5px;
+
+  background: #163b24;
+
+  color: #39ff88;
+
+  border: 1px solid #39ff88;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+
+/* TOTAL */
+
+.total {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 16px;
+
+  padding: 16px;
+
+  border-radius: 12px;
+
+  background: #071b0e;
+
+  border: 1px solid #39ff88;
+}
+
+.total span:first-child {
+  font-weight: bold;
+}
+
+#grandTotal {
+  font-size: 25px;
+
+  color: #39ff88;
+
+  font-weight: 900;
+}
+
+
+/* CLOUD TOTAL */
+
+.cloud-total {
+  background: #061a0d;
+
+  border: 1px solid #39ff88;
+
+  border-radius: 14px;
+
+  padding: 18px;
+
+  text-align: center;
+
+  margin-bottom: 15px;
+}
+
+.cloud-total .label {
+  color: #91a699;
+
+  font-size: 12px;
+
+  margin-bottom: 5px;
+}
+
+#cloudGrandTotal {
+  color: #39ff88;
+
+  font-size: 30px;
+
+  font-weight: 900;
+}
+
+
+/* BUTTONS */
+
+.save {
+  margin-top: 15px;
+
+  background: #39ff88;
+
+  color: #031008;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.save:disabled {
+  opacity: .5;
+
+  cursor: not-allowed;
+}
+
+.clear {
+  margin-top: 8px;
+
+  background: #333;
+
+  color: #fff;
+
+  cursor: pointer;
+}
+
+.refresh {
+  margin-top: 8px;
+
+  background: #163b24;
+
+  color: #39ff88;
+
+  border: 1px solid #39ff88;
+
+  cursor: pointer;
+}
+
+
+/* PREVIEW */
+
+.preview {
+  display: none;
+
+  margin-top: 12px;
+
+  text-align: center;
+}
+
+.preview img {
+  max-width: 100%;
+
+  max-height: 300px;
+
+  border-radius: 10px;
+
+  border: 1px solid #39ff88;
+}
+
+
+/* HISTORY */
+
+.history-item {
+  padding: 14px 4px;
+
+  border-bottom:
+    1px solid #203a28;
+
+  font-size: 14px;
+}
+
+.history-item:last-child {
+  border-bottom: 0;
+}
+
+.entry-date {
+  font-weight: bold;
+
+  color: #fff;
+
+  margin-bottom: 5px;
+}
+
+.entry-receipt {
+  color: #91a699;
+
+  font-size: 12px;
+
+  margin-bottom: 8px;
+}
+
+.item-line {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 3px 0;
+
+  color: #d8e5dc;
+}
+
+.entry-total {
+  margin-top: 8px;
+
+  color: #39ff88;
+
+  font-weight: bold;
+
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+
+  gap: 7px;
+
+  margin-top: 9px;
+}
+
+.actions button {
+  padding: 8px;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #4a2020;
+
+  color: #ff8b8b;
+
+  border: 1px solid #ff6666;
+}
+
+.muted {
+  color: #91a699;
+
+  font-size: 12px;
+}
+
+.status {
+  text-align: center;
+
+  padding: 10px;
+
+  color: #91a699;
+
+  font-size: 12px;
+}
+
+.success {
+  color: #39ff88;
+}
+
+.error {
+  color: #ff7777;
+}
+
+
+/* MOBILE */
+
+@media(max-width:520px) {
+
+  .row {
+    grid-template-columns:
+      1fr 100px 38px;
+  }
+
+  .header {
+    font-size: 18px;
+  }
+
+  .item-line {
+    font-size: 13px;
+  }
+
+}
+
 </style>
+
 </head>
+
+
 <body>
 
-<div class="header">🌴 RENSON FARM INVENTORY</div>
+
+<div class="header">
+  🌴 RENSON FARM INVENTORY
+</div>
+
 
 <div class="container">
 
-  <div class="card">
-    <div class="title">📷 Capture Receipt</div>
-    <label for="receipt">Receipt photo</label>
-    <input id="receipt" type="file" accept="image/*" capture="environment"
-           onchange="previewReceipt(event)">
-    <div id="preview" class="preview">
-      <img id="receiptPreview" alt="Receipt preview">
+
+  <!-- CLOUD TOTAL -->
+
+  <div class="cloud-total">
+
+    <div class="label">
+      TOTAL INVENTORY FROM GOOGLE SHEETS
     </div>
+
+    <div id="cloudGrandTotal">
+      ₱0.00
+    </div>
+
   </div>
 
+
+  <!-- RECEIPT -->
+
   <div class="card">
-    <div class="title">🧾 Inventory Details</div>
+
+    <div class="title">
+      📷 Capture Receipt
+    </div>
+
+    <label for="receipt">
+      Receipt photo
+    </label>
+
+    <input
+      id="receipt"
+      type="file"
+      accept="image/*"
+      capture="environment"
+      onchange="previewReceipt(event)"
+    >
+
+    <div
+      id="receiptName"
+      class="receipt-name"
+    ></div>
+
+    <div
+      id="preview"
+      class="preview"
+    >
+
+      <img
+        id="receiptPreview"
+        alt="Receipt preview"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- INVENTORY FORM -->
+
+  <div class="card">
+
+    <div class="title">
+      🧾 Inventory Details
+    </div>
+
 
     <div id="items"></div>
 
-    <button type="button" class="add" onclick="addItem()">＋ ADD ITEM</button>
+
+    <button
+      type="button"
+      class="add"
+      onclick="addItem()"
+    >
+      ＋ ADD ITEM
+    </button>
+
 
     <div class="total">
-      <span>GRAND TOTAL</span>
-      <span id="grandTotal">₱0.00</span>
+
+      <span>
+        GRAND TOTAL
+      </span>
+
+      <span id="grandTotal">
+        ₱0.00
+      </span>
+
     </div>
 
-    <button type="button" class="save" onclick="saveInventory()">💾 SAVE INVENTORY</button>
-    <button type="button" class="clear" onclick="clearForm()">CLEAR</button>
+
+    <button
+      type="button"
+      class="save"
+      onclick="saveInventory()"
+    >
+      💾 SAVE INVENTORY
+    </button>
+
+
+    <button
+      type="button"
+      class="clear"
+      onclick="clearForm()"
+    >
+      CLEAR
+    </button>
+
   </div>
 
+
+  <!-- HISTORY -->
+
   <div class="card">
-    <div class="title">📋 Recent Entries</div>
-    <div id="history"><div class="muted">No saved entries yet.</div></div>
+
+    <div class="title">
+      📋 Recent Entries
+    </div>
+
+
+    <div
+      id="status"
+      class="status"
+    >
+      Connecting to Google Sheets...
+    </div>
+
+
+    <div id="history">
+
+      <div class="muted">
+        Loading inventory...
+      </div>
+
+    </div>
+
+
+    <button
+      type="button"
+      class="refresh"
+      onclick="loadInventory()"
+    >
+      🔄 REFRESH FROM GOOGLE SHEETS
+    </button>
+
   </div>
+
 
 </div>
 
+
 <script>
+
+
+/*
+==================================================
+  GOOGLE APPS SCRIPT WEB APP URL
+==================================================
+*/
+
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbwoULx5Wp4M_L5lR0l9aZ6Upwm7VUUu2eg3FT-sMz_WV6ka1LF3KYZtaOS704YNv_cG_Q/exec";
+
+
 let items = [];
 
-function addItem(description="", amount=""){
-  const id = Date.now() + Math.random();
-  items.push({id, description, amount});
+
+/*
+==================================================
+  ADD ITEM
+==================================================
+*/
+
+function addItem(
+  description = "",
+  amount = ""
+) {
+
+  const id =
+    Date.now() +
+    Math.random();
+
+  items.push({
+    id: id,
+    description: description,
+    amount: amount
+  });
+
   renderItems();
 }
 
-function removeItem(id){
-  items = items.filter(item => item.id !== id);
+
+/*
+==================================================
+  REMOVE ITEM
+==================================================
+*/
+
+function removeItem(id) {
+
+  items =
+    items.filter(function(item) {
+
+      return item.id !== id;
+
+    });
+
   renderItems();
 }
 
-function updateItem(id, field, value){
-  const item = items.find(x => x.id === id);
-  if(!item) return;
-  item[field] = field === "amount"
-    ? value.replace(/[^0-9.]/g, "")
-    : value;
-  calculateTotal();
-}
 
-function renderItems(){
-  const box = document.getElementById("items");
-  box.innerHTML = "";
+/*
+==================================================
+  UPDATE ITEM
+==================================================
+*/
 
-  if(items.length === 0){
-    addItem();
+function updateItem(
+  id,
+  field,
+  value
+) {
+
+  const item =
+    items.find(function(x) {
+
+      return x.id === id;
+
+    });
+
+  if (!item) {
     return;
   }
 
-  items.forEach((item, index) => {
-    const row = document.createElement("div");
-    row.className = "row";
-    row.innerHTML = `
-      <input type="text"
-        placeholder="Description"
-        value="${escapeHtml(item.description)}"
-        oninput="updateItem(${item.id}, 'description', this.value)">
-      <input type="number"
-        step="0.01" min="0"
-        placeholder="Amount"
-        value="${item.amount}"
-        oninput="updateItem(${item.id}, 'amount', this.value)">
-      <button type="button" class="remove"
-        onclick="removeItem(${item.id})">×</button>
-    `;
-    box.appendChild(row);
-  });
+
+  if (field === "amount") {
+
+    item.amount =
+      value.replace(
+        /[^0-9.]/g,
+        ""
+      );
+
+  } else {
+
+    item[field] = value;
+
+  }
+
 
   calculateTotal();
 }
 
-function calculateTotal(){
-  const total = items.reduce((sum, item) => {
-    const amount = parseFloat(item.amount);
-    return sum + (isNaN(amount) ? 0 : amount);
-  }, 0);
 
-  document.getElementById("grandTotal").textContent =
-    "₱" + total.toLocaleString("en-PH", {
-      minimumFractionDigits:2,
-      maximumFractionDigits:2
-    });
+/*
+==================================================
+  RENDER ITEMS
+==================================================
+*/
+
+function renderItems() {
+
+  const box =
+    document.getElementById("items");
+
+  box.innerHTML = "";
+
+
+  if (items.length === 0) {
+
+    addItem();
+
+    return;
+  }
+
+
+  items.forEach(function(item) {
+
+    const row =
+      document.createElement("div");
+
+    row.className = "row";
+
+
+    const description =
+      document.createElement("input");
+
+    description.type = "text";
+
+    description.placeholder =
+      "Description";
+
+    description.value =
+      item.description || "";
+
+    description.oninput =
+      function() {
+
+        updateItem(
+          item.id,
+          "description",
+          this.value
+        );
+
+      };
+
+
+    const amount =
+      document.createElement("input");
+
+    amount.type = "number";
+
+    amount.step = "0.01";
+
+    amount.min = "0";
+
+    amount.placeholder =
+      "Amount";
+
+    amount.value =
+      item.amount || "";
+
+    amount.oninput =
+      function() {
+
+        updateItem(
+          item.id,
+          "amount",
+          this.value
+        );
+
+      };
+
+
+    const remove =
+      document.createElement("button");
+
+    remove.type = "button";
+
+    remove.className =
+      "remove";
+
+    remove.textContent = "×";
+
+    remove.onclick =
+      function() {
+
+        removeItem(item.id);
+
+      };
+
+
+    row.appendChild(description);
+
+    row.appendChild(amount);
+
+    row.appendChild(remove);
+
+    box.appendChild(row);
+
+  });
+
+
+  calculateTotal();
 }
 
-function previewReceipt(event){
-  const file = event.target.files[0];
-  if(!file) return;
 
-  const reader = new FileReader();
-  reader.onload = e => {
-    document.getElementById("receiptPreview").src = e.target.result;
-    document.getElementById("preview").style.display = "block";
-  };
+/*
+==================================================
+  CALCULATE FORM TOTAL
+==================================================
+*/
+
+function calculateTotal() {
+
+  const total =
+    items.reduce(
+      function(sum, item) {
+
+        const amount =
+          parseFloat(item.amount);
+
+        return sum +
+          (
+            isNaN(amount)
+              ? 0
+              : amount
+          );
+
+      },
+      0
+    );
+
+
+  document
+    .getElementById("grandTotal")
+    .textContent =
+      formatMoney(total);
+}
+
+
+/*
+==================================================
+  FORMAT MONEY
+==================================================
+*/
+
+function formatMoney(amount) {
+
+  return "₱" +
+    Number(amount || 0)
+      .toLocaleString(
+        "en-PH",
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }
+      );
+}
+
+
+/*
+==================================================
+  RECEIPT PREVIEW
+==================================================
+*/
+
+function previewReceipt(event) {
+
+  const file =
+    event.target.files[0];
+
+  if (!file) {
+
+    document
+      .getElementById("receiptName")
+      .textContent = "";
+
+    return;
+  }
+
+
+  document
+    .getElementById("receiptName")
+    .textContent =
+      "📎 " + file.name;
+
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload =
+    function(e) {
+
+      document
+        .getElementById("receiptPreview")
+        .src =
+          e.target.result;
+
+      document
+        .getElementById("preview")
+        .style.display =
+          "block";
+
+    };
+
+
   reader.readAsDataURL(file);
 }
 
-async function saveInventory(){
-  const validItems = items.filter(x =>
-    x.description.trim() !== "" || parseFloat(x.amount) > 0
-  );
 
-  if(validItems.length === 0){
-    alert("Maglagay muna ng inventory item at amount.");
-    return;
-  }
+/*
+==================================================
+  SAVE INVENTORY
+==================================================
+*/
 
-  const total = validItems.reduce((sum, x) =>
-    sum + (parseFloat(x.amount) || 0), 0);
+async function saveInventory() {
 
-  const receiptFile = document.getElementById("receipt").files[0];
-  const receiptName = receiptFile ? receiptFile.name : "";
+  const validItems =
+    items.filter(function(item) {
 
-  const WEB_APP_URL =
-    "https://script.google.com/macros/s/AKfycbwoULx5Wp4M_L5lR0l9aZ6Upwm7VUUu2eg3FT-sMz_WV6ka1LF3KYZtaOS704YNv_cG_Q/exec";
+      return (
+        item.description.trim() !== "" ||
+        parseFloat(item.amount) > 0
+      );
 
-  const saveButton = document.querySelector(".save");
-  saveButton.disabled = true;
-  saveButton.textContent = "⏳ SAVING...";
+    });
 
-  try {
-    // Save each inventory detail as its own row.
-    for(const item of validItems){
-      const payload = {
-        receipt: receiptName,
-        description: item.description,
-        amount: parseFloat(item.amount) || 0,
-        total: total
-      };
 
-      await fetch(WEB_APP_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify(payload)
-      });
-    }
+  if (validItems.length === 0) {
 
     alert(
-      "Inventory saved to Google Sheets!\n\n" +
-      "Total: ₱" + total.toLocaleString("en-PH", {
-        minimumFractionDigits:2,
-        maximumFractionDigits:2
-      })
+      "Maglagay muna ng inventory item at amount."
     );
 
-    // Keep local history as a backup.
-    const history = JSON.parse(
-      localStorage.getItem("rensonInventory") || "[]"
-    );
-
-    const updatedEntry = {
-      date: new Date().toLocaleString("en-PH"),
-      items: validItems,
-      total: total
-    };
-
-    if(window.editingIndex !== undefined && window.editingIndex !== null){
-      history[window.editingIndex] = updatedEntry;
-      window.editingIndex = null;
-    } else {
-      history.unshift(updatedEntry);
-    }
-
-    localStorage.setItem("rensonInventory", JSON.stringify(history));
-    renderHistory();
-    document.querySelector(".save").textContent = "💾 SAVE INVENTORY";
-
-  } catch(error) {
-    console.error(error);
-    alert("Hindi na-save. Pakicheck ang internet connection at Apps Script deployment.");
-  } finally {
-    saveButton.disabled = false;
-    saveButton.textContent = "💾 SAVE INVENTORY";
-  }
-}
-
-function renderHistory(){
-  const history = JSON.parse(localStorage.getItem("rensonInventory") || "[]");
-  const box = document.getElementById("history");
-
-  if(history.length === 0){
-    box.innerHTML = '<div class="muted">No saved entries yet.</div>';
     return;
   }
 
-  box.innerHTML = history.slice(0,10).map((entry, index) => `
-    <div class="history-item">
-      <div><strong>${entry.date}</strong></div>
-      <div class="muted">${entry.items.map(x =>
-        `${escapeHtml(x.description || "Item")} — ₱${(parseFloat(x.amount)||0).toFixed(2)}`
-      ).join("<br>")}</div>
-      <div style="margin-top:6px;color:#39ff88;font-weight:bold">
-        Total: ₱${entry.total.toFixed(2)}
-      </div>
-      <div class="actions">
-        <button class="edit-btn" onclick="editEntry(${index})">✏️ EDIT</button>
-        <button class="delete-btn" onclick="deleteEntry(${index})">🗑️ DELETE</button>
-      </div>
-    </div>
-  `).join("");
+
+  const total =
+    validItems.reduce(
+      function(sum, item) {
+
+        return sum +
+          (
+            parseFloat(item.amount) || 0
+          );
+
+      },
+      0
+    );
+
+
+  const receiptFile =
+    document
+      .getElementById("receipt")
+      .files[0];
+
+
+  const receiptName =
+    receiptFile
+      ? receiptFile.name
+      : "";
+
+
+  const saveButton =
+    document.querySelector(".save");
+
+
+  saveButton.disabled = true;
+
+  saveButton.textContent =
+    "⏳ SAVING...";
+
+
+  setStatus(
+    "Saving to Google Sheets...",
+    ""
+  );
+
+
+  const payload = {
+
+    receipt: receiptName,
+
+    items: validItems.map(
+      function(item) {
+
+        return {
+
+          description:
+            item.description.trim(),
+
+          amount:
+            parseFloat(item.amount) || 0
+
+        };
+
+      }
+    )
+
+  };
+
+
+  try {
+
+    await fetch(
+      WEB_APP_URL,
+      {
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body:
+          JSON.stringify(payload)
+      }
+    );
+
+
+    alert(
+      "✅ Inventory saved to Google Sheets!\n\n" +
+      "Total: " +
+      formatMoney(total)
+    );
+
+
+    clearForm(false);
+
+
+    await loadInventory();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "❌ Hindi na-save.\n\n" +
+      "Check ang Apps Script Web App deployment."
+    );
+
+
+    setStatus(
+      "Unable to save.",
+      "error"
+    );
+
+  } finally {
+
+    saveButton.disabled = false;
+
+    saveButton.textContent =
+      "💾 SAVE INVENTORY";
+
+  }
+
 }
 
-function editEntry(index){
-  const history = JSON.parse(localStorage.getItem("rensonInventory") || "[]");
-  const entry = history[index];
-  if(!entry) return;
 
-  items = entry.items.map(x => ({
-    id: Date.now() + Math.random(),
-    description: x.description || "",
-    amount: x.amount || ""
-  }));
+/*
+==================================================
+  LOAD INVENTORY FROM GOOGLE SHEETS
+==================================================
+*/
+
+async function loadInventory() {
+
+  setStatus(
+    "Loading from Google Sheets...",
+    ""
+  );
+
+
+  try {
+
+    const response =
+      await fetch(
+        WEB_APP_URL +
+        "?action=get&t=" +
+        Date.now()
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (!data.success) {
+
+      throw new Error(
+        data.error ||
+        "Unable to load data."
+      );
+
+    }
+
+
+    renderCloudTotal(
+      data.grandTotal || 0
+    );
+
+
+    renderHistory(
+      data.entries || []
+    );
+
+
+    setStatus(
+      "☁️ Connected to Google Sheets",
+      "success"
+    );
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    setStatus(
+      "❌ Could not connect to Google Sheets",
+      "error"
+    );
+
+
+    document
+      .getElementById("history")
+      .innerHTML =
+        '<div class="muted">' +
+        'Unable to load inventory.' +
+        '</div>';
+
+  }
+
+}
+
+
+/*
+==================================================
+  CLOUD TOTAL
+==================================================
+*/
+
+function renderCloudTotal(total) {
+
+  document
+    .getElementById("cloudGrandTotal")
+    .textContent =
+      formatMoney(total);
+
+}
+
+
+/*
+==================================================
+  RENDER HISTORY
+==================================================
+*/
+
+function renderHistory(entries) {
+
+  const box =
+    document.getElementById("history");
+
+
+  if (!entries ||
+      entries.length === 0) {
+
+    box.innerHTML =
+      '<div class="muted">' +
+      'No saved entries yet.' +
+      '</div>';
+
+    return;
+  }
+
+
+  box.innerHTML =
+    entries
+      .slice(0, 20)
+      .map(function(entry) {
+
+        const date =
+          formatDate(entry.date);
+
+
+        const receipt =
+          entry.receipt
+            ? escapeHtml(entry.receipt)
+            : "No receipt photo";
+
+
+        const itemLines =
+          entry.items
+            .map(function(item) {
+
+              return `
+                <div class="item-line">
+
+                  <span>
+                    ${escapeHtml(
+                      item.description ||
+                      "Item"
+                    )}
+                  </span>
+
+                  <span>
+                    ${formatMoney(
+                      item.amount
+                    )}
+                  </span>
+
+                </div>
+              `;
+
+            })
+            .join("");
+
+
+        return `
+
+          <div
+            class="history-item"
+          >
+
+            <div class="entry-date">
+              ${date}
+            </div>
+
+
+            <div class="entry-receipt">
+              📎 ${receipt}
+            </div>
+
+
+            ${itemLines}
+
+
+            <div class="entry-total">
+              Total:
+              ${formatMoney(entry.total)}
+            </div>
+
+
+            <div class="actions">
+
+              <button
+                class="delete-btn"
+                onclick="deleteCloudEntry(
+                  '${escapeAttribute(
+                    entry.entryId
+                  )}'
+                )"
+              >
+                🗑️ DELETE
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+/*
+==================================================
+  DELETE CLOUD ENTRY
+==================================================
+
+  NOTE:
+  Google Apps Script Web Apps do not reliably
+  support browser DELETE requests with CORS.
+
+  Therefore deletion is handled using a POST
+  action.
+==================================================
+*/
+
+async function deleteCloudEntry(entryId) {
+
+  if (!entryId) {
+    return;
+  }
+
+
+  if (
+    !confirm(
+      "Delete this inventory entry?"
+    )
+  ) {
+
+    return;
+  }
+
+
+  try {
+
+    setStatus(
+      "Deleting...",
+      ""
+    );
+
+
+    await fetch(
+      WEB_APP_URL,
+      {
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body:
+          JSON.stringify({
+            action: "delete",
+            entryId: entryId
+          })
+      }
+    );
+
+
+    alert(
+      "Inventory deleted."
+    );
+
+
+    await loadInventory();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "Unable to delete inventory."
+    );
+
+  }
+
+}
+
+
+/*
+==================================================
+  CLEAR FORM
+==================================================
+*/
+
+function clearForm(showConfirm = true) {
+
+  if (showConfirm) {
+
+    if (
+      !confirm(
+        "Clear current inventory details?"
+      )
+    ) {
+
+      return;
+    }
+
+  }
+
+
+  items = [];
+
+
+  document
+    .getElementById("receipt")
+    .value = "";
+
+
+  document
+    .getElementById("receiptName")
+    .textContent = "";
+
+
+  document
+    .getElementById("preview")
+    .style.display =
+      "none";
+
+
+  document
+    .getElementById("receiptPreview")
+    .src = "";
+
 
   renderItems();
-  window.scrollTo({top:0, behavior:"smooth"});
 
-  // Keep the original entry for replacement after saving.
-  window.editingIndex = index;
-  document.querySelector(".save").textContent = "💾 UPDATE INVENTORY";
 }
 
-function deleteEntry(index){
-  const history = JSON.parse(localStorage.getItem("rensonInventory") || "[]");
-  const entry = history[index];
-  if(!entry) return;
 
-  if(!confirm("Delete this inventory entry?")) return;
+/*
+==================================================
+  STATUS
+==================================================
+*/
 
-  history.splice(index, 1);
-  localStorage.setItem("rensonInventory", JSON.stringify(history));
-  renderHistory();
-} 
+function setStatus(
+  message,
+  type
+) {
 
-function clearForm(){
-  if(confirm("Clear current inventory details?")){
-    items = [];
-    document.getElementById("receipt").value = "";
-    document.getElementById("preview").style.display = "none";
-    renderItems();
+  const status =
+    document.getElementById("status");
+
+
+  status.textContent =
+    message;
+
+
+  status.className =
+    "status " +
+    (type || "");
+
+}
+
+
+/*
+==================================================
+  DATE FORMAT
+==================================================
+*/
+
+function formatDate(dateValue) {
+
+  if (!dateValue) {
+    return "";
   }
+
+
+  const date =
+    new Date(dateValue);
+
+
+  if (isNaN(date.getTime())) {
+
+    return String(dateValue);
+
+  }
+
+
+  return date.toLocaleString(
+    "en-PH",
+    {
+      dateStyle: "medium",
+      timeStyle: "short"
+    }
+  );
+
 }
 
-function escapeHtml(text){
+
+/*
+==================================================
+  SECURITY
+==================================================
+*/
+
+function escapeHtml(text) {
+
   return String(text)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
 }
 
-renderItems();
-renderHistory();
+
+function escapeAttribute(text) {
+
+  return String(text)
+
+    .replace(
+      /\\/g,
+      "\\\\"
+    )
+
+    .replace(
+      /'/g,
+      "\\'"
+    );
+
+}
+
+
+/*
+==================================================
+  START
+==================================================
+*/
+
+addItem();
+
+loadInventory();
+
+
 </script>
 
 </body>
+
 </html>
+```
