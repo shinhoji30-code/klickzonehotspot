@@ -1,15 +1,8 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Renson Farm Inventory</title>
 
@@ -32,303 +25,195 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-
   text-align: center;
-
   padding: 18px 10px;
-
   background: rgba(0,0,0,.92);
-
   border-bottom: 1px solid #19d66b;
-
   color: #39ff88;
-
   font-size: 22px;
-
   font-weight: 900;
-
   letter-spacing: 2px;
 }
 
 .container {
   width: 100%;
   max-width: 700px;
-
   margin: auto;
-
   padding: 20px 12px 40px;
 }
 
 .card {
   background: #0d1b12;
-
   border: 1px solid rgba(57,255,136,.35);
-
   border-radius: 16px;
-
   padding: 18px;
-
   margin-bottom: 15px;
-
-  box-shadow:
-    0 0 20px rgba(57,255,136,.08);
+  box-shadow: 0 0 20px rgba(57,255,136,.08);
 }
 
 .title {
   color: #39ff88;
-
   font-size: 18px;
-
   font-weight: bold;
-
   margin-bottom: 14px;
 }
 
 label {
   display: block;
-
   color: #b8cdbf;
-
   font-size: 13px;
-
   margin: 12px 0 6px;
 }
 
 input,
-textarea,
 button {
   width: 100%;
-
   border: 0;
-
   border-radius: 10px;
-
   padding: 12px;
-
   font-size: 15px;
 }
 
-input,
-textarea {
+input {
   background: #14251a;
-
   color: #fff;
-
   outline: none;
-
   border: 1px solid #284b34;
 }
 
-input:focus,
-textarea:focus {
+input:focus {
   border-color: #39ff88;
-
-  box-shadow:
-    0 0 8px rgba(57,255,136,.2);
+  box-shadow: 0 0 8px rgba(57,255,136,.2);
 }
 
 input[type=file] {
   padding: 10px;
-
   background: #14251a;
 }
 
-
-/* RECEIPT */
-
 .receipt-name {
   margin-top: 8px;
-
   color: #91a699;
-
   font-size: 12px;
 }
-
-
-/* ITEMS */
-
-.row {
-  display: grid;
-
-  grid-template-columns:
-    1fr 130px 42px;
-
-  gap: 8px;
-
-  margin-bottom: 9px;
-
-  align-items: center;
-}
-
-.row input {
-  width: 100%;
-}
-
-.remove {
-  background: #d93636;
-
-  color: #fff;
-
-  padding: 10px 0;
-
-  cursor: pointer;
-
-  font-weight: bold;
-}
-
-.add {
-  margin-top: 5px;
-
-  background: #163b24;
-
-  color: #39ff88;
-
-  border: 1px solid #39ff88;
-
-  cursor: pointer;
-
-  font-weight: bold;
-}
-
-
-/* TOTAL */
-
-.total {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  margin-top: 16px;
-
-  padding: 16px;
-
-  border-radius: 12px;
-
-  background: #071b0e;
-
-  border: 1px solid #39ff88;
-}
-
-.total span:first-child {
-  font-weight: bold;
-}
-
-#grandTotal {
-  font-size: 25px;
-
-  color: #39ff88;
-
-  font-weight: 900;
-}
-
-
-/* CLOUD TOTAL */
-
-.cloud-total {
-  background: #061a0d;
-
-  border: 1px solid #39ff88;
-
-  border-radius: 14px;
-
-  padding: 18px;
-
-  text-align: center;
-
-  margin-bottom: 15px;
-}
-
-.cloud-total .label {
-  color: #91a699;
-
-  font-size: 12px;
-
-  margin-bottom: 5px;
-}
-
-#cloudGrandTotal {
-  color: #39ff88;
-
-  font-size: 30px;
-
-  font-weight: 900;
-}
-
-
-/* BUTTONS */
-
-.save {
-  margin-top: 15px;
-
-  background: #39ff88;
-
-  color: #031008;
-
-  font-weight: 900;
-
-  cursor: pointer;
-}
-
-.save:disabled {
-  opacity: .5;
-
-  cursor: not-allowed;
-}
-
-.clear {
-  margin-top: 8px;
-
-  background: #333;
-
-  color: #fff;
-
-  cursor: pointer;
-}
-
-.refresh {
-  margin-top: 8px;
-
-  background: #163b24;
-
-  color: #39ff88;
-
-  border: 1px solid #39ff88;
-
-  cursor: pointer;
-}
-
-
-/* PREVIEW */
 
 .preview {
   display: none;
-
   margin-top: 12px;
-
   text-align: center;
 }
 
 .preview img {
   max-width: 100%;
-
   max-height: 300px;
-
   border-radius: 10px;
-
   border: 1px solid #39ff88;
 }
 
+/* ITEMS */
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 130px 42px;
+  gap: 8px;
+  margin-bottom: 9px;
+  align-items: center;
+}
+
+.remove {
+  background: #d93636;
+  color: #fff;
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add {
+  margin-top: 5px;
+  background: #163b24;
+  color: #39ff88;
+  border: 1px solid #39ff88;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* TOTAL */
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #071b0e;
+  border: 1px solid #39ff88;
+}
+
+#grandTotal {
+  font-size: 25px;
+  color: #39ff88;
+  font-weight: 900;
+}
+
+/* CLOUD TOTAL */
+
+.cloud-total {
+  background: #061a0d;
+  border: 1px solid #39ff88;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.cloud-total .label {
+  color: #91a699;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+#cloudGrandTotal {
+  color: #39ff88;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+/* BUTTONS */
+
+.save {
+  margin-top: 15px;
+  background: #39ff88;
+  color: #031008;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.save:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.clear {
+  margin-top: 8px;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.refresh {
+  margin-top: 8px;
+  background: #163b24;
+  color: #39ff88;
+  border: 1px solid #39ff88;
+  cursor: pointer;
+}
 
 /* HISTORY */
 
 .history-item {
   padding: 14px 4px;
-
-  border-bottom:
-    1px solid #203a28;
-
+  border-bottom: 1px solid #203a28;
   font-size: 14px;
 }
 
@@ -338,79 +223,58 @@ input[type=file] {
 
 .entry-date {
   font-weight: bold;
-
   color: #fff;
-
   margin-bottom: 5px;
 }
 
 .entry-receipt {
   color: #91a699;
-
   font-size: 12px;
-
   margin-bottom: 8px;
 }
 
 .item-line {
   display: flex;
-
   justify-content: space-between;
-
   gap: 10px;
-
   padding: 3px 0;
-
   color: #d8e5dc;
 }
 
 .entry-total {
   margin-top: 8px;
-
   color: #39ff88;
-
   font-weight: bold;
-
   font-size: 16px;
 }
 
 .actions {
   display: flex;
-
   gap: 7px;
-
   margin-top: 9px;
 }
 
 .actions button {
   padding: 8px;
-
   font-size: 12px;
-
   cursor: pointer;
 }
 
 .delete-btn {
   background: #4a2020;
-
   color: #ff8b8b;
-
   border: 1px solid #ff6666;
 }
 
 .muted {
   color: #91a699;
-
   font-size: 12px;
 }
 
 .status {
   text-align: center;
-
   padding: 10px;
-
   color: #91a699;
-
   font-size: 12px;
 }
 
@@ -422,14 +286,10 @@ input[type=file] {
   color: #ff7777;
 }
 
-
-/* MOBILE */
-
 @media(max-width:520px) {
 
   .row {
-    grid-template-columns:
-      1fr 100px 38px;
+    grid-template-columns: 1fr 100px 38px;
   }
 
   .header {
@@ -443,20 +303,15 @@ input[type=file] {
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <div class="header">
   🌴 RENSON FARM INVENTORY
 </div>
 
-
 <div class="container">
-
 
   <!-- CLOUD TOTAL -->
 
@@ -481,7 +336,7 @@ input[type=file] {
       📷 Capture Receipt
     </div>
 
-    <label for="receipt">
+    <label>
       Receipt photo
     </label>
 
@@ -495,25 +350,23 @@ input[type=file] {
 
     <div
       id="receiptName"
-      class="receipt-name"
-    ></div>
+      class="receipt-name">
+    </div>
 
     <div
       id="preview"
-      class="preview"
-    >
+      class="preview">
 
       <img
         id="receiptPreview"
-        alt="Receipt preview"
-      >
+        alt="Receipt preview">
 
     </div>
 
   </div>
 
 
-  <!-- INVENTORY FORM -->
+  <!-- INVENTORY -->
 
   <div class="card">
 
@@ -521,18 +374,16 @@ input[type=file] {
       🧾 Inventory Details
     </div>
 
-
     <div id="items"></div>
-
 
     <button
       type="button"
       class="add"
-      onclick="addItem()"
-    >
-      ＋ ADD ITEM
-    </button>
+      onclick="addItem()">
 
+      ＋ ADD ITEM
+
+    </button>
 
     <div class="total">
 
@@ -546,22 +397,22 @@ input[type=file] {
 
     </div>
 
-
     <button
       type="button"
       class="save"
-      onclick="saveInventory()"
-    >
-      💾 SAVE INVENTORY
-    </button>
+      onclick="saveInventory()">
 
+      💾 SAVE INVENTORY
+
+    </button>
 
     <button
       type="button"
       class="clear"
-      onclick="clearForm()"
-    >
+      onclick="clearForm()">
+
       CLEAR
+
     </button>
 
   </div>
@@ -575,14 +426,13 @@ input[type=file] {
       📋 Recent Entries
     </div>
 
-
     <div
       id="status"
-      class="status"
-    >
-      Connecting to Google Sheets...
-    </div>
+      class="status">
 
+      Connecting to Google Sheets...
+
+    </div>
 
     <div id="history">
 
@@ -592,67 +442,69 @@ input[type=file] {
 
     </div>
 
-
     <button
       type="button"
       class="refresh"
-      onclick="loadInventory()"
-    >
+      onclick="loadInventory()">
+
       🔄 REFRESH FROM GOOGLE SHEETS
+
     </button>
 
   </div>
-
 
 </div>
 
 
 <script>
 
+/* =====================================================
+   GOOGLE APPS SCRIPT WEB APP
+   =====================================================
 
-/*
-==================================================
-  GOOGLE APPS SCRIPT WEB APP URL
-==================================================
-*/
+   IMPORTANT:
+   Paste HERE the NEW /exec URL that worked
+   and showed:
+
+   {"success":true,"entries":[],"grandTotal":0}
+
+===================================================== */
 
 const WEB_APP_URL =
-"https://script.google.com/macros/s/AKfycbwoULx5Wp4M_L5lR0l9aZ6Upwm7VUUu2eg3FT-sMz_WV6ka1LF3KYZtaOS704YNv_cG_Q/exec";
+"PASTE_YOUR_WORKING_EXEC_URL_HERE";
 
 
 let items = [];
 
 
-/*
-==================================================
-  ADD ITEM
-==================================================
-*/
+/* =====================================================
+   ADD ITEM
+===================================================== */
 
-function addItem(
-  description = "",
-  amount = ""
-) {
-
-  const id =
-    Date.now() +
-    Math.random();
+function addItem(description = "", amount = "") {
 
   items.push({
-    id: id,
-    description: description,
-    amount: amount
+
+    id:
+      Date.now() +
+      Math.random(),
+
+    description:
+      description,
+
+    amount:
+      amount
+
   });
 
   renderItems();
+
 }
 
 
-/*
-==================================================
-  REMOVE ITEM
-==================================================
-*/
+/* =====================================================
+   REMOVE ITEM
+===================================================== */
 
 function removeItem(id) {
 
@@ -664,20 +516,15 @@ function removeItem(id) {
     });
 
   renderItems();
+
 }
 
 
-/*
-==================================================
-  UPDATE ITEM
-==================================================
-*/
+/* =====================================================
+   UPDATE ITEM
+===================================================== */
 
-function updateItem(
-  id,
-  field,
-  value
-) {
+function updateItem(id, field, value) {
 
   const item =
     items.find(function(x) {
@@ -690,31 +537,16 @@ function updateItem(
     return;
   }
 
-
-  if (field === "amount") {
-
-    item.amount =
-      value.replace(
-        /[^0-9.]/g,
-        ""
-      );
-
-  } else {
-
-    item[field] = value;
-
-  }
-
+  item[field] = value;
 
   calculateTotal();
+
 }
 
 
-/*
-==================================================
-  RENDER ITEMS
-==================================================
-*/
+/* =====================================================
+   RENDER ITEMS
+===================================================== */
 
 function renderItems() {
 
@@ -729,6 +561,7 @@ function renderItems() {
     addItem();
 
     return;
+
   }
 
 
@@ -798,7 +631,8 @@ function renderItems() {
     remove.className =
       "remove";
 
-    remove.textContent = "×";
+    remove.textContent =
+      "×";
 
     remove.onclick =
       function() {
@@ -820,14 +654,13 @@ function renderItems() {
 
 
   calculateTotal();
+
 }
 
 
-/*
-==================================================
-  CALCULATE FORM TOTAL
-==================================================
-*/
+/* =====================================================
+   CALCULATE TOTAL
+===================================================== */
 
 function calculateTotal() {
 
@@ -835,14 +668,9 @@ function calculateTotal() {
     items.reduce(
       function(sum, item) {
 
-        const amount =
-          parseFloat(item.amount);
-
         return sum +
           (
-            isNaN(amount)
-              ? 0
-              : amount
+            parseFloat(item.amount) || 0
           );
 
       },
@@ -854,14 +682,13 @@ function calculateTotal() {
     .getElementById("grandTotal")
     .textContent =
       formatMoney(total);
+
 }
 
 
-/*
-==================================================
-  FORMAT MONEY
-==================================================
-*/
+/* =====================================================
+   MONEY
+===================================================== */
 
 function formatMoney(amount) {
 
@@ -874,19 +701,19 @@ function formatMoney(amount) {
           maximumFractionDigits: 2
         }
       );
+
 }
 
 
-/*
-==================================================
-  RECEIPT PREVIEW
-==================================================
-*/
+/* =====================================================
+   RECEIPT PREVIEW
+===================================================== */
 
 function previewReceipt(event) {
 
   const file =
     event.target.files[0];
+
 
   if (!file) {
 
@@ -894,7 +721,12 @@ function previewReceipt(event) {
       .getElementById("receiptName")
       .textContent = "";
 
+    document
+      .getElementById("preview")
+      .style.display = "none";
+
     return;
+
   }
 
 
@@ -925,14 +757,13 @@ function previewReceipt(event) {
 
 
   reader.readAsDataURL(file);
+
 }
 
 
-/*
-==================================================
-  SAVE INVENTORY
-==================================================
-*/
+/* =====================================================
+   SAVE INVENTORY
+===================================================== */
 
 async function saveInventory() {
 
@@ -954,6 +785,7 @@ async function saveInventory() {
     );
 
     return;
+
   }
 
 
@@ -1001,23 +833,25 @@ async function saveInventory() {
 
   const payload = {
 
-    receipt: receiptName,
+    receipt:
+      receiptName,
 
-    items: validItems.map(
-      function(item) {
+    items:
+      validItems.map(
+        function(item) {
 
-        return {
+          return {
 
-          description:
-            item.description.trim(),
+            description:
+              item.description.trim(),
 
-          amount:
-            parseFloat(item.amount) || 0
+            amount:
+              parseFloat(item.amount) || 0
 
-        };
+          };
 
-      }
-    )
+        }
+      )
 
   };
 
@@ -1027,29 +861,41 @@ async function saveInventory() {
     await fetch(
       WEB_APP_URL,
       {
+
         method: "POST",
 
         mode: "no-cors",
 
         headers: {
+
           "Content-Type":
             "text/plain;charset=utf-8"
+
         },
 
         body:
           JSON.stringify(payload)
+
       }
     );
 
 
     alert(
-      "✅ Inventory saved to Google Sheets!\n\n" +
+      "✅ INVENTORY SAVED!\n\n" +
       "Total: " +
       formatMoney(total)
     );
 
 
     clearForm(false);
+
+
+    // Wait a little before reading
+    await new Promise(
+      function(resolve) {
+        setTimeout(resolve, 1000);
+      }
+    );
 
 
     await loadInventory();
@@ -1061,32 +907,29 @@ async function saveInventory() {
 
     alert(
       "❌ Hindi na-save.\n\n" +
-      "Check ang Apps Script Web App deployment."
+      "Check ang Web App URL."
     );
 
 
     setStatus(
-      "Unable to save.",
+      "❌ Unable to save.",
       "error"
     );
 
-  } finally {
-
-    saveButton.disabled = false;
-
-    saveButton.textContent =
-      "💾 SAVE INVENTORY";
-
   }
+
+
+  saveButton.disabled = false;
+
+  saveButton.textContent =
+    "💾 SAVE INVENTORY";
 
 }
 
 
-/*
-==================================================
-  LOAD INVENTORY FROM GOOGLE SHEETS
-==================================================
-*/
+/* =====================================================
+   LOAD FROM GOOGLE SHEETS
+===================================================== */
 
 async function loadInventory() {
 
@@ -1106,6 +949,16 @@ async function loadInventory() {
       );
 
 
+    if (!response.ok) {
+
+      throw new Error(
+        "HTTP error " +
+        response.status
+      );
+
+    }
+
+
     const data =
       await response.json();
 
@@ -1114,7 +967,7 @@ async function loadInventory() {
 
       throw new Error(
         data.error ||
-        "Unable to load data."
+        "Google Sheets error"
       );
 
     }
@@ -1158,11 +1011,9 @@ async function loadInventory() {
 }
 
 
-/*
-==================================================
-  CLOUD TOTAL
-==================================================
-*/
+/* =====================================================
+   CLOUD TOTAL
+===================================================== */
 
 function renderCloudTotal(total) {
 
@@ -1174,11 +1025,9 @@ function renderCloudTotal(total) {
 }
 
 
-/*
-==================================================
-  RENDER HISTORY
-==================================================
-*/
+/* =====================================================
+   HISTORY
+===================================================== */
 
 function renderHistory(entries) {
 
@@ -1186,8 +1035,10 @@ function renderHistory(entries) {
     document.getElementById("history");
 
 
-  if (!entries ||
-      entries.length === 0) {
+  if (
+    !entries ||
+    entries.length === 0
+  ) {
 
     box.innerHTML =
       '<div class="muted">' +
@@ -1195,6 +1046,7 @@ function renderHistory(entries) {
       '</div>';
 
     return;
+
   }
 
 
@@ -1214,10 +1066,11 @@ function renderHistory(entries) {
 
 
         const itemLines =
-          entry.items
+          (entry.items || [])
             .map(function(item) {
 
               return `
+
                 <div class="item-line">
 
                   <span>
@@ -1234,6 +1087,7 @@ function renderHistory(entries) {
                   </span>
 
                 </div>
+
               `;
 
             })
@@ -1242,40 +1096,33 @@ function renderHistory(entries) {
 
         return `
 
-          <div
-            class="history-item"
-          >
+          <div class="history-item">
 
             <div class="entry-date">
               ${date}
             </div>
 
-
             <div class="entry-receipt">
               📎 ${receipt}
             </div>
 
-
             ${itemLines}
 
-
             <div class="entry-total">
+
               Total:
               ${formatMoney(entry.total)}
-            </div>
 
+            </div>
 
             <div class="actions">
 
               <button
                 class="delete-btn"
-                onclick="deleteCloudEntry(
-                  '${escapeAttribute(
-                    entry.entryId
-                  )}'
-                )"
-              >
+                onclick="deleteCloudEntry('${escapeAttribute(entry.entryId)}')">
+
                 🗑️ DELETE
+
               </button>
 
             </div>
@@ -1290,19 +1137,9 @@ function renderHistory(entries) {
 }
 
 
-/*
-==================================================
-  DELETE CLOUD ENTRY
-==================================================
-
-  NOTE:
-  Google Apps Script Web Apps do not reliably
-  support browser DELETE requests with CORS.
-
-  Therefore deletion is handled using a POST
-  action.
-==================================================
-*/
+/* =====================================================
+   DELETE
+===================================================== */
 
 async function deleteCloudEntry(entryId) {
 
@@ -1318,6 +1155,7 @@ async function deleteCloudEntry(entryId) {
   ) {
 
     return;
+
   }
 
 
@@ -1332,26 +1170,42 @@ async function deleteCloudEntry(entryId) {
     await fetch(
       WEB_APP_URL,
       {
+
         method: "POST",
 
         mode: "no-cors",
 
         headers: {
+
           "Content-Type":
             "text/plain;charset=utf-8"
+
         },
 
         body:
           JSON.stringify({
-            action: "delete",
-            entryId: entryId
+
+            action:
+              "delete",
+
+            entryId:
+              entryId
+
           })
+
+      }
+    );
+
+
+    await new Promise(
+      function(resolve) {
+        setTimeout(resolve, 1000);
       }
     );
 
 
     alert(
-      "Inventory deleted."
+      "✅ Inventory deleted."
     );
 
 
@@ -1363,7 +1217,7 @@ async function deleteCloudEntry(entryId) {
     console.error(error);
 
     alert(
-      "Unable to delete inventory."
+      "❌ Unable to delete inventory."
     );
 
   }
@@ -1371,11 +1225,9 @@ async function deleteCloudEntry(entryId) {
 }
 
 
-/*
-==================================================
-  CLEAR FORM
-==================================================
-*/
+/* =====================================================
+   CLEAR FORM
+===================================================== */
 
 function clearForm(showConfirm = true) {
 
@@ -1388,6 +1240,7 @@ function clearForm(showConfirm = true) {
     ) {
 
       return;
+
     }
 
   }
@@ -1422,16 +1275,11 @@ function clearForm(showConfirm = true) {
 }
 
 
-/*
-==================================================
-  STATUS
-==================================================
-*/
+/* =====================================================
+   STATUS
+===================================================== */
 
-function setStatus(
-  message,
-  type
-) {
+function setStatus(message, type) {
 
   const status =
     document.getElementById("status");
@@ -1448,11 +1296,9 @@ function setStatus(
 }
 
 
-/*
-==================================================
-  DATE FORMAT
-==================================================
-*/
+/* =====================================================
+   DATE
+===================================================== */
 
 function formatDate(dateValue) {
 
@@ -1465,7 +1311,11 @@ function formatDate(dateValue) {
     new Date(dateValue);
 
 
-  if (isNaN(date.getTime())) {
+  if (
+    isNaN(
+      date.getTime()
+    )
+  ) {
 
     return String(dateValue);
 
@@ -1483,40 +1333,23 @@ function formatDate(dateValue) {
 }
 
 
-/*
-==================================================
-  SECURITY
-==================================================
-*/
+/* =====================================================
+   SECURITY
+===================================================== */
 
 function escapeHtml(text) {
 
   return String(text)
 
-    .replace(
-      /&/g,
-      "&amp;"
-    )
+    .replace(/&/g, "&amp;")
 
-    .replace(
-      /</g,
-      "&lt;"
-    )
+    .replace(/</g, "&lt;")
 
-    .replace(
-      />/g,
-      "&gt;"
-    )
+    .replace(/>/g, "&gt;")
 
-    .replace(
-      /"/g,
-      "&quot;"
-    )
+    .replace(/"/g, "&quot;")
 
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+    .replace(/'/g, "&#039;");
 
 }
 
@@ -1525,33 +1358,22 @@ function escapeAttribute(text) {
 
   return String(text)
 
-    .replace(
-      /\\/g,
-      "\\\\"
-    )
+    .replace(/\\/g, "\\\\")
 
-    .replace(
-      /'/g,
-      "\\'"
-    );
+    .replace(/'/g, "\\'");
 
 }
 
 
-/*
-==================================================
-  START
-==================================================
-*/
+/* =====================================================
+   START
+===================================================== */
 
 addItem();
 
 loadInventory();
 
-
 </script>
 
 </body>
-
 </html>
-```
