@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>Renson Farm Inventory</title>
 
@@ -10,468 +15,501 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #07110b;
-  color: #fff;
-  min-height: 100vh;
-}
 
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  text-align: center;
-  padding: 18px 10px;
-  background: rgba(0,0,0,.92);
-  border-bottom: 1px solid #19d66b;
-  color: #39ff88;
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 2px;
+  margin: 0;
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  background:
+    #071f14;
+
+  color: white;
+
 }
 
 .container {
-  width: 100%;
-  max-width: 700px;
+
+  max-width: 650px;
+
   margin: auto;
-  padding: 20px 12px 40px;
+
+  padding: 18px;
+
+}
+
+h1 {
+
+  text-align: center;
+
+  margin-bottom: 5px;
+
+  color: #9cffbd;
+
+}
+
+.subtitle {
+
+  text-align: center;
+
+  color: #9bb7a6;
+
+  margin-bottom: 20px;
+
 }
 
 .card {
-  background: #0d1b12;
-  border: 1px solid rgba(57,255,136,.35);
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 20px rgba(57,255,136,.08);
-}
 
-.title {
-  color: #39ff88;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 14px;
+  background: #0d3020;
+
+  border-radius: 15px;
+
+  padding: 18px;
+
+  margin-bottom: 15px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(0,0,0,.25);
+
 }
 
 label {
-  display: block;
-  color: #b8cdbf;
-  font-size: 13px;
-  margin: 12px 0 6px;
-}
 
-input,
-button {
-  width: 100%;
-  border: 0;
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 15px;
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-weight: bold;
+
 }
 
 input {
-  background: #14251a;
-  color: #fff;
-  outline: none;
-  border: 1px solid #284b34;
+
+  width: 100%;
+
+  padding: 13px;
+
+  border-radius: 9px;
+
+  border: 1px solid #315b45;
+
+  background: #092519;
+
+  color: white;
+
+  font-size: 16px;
+
 }
 
 input:focus {
-  border-color: #39ff88;
-  box-shadow: 0 0 8px rgba(57,255,136,.2);
+
+  outline: none;
+
+  border-color: #55d987;
+
 }
 
-input[type=file] {
-  padding: 10px;
-  background: #14251a;
-}
+.receipt-preview {
 
-.receipt-name {
-  margin-top: 8px;
-  color: #91a699;
-  font-size: 12px;
-}
+  margin-top: 10px;
 
-.preview {
-  display: none;
-  margin-top: 12px;
   text-align: center;
+
 }
 
-.preview img {
+.receipt-preview img {
+
   max-width: 100%;
-  max-height: 300px;
+
+  max-height: 250px;
+
   border-radius: 10px;
-  border: 1px solid #39ff88;
+
 }
 
-/* ITEMS */
+.item {
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 130px 42px;
+  border: 1px solid #315b45;
+
+  border-radius: 10px;
+
+  padding: 12px;
+
+  margin-bottom: 10px;
+
+}
+
+.item-row {
+
+  display: flex;
+
   gap: 8px;
-  margin-bottom: 9px;
-  align-items: center;
+
 }
 
-.remove {
-  background: #d93636;
-  color: #fff;
-  padding: 10px 0;
-  cursor: pointer;
-  font-weight: bold;
+.item-row input:first-child {
+
+  flex: 1;
+
 }
 
-.add {
-  margin-top: 5px;
-  background: #163b24;
-  color: #39ff88;
-  border: 1px solid #39ff88;
-  cursor: pointer;
-  font-weight: bold;
+.amount {
+
+  width: 130px;
+
 }
 
-/* TOTAL */
+button {
 
-.total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 16px;
-  padding: 16px;
-  border-radius: 12px;
-  background: #071b0e;
-  border: 1px solid #39ff88;
-}
+  width: 100%;
 
-#grandTotal {
-  font-size: 25px;
-  color: #39ff88;
-  font-weight: 900;
-}
+  border: 0;
 
-/* CLOUD TOTAL */
+  border-radius: 10px;
 
-.cloud-total {
-  background: #061a0d;
-  border: 1px solid #39ff88;
-  border-radius: 14px;
-  padding: 18px;
-  text-align: center;
-  margin-bottom: 15px;
-}
+  padding: 13px;
 
-.cloud-total .label {
-  color: #91a699;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-#cloudGrandTotal {
-  color: #39ff88;
-  font-size: 30px;
-  font-weight: 900;
-}
-
-/* BUTTONS */
-
-.save {
-  margin-top: 15px;
-  background: #39ff88;
-  color: #031008;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-.save:disabled {
-  opacity: .5;
-  cursor: not-allowed;
-}
-
-.clear {
-  margin-top: 8px;
-  background: #333;
-  color: #fff;
-  cursor: pointer;
-}
-
-.refresh {
-  margin-top: 8px;
-  background: #163b24;
-  color: #39ff88;
-  border: 1px solid #39ff88;
-  cursor: pointer;
-}
-
-/* HISTORY */
-
-.history-item {
-  padding: 14px 4px;
-  border-bottom: 1px solid #203a28;
-  font-size: 14px;
-}
-
-.history-item:last-child {
-  border-bottom: 0;
-}
-
-.entry-date {
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 5px;
-}
-
-.entry-receipt {
-  color: #91a699;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-
-.item-line {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 3px 0;
-  color: #d8e5dc;
-}
-
-.entry-total {
-  margin-top: 8px;
-  color: #39ff88;
-  font-weight: bold;
   font-size: 16px;
-}
 
-.actions {
-  display: flex;
-  gap: 7px;
-  margin-top: 9px;
-}
+  font-weight: bold;
 
-.actions button {
-  padding: 8px;
-  font-size: 12px;
   cursor: pointer;
+
+  margin-top: 10px;
+
+}
+
+.add-btn {
+
+  background: #1e7546;
+
+  color: white;
+
+}
+
+.save-btn {
+
+  background: #4bd47d;
+
+  color: #062513;
+
+}
+
+.clear-btn {
+
+  background: #315443;
+
+  color: white;
+
 }
 
 .delete-btn {
-  background: #4a2020;
-  color: #ff8b8b;
-  border: 1px solid #ff6666;
+
+  background: #8c3030;
+
+  color: white;
+
+  margin-top: 8px;
+
 }
 
-.muted {
-  color: #91a699;
-  font-size: 12px;
+.remove-btn {
+
+  background: #7c2929;
+
+  color: white;
+
+  width: auto;
+
+  padding: 10px 14px;
+
+  margin-top: 8px;
+
+}
+
+.total-box {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 15px;
+
+  background: #062719;
+
+  border-radius: 10px;
+
+  margin-top: 15px;
+
+}
+
+.total {
+
+  font-size: 24px;
+
+  font-weight: bold;
+
+  color: #7dffa5;
+
+}
+
+.cloud-total {
+
+  text-align: center;
+
+  padding: 18px;
+
+  border-radius: 12px;
+
+  background: #16452d;
+
+  margin-bottom: 15px;
+
+}
+
+.cloud-total small {
+
+  color: #a8c7b4;
+
+}
+
+.cloud-total strong {
+
+  display: block;
+
+  font-size: 30px;
+
+  color: #8dffb1;
+
+  margin-top: 5px;
+
+}
+
+.entry {
+
+  border-top: 1px solid #315b45;
+
+  padding: 15px 0;
+
+}
+
+.entry:first-child {
+
+  border-top: 0;
+
+}
+
+.entry-date {
+
+  color: #9fbbaa;
+
+  font-size: 13px;
+
+}
+
+.entry-receipt {
+
+  color: #bde8ca;
+
+  margin-top: 5px;
+
+}
+
+.entry-item {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 5px 0;
+
+}
+
+.entry-total {
+
+  text-align: right;
+
+  color: #8dffb1;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  margin-top: 5px;
+
 }
 
 .status {
+
   text-align: center;
+
   padding: 10px;
-  color: #91a699;
-  font-size: 12px;
+
+  color: #a8c7b4;
+
+  font-size: 14px;
+
 }
 
-.success {
-  color: #39ff88;
-}
+.empty {
 
-.error {
-  color: #ff7777;
-}
+  text-align: center;
 
-@media(max-width:520px) {
+  color: #8ba696;
 
-  .row {
-    grid-template-columns: 1fr 100px 38px;
-  }
-
-  .header {
-    font-size: 18px;
-  }
-
-  .item-line {
-    font-size: 13px;
-  }
+  padding: 20px;
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<div class="header">
-  🌴 RENSON FARM INVENTORY
-</div>
-
 <div class="container">
 
-  <!-- CLOUD TOTAL -->
+<h1>🌴 Renson Farm</h1>
 
-  <div class="cloud-total">
-
-    <div class="label">
-      TOTAL INVENTORY FROM GOOGLE SHEETS
-    </div>
-
-    <div id="cloudGrandTotal">
-      ₱0.00
-    </div>
-
-  </div>
+<div class="subtitle">
+Inventory Management
+</div>
 
 
-  <!-- RECEIPT -->
+<div class="cloud-total">
 
-  <div class="card">
+<small>Cloud Grand Total</small>
 
-    <div class="title">
-      📷 Capture Receipt
-    </div>
+<strong id="cloudTotal">
+₱0.00
+</strong>
 
-    <label>
-      Receipt photo
-    </label>
-
-    <input
-      id="receipt"
-      type="file"
-      accept="image/*"
-      capture="environment"
-      onchange="previewReceipt(event)"
-    >
-
-    <div
-      id="receiptName"
-      class="receipt-name">
-    </div>
-
-    <div
-      id="preview"
-      class="preview">
-
-      <img
-        id="receiptPreview"
-        alt="Receipt preview">
-
-    </div>
-
-  </div>
+</div>
 
 
-  <!-- INVENTORY -->
+<div class="card">
 
-  <div class="card">
+<label>
+Receipt
+</label>
 
-    <div class="title">
-      🧾 Inventory Details
-    </div>
+<input
+  type="file"
+  id="receipt"
+  accept="image/*"
+  capture="environment"
+>
 
-    <div id="items"></div>
+<div
+  id="receiptPreview"
+  class="receipt-preview"
+></div>
 
-    <button
-      type="button"
-      class="add"
-      onclick="addItem()">
-
-      ＋ ADD ITEM
-
-    </button>
-
-    <div class="total">
-
-      <span>
-        GRAND TOTAL
-      </span>
-
-      <span id="grandTotal">
-        ₱0.00
-      </span>
-
-    </div>
-
-    <button
-      type="button"
-      class="save"
-      onclick="saveInventory()">
-
-      💾 SAVE INVENTORY
-
-    </button>
-
-    <button
-      type="button"
-      class="clear"
-      onclick="clearForm()">
-
-      CLEAR
-
-    </button>
-
-  </div>
+</div>
 
 
-  <!-- HISTORY -->
+<div class="card">
 
-  <div class="card">
+<label>
+Inventory Items
+</label>
 
-    <div class="title">
-      📋 Recent Entries
-    </div>
+<div id="items"></div>
 
-    <div
-      id="status"
-      class="status">
 
-      Connecting to Google Sheets...
+<button
+  type="button"
+  class="add-btn"
+  onclick="addItem()"
+>
+＋ Add Item
+</button>
 
-    </div>
 
-    <div id="history">
+<div class="total-box">
 
-      <div class="muted">
-        Loading inventory...
-      </div>
+<span>
+Current Total
+</span>
 
-    </div>
+<span
+  id="currentTotal"
+  class="total"
+>
+₱0.00
+</span>
 
-    <button
-      type="button"
-      class="refresh"
-      onclick="loadInventory()">
+</div>
 
-      🔄 REFRESH FROM GOOGLE SHEETS
 
-    </button>
+<button
+  type="button"
+  class="save-btn"
+  onclick="saveInventory()"
+>
+💾 Save Inventory
+</button>
 
-  </div>
+
+<button
+  type="button"
+  class="clear-btn"
+  onclick="clearForm()"
+>
+Clear
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Recent Entries
+</h3>
+
+<div
+  id="status"
+  class="status"
+>
+Connecting to Google Sheets...
+</div>
+
+<div id="history"></div>
+
+
+<button
+  type="button"
+  class="add-btn"
+  onclick="loadInventory()"
+>
+🔄 Refresh from Google Sheets
+</button>
+
+</div>
 
 </div>
 
 
 <script>
 
+
 /* =====================================================
-   GOOGLE APPS SCRIPT WEB APP
-   =====================================================
-
-   IMPORTANT:
-   Paste HERE the NEW /exec URL that worked
-   and showed:
-
-   {"success":true,"entries":[],"grandTotal":0}
-
+   GOOGLE APPS SCRIPT URL
 ===================================================== */
 
 const WEB_APP_URL =
-"https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnTz82kFJNPvfpelbFY-GDH3Xh2bryV5BjZtXko8YNCJsRw8dZKd8EisbQ7_0C_ph-lgS7RGCUaCGzgJ8sQcYmHxZOJRxCwVvBMS56LRLRkLdXfKKD5bRw11_as5CeiWRDx7nf_w47FVh7MTYE8w63ow2Uybkm-PFEJku_J9UQhMfRLvU72uzeEqgi1BR9Q6EVkdtBCRlHZlxtlN8fux2iznt6ADoN7sXJk_gxfJizoTLq06I0G4mzHY9VLc5asHZmbCjwZ2_s16Bf2oetYpLJAqA49IXg&lib=MJ8XLRw1-QoTRkVjG993rsVmSHBE0Aqc4";
+"https://script.google.com/macros/s/AKfycbzpqLYsCndrqHyZNU-UXyOzH181MmxWkaHyC3-ShNWlTeSgtFNVQL713UzjoRraeri0Bw/exec";
 
 
 let items = [];
@@ -481,19 +519,13 @@ let items = [];
    ADD ITEM
 ===================================================== */
 
-function addItem(description = "", amount = "") {
+function addItem() {
 
   items.push({
 
-    id:
-      Date.now() +
-      Math.random(),
+    description: "",
 
-    description:
-      description,
-
-    amount:
-      amount
+    amount: ""
 
   });
 
@@ -506,14 +538,17 @@ function addItem(description = "", amount = "") {
    REMOVE ITEM
 ===================================================== */
 
-function removeItem(id) {
+function removeItem(index) {
 
-  items =
-    items.filter(function(item) {
+  items.splice(index, 1);
 
-      return item.id !== id;
+  if (items.length === 0) {
 
-    });
+    addItem();
+
+    return;
+
+  }
 
   renderItems();
 
@@ -524,20 +559,13 @@ function removeItem(id) {
    UPDATE ITEM
 ===================================================== */
 
-function updateItem(id, field, value) {
+function updateItem(
+  index,
+  field,
+  value
+) {
 
-  const item =
-    items.find(function(x) {
-
-      return x.id === id;
-
-    });
-
-  if (!item) {
-    return;
-  }
-
-  item[field] = value;
+  items[index][field] = value;
 
   calculateTotal();
 
@@ -550,107 +578,76 @@ function updateItem(id, field, value) {
 
 function renderItems() {
 
-  const box =
-    document.getElementById("items");
+  const container =
+    document.getElementById(
+      "items"
+    );
 
-  box.innerHTML = "";
-
-
-  if (items.length === 0) {
-
-    addItem();
-
-    return;
-
-  }
+  container.innerHTML = "";
 
 
-  items.forEach(function(item) {
+  items.forEach(
+    function(item, index) {
 
-    const row =
-      document.createElement("div");
-
-    row.className = "row";
-
-
-    const description =
-      document.createElement("input");
-
-    description.type = "text";
-
-    description.placeholder =
-      "Description";
-
-    description.value =
-      item.description || "";
-
-    description.oninput =
-      function() {
-
-        updateItem(
-          item.id,
-          "description",
-          this.value
+      const div =
+        document.createElement(
+          "div"
         );
 
-      };
+      div.className =
+        "item";
 
 
-    const amount =
-      document.createElement("input");
+      div.innerHTML = `
 
-    amount.type = "number";
+        <div class="item-row">
 
-    amount.step = "0.01";
+          <input
+            type="text"
+            placeholder="Description"
+            value="${escapeHtml(item.description)}"
+            oninput="
+              updateItem(
+                ${index},
+                'description',
+                this.value
+              )
+            "
+          >
 
-    amount.min = "0";
+          <input
+            type="number"
+            step="0.01"
+            placeholder="Amount"
+            class="amount"
+            value="${item.amount}"
+            oninput="
+              updateItem(
+                ${index},
+                'amount',
+                this.value
+              )
+            "
+          >
 
-    amount.placeholder =
-      "Amount";
-
-    amount.value =
-      item.amount || "";
-
-    amount.oninput =
-      function() {
-
-        updateItem(
-          item.id,
-          "amount",
-          this.value
-        );
-
-      };
-
-
-    const remove =
-      document.createElement("button");
-
-    remove.type = "button";
-
-    remove.className =
-      "remove";
-
-    remove.textContent =
-      "×";
-
-    remove.onclick =
-      function() {
-
-        removeItem(item.id);
-
-      };
+        </div>
 
 
-    row.appendChild(description);
+        <button
+          type="button"
+          class="remove-btn"
+          onclick="removeItem(${index})"
+        >
+          Remove
+        </button>
 
-    row.appendChild(amount);
+      `;
 
-    row.appendChild(remove);
 
-    box.appendChild(row);
+      container.appendChild(div);
 
-  });
+    }
+  );
 
 
   calculateTotal();
@@ -664,30 +661,30 @@ function renderItems() {
 
 function calculateTotal() {
 
-  const total =
-    items.reduce(
-      function(sum, item) {
-
-        return sum +
-          (
-            parseFloat(item.amount) || 0
-          );
-
-      },
-      0
-    );
+  let total = 0;
 
 
-  document
-    .getElementById("grandTotal")
-    .textContent =
-      formatMoney(total);
+  items.forEach(
+    function(item) {
+
+      total +=
+        parseFloat(item.amount)
+        || 0;
+
+    }
+  );
+
+
+  document.getElementById(
+    "currentTotal"
+  ).textContent =
+    formatMoney(total);
 
 }
 
 
 /* =====================================================
-   MONEY
+   FORMAT MONEY
 ===================================================== */
 
 function formatMoney(amount) {
@@ -709,54 +706,45 @@ function formatMoney(amount) {
    RECEIPT PREVIEW
 ===================================================== */
 
-function previewReceipt(event) {
+document
+  .getElementById("receipt")
+  .addEventListener(
+    "change",
+    previewReceipt
+  );
+
+
+function previewReceipt() {
 
   const file =
-    event.target.files[0];
+    document.getElementById(
+      "receipt"
+    ).files[0];
 
 
-  if (!file) {
-
-    document
-      .getElementById("receiptName")
-      .textContent = "";
-
-    document
-      .getElementById("preview")
-      .style.display = "none";
-
-    return;
-
-  }
+  const preview =
+    document.getElementById(
+      "receiptPreview"
+    );
 
 
-  document
-    .getElementById("receiptName")
-    .textContent =
-      "📎 " + file.name;
+  preview.innerHTML = "";
 
 
-  const reader =
-    new FileReader();
+  if (!file) return;
 
 
-  reader.onload =
-    function(e) {
-
-      document
-        .getElementById("receiptPreview")
-        .src =
-          e.target.result;
-
-      document
-        .getElementById("preview")
-        .style.display =
-          "block";
-
-    };
+  const img =
+    document.createElement(
+      "img"
+    );
 
 
-  reader.readAsDataURL(file);
+  img.src =
+    URL.createObjectURL(file);
+
+
+  preview.appendChild(img);
 
 }
 
@@ -768,20 +756,22 @@ function previewReceipt(event) {
 async function saveInventory() {
 
   const validItems =
-    items.filter(function(item) {
+    items.filter(
+      function(item) {
 
-      return (
-        item.description.trim() !== "" ||
-        parseFloat(item.amount) > 0
-      );
+        return (
+          item.description.trim() !== "" ||
+          parseFloat(item.amount) > 0
+        );
 
-    });
+      }
+    );
 
 
   if (validItems.length === 0) {
 
     alert(
-      "Maglagay muna ng inventory item at amount."
+      "Please add at least one inventory item."
     );
 
     return;
@@ -789,52 +779,29 @@ async function saveInventory() {
   }
 
 
-  const total =
-    validItems.reduce(
-      function(sum, item) {
-
-        return sum +
-          (
-            parseFloat(item.amount) || 0
-          );
-
-      },
-      0
+  const receiptInput =
+    document.getElementById(
+      "receipt"
     );
 
 
-  const receiptFile =
-    document
-      .getElementById("receipt")
-      .files[0];
+  let receiptName = "";
 
 
-  const receiptName =
-    receiptFile
-      ? receiptFile.name
-      : "";
+  if (
+    receiptInput.files &&
+    receiptInput.files.length > 0
+  ) {
 
+    receiptName =
+      receiptInput.files[0].name;
 
-  const saveButton =
-    document.querySelector(".save");
-
-
-  saveButton.disabled = true;
-
-  saveButton.textContent =
-    "⏳ SAVING...";
-
-
-  setStatus(
-    "Saving to Google Sheets...",
-    ""
-  );
+  }
 
 
   const payload = {
 
-    receipt:
-      receiptName,
+    receipt: receiptName,
 
     items:
       validItems.map(
@@ -846,7 +813,9 @@ async function saveInventory() {
               item.description.trim(),
 
             amount:
-              parseFloat(item.amount) || 0
+              parseFloat(
+                item.amount
+              ) || 0
 
           };
 
@@ -856,7 +825,18 @@ async function saveInventory() {
   };
 
 
+  setStatus(
+    "Saving to Google Sheets..."
+  );
+
+
   try {
+
+    /*
+      no-cors allows the POST request
+      even though the website is hosted
+      on a different domain.
+    */
 
     await fetch(
       WEB_APP_URL,
@@ -880,131 +860,153 @@ async function saveInventory() {
     );
 
 
+    /*
+      Give Google Apps Script time
+      to write to the Sheet.
+    */
+
+    await delay(1500);
+
+
     alert(
-      "✅ INVENTORY SAVED!\n\n" +
-      "Total: " +
-      formatMoney(total)
+      "Inventory saved successfully!"
     );
 
 
-    clearForm(false);
+    clearForm();
 
 
-    // Wait a little before reading
-    await new Promise(
-      function(resolve) {
-        setTimeout(resolve, 1000);
-      }
-    );
-
-
-    await loadInventory();
+    loadInventory();
 
 
   } catch (error) {
 
     console.error(error);
 
-    alert(
-      "❌ Hindi na-save.\n\n" +
-      "Check ang Web App URL."
+    setStatus(
+      "Could not save to Google Sheets."
     );
 
-
-    setStatus(
-      "❌ Unable to save.",
-      "error"
+    alert(
+      "Could not connect to Google Sheets."
     );
 
   }
-
-
-  saveButton.disabled = false;
-
-  saveButton.textContent =
-    "💾 SAVE INVENTORY";
 
 }
 
 
 /* =====================================================
-   LOAD FROM GOOGLE SHEETS
+   LOAD INVENTORY USING JSONP
 ===================================================== */
 
-async function loadInventory() {
+function loadInventory() {
 
   setStatus(
-    "Loading from Google Sheets...",
-    ""
+    "Loading from Google Sheets..."
   );
 
 
-  try {
+  const callbackName =
+    "inventoryCallback_" +
+    Date.now();
 
-    const response =
-      await fetch(
-        WEB_APP_URL +
-        "?action=get&t=" +
-        Date.now()
+
+  window[callbackName] =
+    function(data) {
+
+      try {
+
+        if (
+          !data ||
+          data.success !== true
+        ) {
+
+          throw new Error(
+            data &&
+            data.error
+              ? data.error
+              : "Google Sheets error"
+          );
+
+        }
+
+
+        renderCloudTotal(
+          data.grandTotal
+        );
+
+
+        renderHistory(
+          data.entries
+        );
+
+
+        setStatus(
+          "Connected to Google Sheets"
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        setStatus(
+          "Could not load Google Sheets."
+        );
+
+      }
+
+
+      cleanup();
+
+    };
+
+
+  const script =
+    document.createElement(
+      "script"
+    );
+
+
+  script.src =
+    WEB_APP_URL +
+    "?callback=" +
+    callbackName +
+    "&t=" +
+    Date.now();
+
+
+  script.onerror =
+    function() {
+
+      setStatus(
+        "Could not connect to Google Sheets."
       );
 
+      cleanup();
 
-    if (!response.ok) {
+    };
 
-      throw new Error(
-        "HTTP error " +
-        response.status
+
+  document.body.appendChild(
+    script
+  );
+
+
+  function cleanup() {
+
+    delete window[
+      callbackName
+    ];
+
+    if (script.parentNode) {
+
+      script.parentNode.removeChild(
+        script
       );
 
     }
-
-
-    const data =
-      await response.json();
-
-
-    if (!data.success) {
-
-      throw new Error(
-        data.error ||
-        "Google Sheets error"
-      );
-
-    }
-
-
-    renderCloudTotal(
-      data.grandTotal || 0
-    );
-
-
-    renderHistory(
-      data.entries || []
-    );
-
-
-    setStatus(
-      "☁️ Connected to Google Sheets",
-      "success"
-    );
-
-
-  } catch (error) {
-
-    console.error(error);
-
-    setStatus(
-      "❌ Could not connect to Google Sheets",
-      "error"
-    );
-
-
-    document
-      .getElementById("history")
-      .innerHTML =
-        '<div class="muted">' +
-        'Unable to load inventory.' +
-        '</div>';
 
   }
 
@@ -1017,10 +1019,10 @@ async function loadInventory() {
 
 function renderCloudTotal(total) {
 
-  document
-    .getElementById("cloudGrandTotal")
-    .textContent =
-      formatMoney(total);
+  document.getElementById(
+    "cloudTotal"
+  ).textContent =
+    formatMoney(total);
 
 }
 
@@ -1031,8 +1033,13 @@ function renderCloudTotal(total) {
 
 function renderHistory(entries) {
 
-  const box =
-    document.getElementById("history");
+  const history =
+    document.getElementById(
+      "history"
+    );
+
+
+  history.innerHTML = "";
 
 
   if (
@@ -1040,113 +1047,133 @@ function renderHistory(entries) {
     entries.length === 0
   ) {
 
-    box.innerHTML =
-      '<div class="muted">' +
-      'No saved entries yet.' +
-      '</div>';
+    history.innerHTML = `
+
+      <div class="empty">
+        No inventory entries yet.
+      </div>
+
+    `;
 
     return;
 
   }
 
 
-  box.innerHTML =
-    entries
-      .slice(0, 20)
-      .map(function(entry) {
+  entries.forEach(
+    function(entry) {
 
-        const date =
-          formatDate(entry.date);
+      const div =
+        document.createElement(
+          "div"
+        );
+
+      div.className =
+        "entry";
 
 
-        const receipt =
+      let itemsHtml = "";
+
+
+      entry.items.forEach(
+        function(item) {
+
+          itemsHtml += `
+
+            <div class="entry-item">
+
+              <span>
+                ${escapeHtml(
+                  item.description
+                )}
+              </span>
+
+              <span>
+                ${formatMoney(
+                  item.amount
+                )}
+              </span>
+
+            </div>
+
+          `;
+
+        }
+      );
+
+
+      div.innerHTML = `
+
+        <div class="entry-date">
+
+          ${formatDate(
+            entry.date
+          )}
+
+        </div>
+
+
+        ${
           entry.receipt
-            ? escapeHtml(entry.receipt)
-            : "No receipt photo";
+            ? `
+              <div class="entry-receipt">
+                Receipt:
+                ${escapeHtml(
+                  entry.receipt
+                )}
+              </div>
+            `
+            : ""
+        }
 
 
-        const itemLines =
-          (entry.items || [])
-            .map(function(item) {
+        <div>
 
-              return `
+          ${itemsHtml}
 
-                <div class="item-line">
-
-                  <span>
-                    ${escapeHtml(
-                      item.description ||
-                      "Item"
-                    )}
-                  </span>
-
-                  <span>
-                    ${formatMoney(
-                      item.amount
-                    )}
-                  </span>
-
-                </div>
-
-              `;
-
-            })
-            .join("");
+        </div>
 
 
-        return `
+        <div class="entry-total">
 
-          <div class="history-item">
+          Total:
+          ${formatMoney(
+            entry.total
+          )}
 
-            <div class="entry-date">
-              ${date}
-            </div>
+        </div>
 
-            <div class="entry-receipt">
-              📎 ${receipt}
-            </div>
 
-            ${itemLines}
+        <button
+          type="button"
+          class="delete-btn"
+          onclick="
+            deleteCloudEntry(
+              '${entry.entryId}'
+            )
+          "
+        >
+          🗑 Delete Entry
+        </button>
 
-            <div class="entry-total">
+      `;
 
-              Total:
-              ${formatMoney(entry.total)}
 
-            </div>
+      history.appendChild(div);
 
-            <div class="actions">
-
-              <button
-                class="delete-btn"
-                onclick="deleteCloudEntry('${escapeAttribute(entry.entryId)}')">
-
-                🗑️ DELETE
-
-              </button>
-
-            </div>
-
-          </div>
-
-        `;
-
-      })
-      .join("");
+    }
+  );
 
 }
 
 
 /* =====================================================
-   DELETE
+   DELETE CLOUD ENTRY
 ===================================================== */
 
-async function deleteCloudEntry(entryId) {
-
-  if (!entryId) {
-    return;
-  }
-
+async function deleteCloudEntry(
+  entryId
+) {
 
   if (
     !confirm(
@@ -1159,13 +1186,12 @@ async function deleteCloudEntry(entryId) {
   }
 
 
+  setStatus(
+    "Deleting..."
+  );
+
+
   try {
-
-    setStatus(
-      "Deleting...",
-      ""
-    );
-
 
     await fetch(
       WEB_APP_URL,
@@ -1197,19 +1223,10 @@ async function deleteCloudEntry(entryId) {
     );
 
 
-    await new Promise(
-      function(resolve) {
-        setTimeout(resolve, 1000);
-      }
-    );
+    await delay(1000);
 
 
-    alert(
-      "✅ Inventory deleted."
-    );
-
-
-    await loadInventory();
+    loadInventory();
 
 
   } catch (error) {
@@ -1217,7 +1234,7 @@ async function deleteCloudEntry(entryId) {
     console.error(error);
 
     alert(
-      "❌ Unable to delete inventory."
+      "Could not delete entry."
     );
 
   }
@@ -1229,48 +1246,22 @@ async function deleteCloudEntry(entryId) {
    CLEAR FORM
 ===================================================== */
 
-function clearForm(showConfirm = true) {
+function clearForm() {
 
-  if (showConfirm) {
+  document.getElementById(
+    "receipt"
+  ).value = "";
 
-    if (
-      !confirm(
-        "Clear current inventory details?"
-      )
-    ) {
 
-      return;
-
-    }
-
-  }
+  document.getElementById(
+    "receiptPreview"
+  ).innerHTML = "";
 
 
   items = [];
 
 
-  document
-    .getElementById("receipt")
-    .value = "";
-
-
-  document
-    .getElementById("receiptName")
-    .textContent = "";
-
-
-  document
-    .getElementById("preview")
-    .style.display =
-      "none";
-
-
-  document
-    .getElementById("receiptPreview")
-    .src = "";
-
-
-  renderItems();
+  addItem();
 
 }
 
@@ -1279,19 +1270,12 @@ function clearForm(showConfirm = true) {
    STATUS
 ===================================================== */
 
-function setStatus(message, type) {
+function setStatus(message) {
 
-  const status =
-    document.getElementById("status");
-
-
-  status.textContent =
+  document.getElementById(
+    "status"
+  ).textContent =
     message;
-
-
-  status.className =
-    "status " +
-    (type || "");
 
 }
 
@@ -1300,33 +1284,40 @@ function setStatus(message, type) {
    DATE
 ===================================================== */
 
-function formatDate(dateValue) {
+function formatDate(date) {
 
-  if (!dateValue) {
-    return "";
-  }
+  if (!date) return "";
 
 
-  const date =
-    new Date(dateValue);
+  const d =
+    new Date(date);
 
 
   if (
     isNaN(
-      date.getTime()
+      d.getTime()
     )
   ) {
 
-    return String(dateValue);
+    return String(date);
 
   }
 
 
-  return date.toLocaleString(
+  return d.toLocaleString(
     "en-PH",
     {
-      dateStyle: "medium",
-      timeStyle: "short"
+
+      year: "numeric",
+
+      month: "short",
+
+      day: "numeric",
+
+      hour: "numeric",
+
+      minute: "2-digit"
+
     }
   );
 
@@ -1334,33 +1325,52 @@ function formatDate(dateValue) {
 
 
 /* =====================================================
-   SECURITY
+   ESCAPE HTML
 ===================================================== */
 
-function escapeHtml(text) {
+function escapeHtml(value) {
 
-  return String(text)
-
-    .replace(/&/g, "&amp;")
-
-    .replace(/</g, "&lt;")
-
-    .replace(/>/g, "&gt;")
-
-    .replace(/"/g, "&quot;")
-
-    .replace(/'/g, "&#039;");
+  return String(value || "")
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 
-function escapeAttribute(text) {
+/* =====================================================
+   DELAY
+===================================================== */
 
-  return String(text)
+function delay(ms) {
 
-    .replace(/\\/g, "\\\\")
+  return new Promise(
+    function(resolve) {
 
-    .replace(/'/g, "\\'");
+      setTimeout(
+        resolve,
+        ms
+      );
+
+    }
+  );
 
 }
 
