@@ -1,1455 +1,256 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<title>Klickzone Hotspot</title>
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="-1">
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renson Farm Inventory</title>
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#07110b;color:#fff;min-height:100vh}
+.header{
+  position:sticky;top:0;z-index:10;text-align:center;padding:18px 10px;
+  background:rgba(0,0,0,.9);border-bottom:1px solid #19d66b;
+  color:#39ff88;font-size:22px;font-weight:900;letter-spacing:2px;
 }
-
-body{
-  background:#000;
-  color:#fff;
-  min-height:100vh;
-}
-
-
-/* =====================================================
-   BRAND HEADER
-===================================================== */
-
-.brand-header{
-
-  text-align:center;
-
-  padding:18px 10px;
-
-  font-size:21px;
-
-  font-weight:900;
-
-  letter-spacing:3px;
-
-  color:#00ffcc;
-
-  position:fixed;
-
-  top:0;
-  left:0;
-
-  width:100%;
-
-  z-index:100;
-
-  background:rgba(0,0,0,.65);
-
-  backdrop-filter:blur(12px);
-
-  border-bottom:
-    1px solid rgba(0,255,204,.3);
-
-  text-shadow:
-    0 0 5px #00ffcc,
-    0 0 10px #00ffcc,
-    0 0 20px #00ffcc;
-
-  animation:brandGlow 3s infinite alternate;
-}
-
-
-@keyframes brandGlow{
-
-  0%{
-
-    text-shadow:
-      0 0 5px #00ffcc,
-      0 0 10px #00ffcc;
-
-    letter-spacing:3px;
-
-  }
-
-  100%{
-
-    text-shadow:
-      0 0 15px #00ffcc,
-      0 0 30px #00ffcc;
-
-    letter-spacing:5px;
-
-  }
-
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-.nav{
-
-  position:fixed;
-
-  top:59px;
-  left:0;
-
-  width:100%;
-
-  z-index:90;
-
-  display:flex;
-
-  justify-content:space-around;
-
-  padding:11px 4px;
-
-  background:rgba(0,0,0,.75);
-
-  backdrop-filter:blur(10px);
-
-  border-bottom:
-    1px solid rgba(0,255,204,.25);
-}
-
-
-.nav a{
-
-  color:#00ffcc;
-
-  text-decoration:none;
-
-  font-size:11px;
-
-  font-weight:bold;
-
-}
-
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-.container{
-
-  width:100%;
-
-  max-width:500px;
-
-  margin:auto;
-
-  padding:
-
-    130px
-
-    10px
-
-    40px;
-
-  text-align:center;
-
-}
-
-
-/* =====================================================
-   VIDEO
-===================================================== */
-
-.video-box{
-
-  width:100%;
-
-  position:relative;
-
-}
-
-
-.video-box video{
-
-  display:block;
-
-  width:100%;
-
-  height:260px;
-
-  object-fit:cover;
-
-  background:#111;
-
-  border:
-
-    2px solid #00ffcc;
-
-  border-radius:12px;
-
-  box-shadow:
-    0 0 15px
-    rgba(0,255,204,.25);
-
-}
-
-
-/* =====================================================
-   TIMER
-===================================================== */
-
-.timer{
-
-  margin-top:10px;
-
-  color:#00ffcc;
-
-  font-size:16px;
-
-  font-weight:bold;
-
-}
-
-
-#count{
-
-  font-size:18px;
-
-}
-
-
-/* =====================================================
-   CONNECT BUTTON
-===================================================== */
-
-.connect{
-
-  width:100%;
-
-  margin-top:15px;
-
-  padding:15px;
-
-  border:none;
-
-  border-radius:10px;
-
-  background:#00ffcc;
-
-  color:#000;
-
-  font-size:16px;
-
-  font-weight:bold;
-
-  opacity:.45;
-
-  cursor:not-allowed;
-
-  transition:.3s;
-
-}
-
-
-.connect.enabled{
-
-  opacity:1;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 0 10px #00ffcc;
-
-}
-
-
-.connect.enabled:hover{
-
-  transform:scale(1.02);
-
-  box-shadow:
-    0 0 20px #00ffcc;
-
-}
-
-
-/* =====================================================
-   VOUCHER SECTION
-===================================================== */
-
-.voucher-section{
-
-  margin-top:30px;
-
-}
-
-
-.voucher-title{
-
-  color:#00ffcc;
-
-  font-size:18px;
-
-  font-weight:bold;
-
-  margin-bottom:12px;
-
-}
-
-
-.grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:10px;
-
-}
-
-
+.container{width:100%;max-width:650px;margin:auto;padding:20px 12px 40px}
 .card{
-
-  padding:15px;
-
-  border:
-
-    1px solid #00ffcc;
-
-  border-radius:12px;
-
-  background:
-    rgba(0,255,204,.07);
-
+  background:#0d1b12;border:1px solid rgba(57,255,136,.35);
+  border-radius:16px;padding:18px;margin-bottom:15px;
+  box-shadow:0 0 20px rgba(57,255,136,.08)
 }
-
-
-.price{
-
-  font-size:28px;
-
-  font-weight:bold;
-
-  color:#00ffcc;
-
+.title{color:#39ff88;font-size:18px;font-weight:bold;margin-bottom:14px}
+label{display:block;color:#b8cdbf;font-size:13px;margin:12px 0 6px}
+input,textarea,button{
+  width:100%;border:0;border-radius:10px;padding:12px;font-size:15px
 }
-
-
-.desc{
-
-  font-size:12px;
-
-  margin:8px 0;
-
-  opacity:.8;
-
+input,textarea{background:#14251a;color:#fff;outline:none;border:1px solid #284b34}
+input:focus,textarea:focus{border-color:#39ff88;box-shadow:0 0 8px rgba(57,255,136,.2)}
+input[type=file]{padding:10px;background:#14251a}
+.row{
+  display:grid;grid-template-columns:1fr 120px 42px;gap:8px;
+  margin-bottom:9px;align-items:center
 }
-
-
-.buy{
-
-  width:100%;
-
-  padding:10px;
-
-  border:none;
-
-  border-radius:8px;
-
-  background:#00ffcc;
-
-  color:#000;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
+.row input{width:100%}
+.remove{
+  background:#d93636;color:#fff;padding:10px 0;cursor:pointer;font-weight:bold
 }
-
-
-/* =====================================================
-   LOGIN MODAL
-===================================================== */
-
-.login-modal{
-
-  display:none;
-
-  position:fixed;
-
-  inset:0;
-
-  z-index:9999;
-
-  background:
-    rgba(0,0,0,.90);
-
-  backdrop-filter:blur(8px);
-
-  justify-content:center;
-
-  align-items:center;
-
-  padding:15px;
-
+.add{
+  margin-top:5px;background:#163b24;color:#39ff88;
+  border:1px solid #39ff88;cursor:pointer;font-weight:bold
 }
-
-
-.login-modal.show{
-
-  display:flex;
-
+.total{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:16px;padding:16px;border-radius:12px;
+  background:#071b0e;border:1px solid #39ff88
 }
-
-
-/* =====================================================
-   LOGIN BOX
-===================================================== */
-
-.login-box{
-
-  position:relative;
-
-  width:100%;
-
-  max-width:390px;
-
-  max-height:90vh;
-
-  overflow:auto;
-
-  padding:22px 20px;
-
-  border:
-
-    1px solid
-    rgba(0,255,100,.4);
-
-  border-radius:18px;
-
-  background:
-    rgba(0,0,0,.92);
-
-  box-shadow:
-
-    0 0 20px
-    rgba(0,255,100,.25),
-
-    0 0 50px
-    rgba(0,255,100,.10);
-
-  animation:
-    popup .3s ease;
-
+.total span:first-child{font-weight:bold}
+#grandTotal{font-size:25px;color:#39ff88;font-weight:900}
+.save{
+  margin-top:15px;background:#39ff88;color:#031008;
+  font-weight:900;cursor:pointer
 }
-
-
-@keyframes popup{
-
-  from{
-
-    transform:scale(.7);
-
-    opacity:0;
-
-  }
-
-  to{
-
-    transform:scale(1);
-
-    opacity:1;
-
-  }
-
+.clear{margin-top:8px;background:#333;color:#fff;cursor:pointer}
+.preview{display:none;margin-top:12px;text-align:center}
+.preview img{max-width:100%;max-height:300px;border-radius:10px;border:1px solid #39ff88}
+.history-item{
+  padding:12px;border-bottom:1px solid #203a28;font-size:14px
 }
-
-
-/* =====================================================
-   CLOSE
-===================================================== */
-
-.close-login{
-
-  position:absolute;
-
-  top:8px;
-  right:8px;
-
-  width:34px;
-  height:34px;
-
-  border:none;
-
-  border-radius:50%;
-
-  background:#00ff66;
-
-  color:#000;
-
-  font-size:24px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-  z-index:20;
-
+.history-item:last-child{border-bottom:0}
+.muted{color:#91a699;font-size:12px}
+@media(max-width:520px){
+  .row{grid-template-columns:1fr 100px 38px}
+  .header{font-size:18px}
 }
-
-
-/* =====================================================
-   MATRIX
-===================================================== */
-
-#matrix{
-
-  position:absolute;
-
-  inset:0;
-
-  width:100%;
-
-  height:100%;
-
-  z-index:0;
-
-  border-radius:18px;
-
-  opacity:.18;
-
-  pointer-events:none;
-
-}
-
-
-.login-content{
-
-  position:relative;
-
-  z-index:2;
-
-}
-
-
-/* =====================================================
-   LOGIN TITLE
-===================================================== */
-
-.login-title{
-
-  text-align:center;
-
-  color:#00ff66;
-
-  font-size:24px;
-
-  font-weight:bold;
-
-  letter-spacing:6px;
-
-  margin-bottom:10px;
-
-  text-shadow:
-    0 0 10px #00ff66,
-    0 0 20px #00ff66;
-
-}
-
-
-#clock{
-
-  color:#00ff66;
-
-  font-size:13px;
-
-  margin-bottom:10px;
-
-}
-
-
-.status{
-
-  color:#00ff88;
-
-  font-size:13px;
-
-  margin-bottom:12px;
-
-}
-
-
-.online-dot{
-
-  display:inline-block;
-
-  width:8px;
-
-  height:8px;
-
-  margin-right:5px;
-
-  border-radius:50%;
-
-  background:#00ff66;
-
-  box-shadow:
-    0 0 10px #00ff66;
-
-}
-
-
-/* =====================================================
-   LOGIN INPUTS
-===================================================== */
-
-.login-box input[type="text"],
-.login-box input[type="password"]{
-
-  width:100%;
-
-  padding:12px;
-
-  margin:6px 0;
-
-  border:none;
-
-  border-radius:10px;
-
-  outline:none;
-
-  background:
-    rgba(0,255,100,.08);
-
-  color:#fff;
-
-}
-
-
-.login-box input:focus{
-
-  box-shadow:
-    0 0 10px #00ff66;
-
-}
-
-
-.login-box input::placeholder{
-
-  color:#aaa;
-
-}
-
-
-/* =====================================================
-   LOGIN SUBMIT
-===================================================== */
-
-.login-submit{
-
-  width:100%;
-
-  padding:13px;
-
-  margin-top:8px;
-
-  border:none;
-
-  border-radius:10px;
-
-  background:
-    linear-gradient(
-      45deg,
-      #00ff66,
-      #00cc44
-    );
-
-  color:#000;
-
-  font-size:15px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-}
-
-
-.login-submit:hover{
-
-  box-shadow:
-    0 0 15px #00ff66;
-
-}
-
-
-/* =====================================================
-   BUY VOUCHER BUTTON
-===================================================== */
-
-.buy-voucher{
-
-  width:100%;
-
-  padding:13px;
-
-  margin-top:12px;
-
-  border:none;
-
-  border-radius:12px;
-
-  background:
-    linear-gradient(
-      45deg,
-      #00ffaa,
-      #00ff66
-    );
-
-  color:#000;
-
-  font-size:15px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.login-footer{
-
-  margin-top:14px;
-
-  color:#99ffbb;
-
-  font-size:11px;
-
-  opacity:.7;
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:500px){
-
-  .brand-header{
-
-    font-size:16px;
-
-    letter-spacing:2px;
-
-    padding:17px 5px;
-
-  }
-
-
-  .nav{
-
-    top:53px;
-
-  }
-
-
-  .nav a{
-
-    font-size:10px;
-
-  }
-
-
-  .container{
-
-    padding-top:125px;
-
-  }
-
-
-  .video-box video{
-
-    height:220px;
-
-  }
-
-
-  .grid{
-
-    grid-template-columns:1fr 1fr;
-
-  }
-
-
-  .login-box{
-
-    padding:20px 15px;
-
-  }
-
-}
-
 </style>
-
 </head>
-
-
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<div class="brand-header">
-
-KLICKZONE HOTSPOT & DIGITAL PRINT
-
-</div>
-
-
-<!-- =====================================================
-     NAV
-===================================================== -->
-
-<div class="nav">
-
-<a href="#">Printing</a>
-
-<a href="#">Xerox</a>
-
-<a href="#">Scanning</a>
-
-<a href="#">Repair</a>
-
-<a href="#">WiFi</a>
-
-</div>
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
+<div class="header">🌴 RENSON FARM INVENTORY</div>
 
 <div class="container">
 
+  <div class="card">
+    <div class="title">📷 Capture Receipt</div>
+    <label for="receipt">Receipt photo</label>
+    <input id="receipt" type="file" accept="image/*" capture="environment"
+           onchange="previewReceipt(event)">
+    <div id="preview" class="preview">
+      <img id="receiptPreview" alt="Receipt preview">
+    </div>
+  </div>
 
-<!-- VIDEO -->
+  <div class="card">
+    <div class="title">🧾 Inventory Details</div>
 
-<div class="video-box">
+    <div id="items"></div>
 
-<video
-  id="adsVideo"
-  autoplay
-  muted
-  playsinline
-  preload="auto">
+    <button type="button" class="add" onclick="addItem()">＋ ADD ITEM</button>
 
-  <source
-    src="ads.mp4"
-    type="video/mp4">
+    <div class="total">
+      <span>GRAND TOTAL</span>
+      <span id="grandTotal">₱0.00</span>
+    </div>
 
-</video>
+    <button type="button" class="save" onclick="saveInventory()">💾 SAVE INVENTORY</button>
+    <button type="button" class="clear" onclick="clearForm()">CLEAR</button>
+  </div>
 
-</div>
-
-
-<!-- TIMER -->
-
-<div class="timer">
-
-Please wait:
-<span id="count">10</span>s
-
-</div>
-
-
-<!-- CONNECT -->
-
-<button
-  id="connectBtn"
-  class="connect"
-  disabled
-  type="button"
-  onclick="openLogin()">
-
-CONNECT NOW
-
-</button>
-
-
-<!-- =====================================================
-     VOUCHERS
-===================================================== -->
-
-<div class="voucher-section">
-
-
-<div class="voucher-title">
-
-💳 WIFI VOUCHER PRICES
+  <div class="card">
+    <div class="title">📋 Recent Entries</div>
+    <div id="history"><div class="muted">No saved entries yet.</div></div>
+  </div>
 
 </div>
-
-
-<div class="grid">
-
-
-<!-- ₱10 -->
-
-<div class="card">
-
-<div class="price">₱10</div>
-
-<div class="desc">
-8 HOURS ACCESS
-</div>
-
-<button
-  class="buy"
-  type="button"
-  onclick="buyVoucher()">
-
-BUY NOW
-
-</button>
-
-</div>
-
-
-<!-- ₱20 -->
-
-<div class="card">
-
-<div class="price">₱20</div>
-
-<div class="desc">
-1 DAY ACCESS
-</div>
-
-<button
-  class="buy"
-  type="button"
-  onclick="buyVoucher()">
-
-BUY NOW
-
-</button>
-
-</div>
-
-
-<!-- ₱50 -->
-
-<div class="card">
-
-<div class="price">₱50</div>
-
-<div class="desc">
-3 DAYS ACCESS
-</div>
-
-<button
-  class="buy"
-  type="button"
-  onclick="buyVoucher()">
-
-BUY NOW
-
-</button>
-
-</div>
-
-
-<!-- ₱100 -->
-
-<div class="card">
-
-<div class="price">₱100</div>
-
-<div class="desc">
-1 MONTH ACCESS
-</div>
-
-<button
-  class="buy"
-  type="button"
-  onclick="buyVoucher()">
-
-BUY NOW
-
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     LOGIN POPUP
-===================================================== -->
-
-<div
-  id="loginModal"
-  class="login-modal">
-
-
-<div class="login-box">
-
-
-<!-- CLOSE -->
-
-<button
-  type="button"
-  class="close-login"
-  onclick="closeLogin()">
-
-×
-
-</button>
-
-
-<!-- MATRIX -->
-
-<canvas id="matrix"></canvas>
-
-
-<div class="login-content">
-
-
-<!-- TITLE -->
-
-<div class="login-title">
-
-KLICKZONE
-
-</div>
-
-
-<!-- CLOCK -->
-
-<div id="clock"></div>
-
-
-<!-- STATUS -->
-
-<div class="status">
-
-<span class="online-dot"></span>
-
-SYSTEM ONLINE
-
-</div>
-
-
-<!-- =================================================
-     IMPORTANT:
-     MIKROTIK VARIABLES ARE USED HERE
-================================================= -->
-
-<form
-  name="login"
-  action="$(link-login-only)"
-  method="post">
-
-
-<input
-  type="hidden"
-  name="dst"
-  value="$(link-orig)">
-
-
-<input
-  type="hidden"
-  name="popup"
-  value="false">
-
-
-<input
-  name="username"
-  type="text"
-  placeholder="USERNAME"
-  autocomplete="username"
-  required>
-
-
-<input
-  name="password"
-  type="password"
-  placeholder="PASSWORD"
-  autocomplete="current-password"
-  required>
-
-
-<input
-  type="submit"
-  class="login-submit"
-  value="⚡ CONNECT">
-
-
-</form>
-
-
-<!-- BUY VOUCHER -->
-
-<button
-  type="button"
-  class="buy-voucher"
-  onclick="buyVoucher()">
-
-🎫 BUY VOUCHER
-
-</button>
-
-
-<div class="login-footer">
-
-Klickzone Network © 2026
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
 
 <script>
+let items = [];
 
-/* =====================================================
-   COUNTDOWN
-===================================================== */
-
-let timeLeft = 10;
-
-const count =
-  document.getElementById("count");
-
-const connectBtn =
-  document.getElementById("connectBtn");
-
-const video =
-  document.getElementById("adsVideo");
-
-
-function unlock(){
-
-  connectBtn.disabled = false;
-
-  connectBtn.classList.add("enabled");
-
-  count.innerText = "0";
-
+function addItem(description="", amount=""){
+  const id = Date.now() + Math.random();
+  items.push({id, description, amount});
+  renderItems();
 }
 
+function removeItem(id){
+  items = items.filter(item => item.id !== id);
+  renderItems();
+}
 
-/* =====================================================
-   COUNTDOWN
-===================================================== */
+function updateItem(id, field, value){
+  const item = items.find(x => x.id === id);
+  if(!item) return;
+  item[field] = field === "amount"
+    ? value.replace(/[^0-9.]/g, "")
+    : value;
+  calculateTotal();
+}
 
-const timer =
-setInterval(function(){
+function renderItems(){
+  const box = document.getElementById("items");
+  box.innerHTML = "";
 
-  timeLeft--;
-
-  count.innerText =
-    timeLeft;
-
-
-  if(timeLeft <= 0){
-
-    clearInterval(timer);
-
-    unlock();
-
-  }
-
-},1000);
-
-
-/* =====================================================
-   VIDEO FINISHED
-===================================================== */
-
-video.addEventListener(
-  "ended",
-  function(){
-
-    clearInterval(timer);
-
-    unlock();
-
-  }
-);
-
-
-/* =====================================================
-   OPEN LOGIN
-===================================================== */
-
-function openLogin(){
-
-  if(connectBtn.disabled){
-
+  if(items.length === 0){
+    addItem();
     return;
-
   }
 
+  items.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "row";
+    row.innerHTML = `
+      <input type="text"
+        placeholder="Description"
+        value="${escapeHtml(item.description)}"
+        oninput="updateItem(${item.id}, 'description', this.value)">
+      <input type="number"
+        step="0.01" min="0"
+        placeholder="Amount"
+        value="${item.amount}"
+        oninput="updateItem(${item.id}, 'amount', this.value)">
+      <button type="button" class="remove"
+        onclick="removeItem(${item.id})">×</button>
+    `;
+    box.appendChild(row);
+  });
 
-  document
-    .getElementById("loginModal")
-    .classList.add("show");
-
-
-  startMatrix();
-
+  calculateTotal();
 }
 
+function calculateTotal(){
+  const total = items.reduce((sum, item) => {
+    const amount = parseFloat(item.amount);
+    return sum + (isNaN(amount) ? 0 : amount);
+  }, 0);
 
-/* =====================================================
-   CLOSE LOGIN
-===================================================== */
-
-function closeLogin(){
-
-  document
-    .getElementById("loginModal")
-    .classList.remove("show");
-
+  document.getElementById("grandTotal").textContent =
+    "₱" + total.toLocaleString("en-PH", {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    });
 }
 
+function previewReceipt(event){
+  const file = event.target.files[0];
+  if(!file) return;
 
-/* =====================================================
-   CLICK OUTSIDE
-===================================================== */
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById("receiptPreview").src = e.target.result;
+    document.getElementById("preview").style.display = "block";
+  };
+  reader.readAsDataURL(file);
+}
 
-document
-  .getElementById("loginModal")
-  .addEventListener(
-    "click",
-    function(e){
-
-      if(e.target === this){
-
-        closeLogin();
-
-      }
-
-    }
+function saveInventory(){
+  const validItems = items.filter(x =>
+    x.description.trim() !== "" || parseFloat(x.amount) > 0
   );
 
-
-/* =====================================================
-   ESC
-===================================================== */
-
-document.addEventListener(
-  "keydown",
-  function(e){
-
-    if(e.key === "Escape"){
-
-      closeLogin();
-
-    }
-
-  }
-);
-
-
-/* =====================================================
-   CLOCK
-===================================================== */
-
-function updateClock(){
-
-  document.getElementById("clock").innerHTML =
-    "🕒 " +
-    new Date().toLocaleTimeString();
-
-}
-
-
-updateClock();
-
-
-setInterval(
-  updateClock,
-  1000
-);
-
-
-/* =====================================================
-   BUY VOUCHER
-===================================================== */
-
-function buyVoucher(){
-
-  window.location.href =
-    "http://120.10.10.1/voucher.html";
-
-}
-
-
-/* =====================================================
-   MATRIX
-===================================================== */
-
-const canvas =
-  document.getElementById("matrix");
-
-const ctx =
-  canvas.getContext("2d");
-
-
-const letters =
-  "01KLICKZONENETWORKCYBERMATRIX";
-
-const arr =
-  letters.split("");
-
-
-const fontSize = 14;
-
-let matrixStarted = false;
-
-
-function resizeMatrix(){
-
-  canvas.width =
-    canvas.offsetWidth;
-
-  canvas.height =
-    canvas.offsetHeight;
-
-}
-
-
-function startMatrix(){
-
-  if(matrixStarted){
-
+  if(validItems.length === 0){
+    alert("Maglagay muna ng inventory item at amount.");
     return;
-
   }
 
-  matrixStarted = true;
+  const total = validItems.reduce((sum, x) =>
+    sum + (parseFloat(x.amount) || 0), 0);
 
-  resizeMatrix();
+  const history = JSON.parse(localStorage.getItem("rensonInventory") || "[]");
 
-  let columns =
-    Math.floor(
-      canvas.width / fontSize
-    );
+  history.unshift({
+    date: new Date().toLocaleString("en-PH"),
+    items: validItems,
+    total: total
+  });
 
+  localStorage.setItem("rensonInventory", JSON.stringify(history));
+  renderHistory();
 
-  let drops =
-    Array(columns).fill(1);
-
-
-  function draw(){
-
-    ctx.fillStyle =
-      "rgba(0,0,0,.08)";
-
-    ctx.fillRect(
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-
-    ctx.fillStyle =
-      "#00ff66";
-
-    ctx.font =
-      fontSize + "px monospace";
-
-
-    for(
-      let i=0;
-      i<drops.length;
-      i++
-    ){
-
-      const text =
-        arr[
-          Math.floor(
-            Math.random()*arr.length
-          )
-        ];
-
-
-      ctx.fillText(
-        text,
-        i*fontSize,
-        drops[i]*fontSize
-      );
-
-
-      if(
-        drops[i]*fontSize >
-        canvas.height &&
-        Math.random() > .975
-      ){
-
-        drops[i] = 0;
-
-      }
-
-
-      drops[i]++;
-
-    }
-
-  }
-
-
-  setInterval(
-    draw,
-    35
-  );
-
+  alert("Inventory saved successfully!\\nTotal: ₱" + total.toFixed(2));
 }
 
+function renderHistory(){
+  const history = JSON.parse(localStorage.getItem("rensonInventory") || "[]");
+  const box = document.getElementById("history");
 
-window.addEventListener(
-  "resize",
-  resizeMatrix
-);
+  if(history.length === 0){
+    box.innerHTML = '<div class="muted">No saved entries yet.</div>';
+    return;
+  }
 
+  box.innerHTML = history.slice(0,10).map(entry => `
+    <div class="history-item">
+      <div><strong>${entry.date}</strong></div>
+      <div class="muted">${entry.items.map(x =>
+        `${escapeHtml(x.description || "Item")} — ₱${(parseFloat(x.amount)||0).toFixed(2)}`
+      ).join("<br>")}</div>
+      <div style="margin-top:6px;color:#39ff88;font-weight:bold">
+        Total: ₱${entry.total.toFixed(2)}
+      </div>
+    </div>
+  `).join("");
+}
+
+function clearForm(){
+  if(confirm("Clear current inventory details?")){
+    items = [];
+    document.getElementById("receipt").value = "";
+    document.getElementById("preview").style.display = "none";
+    renderItems();
+  }
+}
+
+function escapeHtml(text){
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+renderItems();
+renderHistory();
 </script>
 
 </body>
-
 </html>
-```
