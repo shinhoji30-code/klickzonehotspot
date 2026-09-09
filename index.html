@@ -314,6 +314,16 @@ button {
 
 }
 
+.entry-purchased {
+
+  color: #8dffb1;
+
+  font-size: 14px;
+
+  margin-top: 5px;
+
+}
+
 .entry-receipt {
 
   color: #bde8ca;
@@ -397,9 +407,23 @@ Inventory Management
 </div>
 
 
+<!-- =====================================================
+     RECEIPT
+===================================================== -->
+
 <div class="card">
 
 <label>
+Receipt Date / Date Purchased
+</label>
+
+<input
+  type="date"
+  id="receiptDate"
+>
+
+
+<label style="margin-top:15px;">
 Receipt
 </label>
 
@@ -410,6 +434,7 @@ Receipt
   capture="environment"
 >
 
+
 <div
   id="receiptPreview"
   class="receipt-preview"
@@ -417,6 +442,10 @@ Receipt
 
 </div>
 
+
+<!-- =====================================================
+     INVENTORY ITEMS
+===================================================== -->
 
 <div class="card">
 
@@ -472,6 +501,10 @@ Clear
 </div>
 
 
+<!-- =====================================================
+     HISTORY
+===================================================== -->
+
 <div class="card">
 
 <h3>
@@ -508,7 +541,8 @@ Connecting to Google Sheets...
    GOOGLE APPS SCRIPT URL
 ===================================================== */
 
-const WEB_APP_URL ="https://script.google.com/macros/s/AKfycbzpqLYsCndrqHyZNU-UXyOzH181MmxWkaHyC3-ShNWlTeSgtFNVQL713UzjoRraeri0Bw/exec";
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbzpqLYsCndrqHyZNU-UXyOzH181MmxWkaHyC3-ShNWlTeSgtFNVQL713UzjoRraeri0Bw/exec";
 
 
 let items = [];
@@ -784,6 +818,12 @@ async function saveInventory() {
     );
 
 
+  const receiptDate =
+    document.getElementById(
+      "receiptDate"
+    ).value;
+
+
   let receiptName = "";
 
 
@@ -800,7 +840,11 @@ async function saveInventory() {
 
   const payload = {
 
-    receipt: receiptName,
+    receipt:
+      receiptName,
+
+    receiptDate:
+      receiptDate,
 
     items:
       validItems.map(
@@ -831,12 +875,6 @@ async function saveInventory() {
 
   try {
 
-    /*
-      no-cors allows the POST request
-      even though the website is hosted
-      on a different domain.
-    */
-
     await fetch(
       WEB_APP_URL,
       {
@@ -859,11 +897,6 @@ async function saveInventory() {
     );
 
 
-    /*
-      Give Google Apps Script time
-      to write to the Sheet.
-    */
-
     await delay(1500);
 
 
@@ -873,7 +906,6 @@ async function saveInventory() {
 
 
     clearForm();
-
 
     loadInventory();
 
@@ -1105,11 +1137,26 @@ function renderHistory(entries) {
 
         <div class="entry-date">
 
+          Added:
           ${formatDate(
             entry.date
           )}
 
         </div>
+
+
+        ${
+          entry.receiptDate
+            ? `
+              <div class="entry-purchased">
+                🛒 Purchased:
+                ${formatReceiptDate(
+                  entry.receiptDate
+                )}
+              </div>
+            `
+            : ""
+        }
 
 
         ${
@@ -1253,6 +1300,11 @@ function clearForm() {
 
 
   document.getElementById(
+    "receiptDate"
+  ).value = "";
+
+
+  document.getElementById(
     "receiptPreview"
   ).innerHTML = "";
 
@@ -1280,7 +1332,7 @@ function setStatus(message) {
 
 
 /* =====================================================
-   DATE
+   ADDED DATE
 ===================================================== */
 
 function formatDate(date) {
@@ -1316,6 +1368,71 @@ function formatDate(date) {
       hour: "numeric",
 
       minute: "2-digit"
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   RECEIPT / PURCHASE DATE
+===================================================== */
+
+function formatReceiptDate(date) {
+
+  if (!date) return "";
+
+
+  const parts =
+    String(date).split("-");
+
+
+  if (parts.length !== 3) {
+
+    return String(date);
+
+  }
+
+
+  const year =
+    Number(parts[0]);
+
+  const month =
+    Number(parts[1]) - 1;
+
+  const day =
+    Number(parts[2]);
+
+
+  const d =
+    new Date(
+      year,
+      month,
+      day
+    );
+
+
+  if (
+    isNaN(
+      d.getTime()
+    )
+  ) {
+
+    return String(date);
+
+  }
+
+
+  return d.toLocaleDateString(
+    "en-PH",
+    {
+
+      year: "numeric",
+
+      month: "short",
+
+      day: "numeric"
 
     }
   );
