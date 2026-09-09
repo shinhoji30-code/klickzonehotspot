@@ -55,6 +55,10 @@ input[type=file]{padding:10px;background:#14251a}
 .history-item{
   padding:12px;border-bottom:1px solid #203a28;font-size:14px
 }
+.actions{display:flex;gap:7px;margin-top:9px}
+.actions button{padding:8px;font-size:12px;cursor:pointer}
+.edit-btn{background:#294d35;color:#39ff88;border:1px solid #39ff88}
+.delete-btn{background:#4a2020;color:#ff8b8b;border:1px solid #ff6666}
 .history-item:last-child{border-bottom:0}
 .muted{color:#91a699;font-size:12px}
 @media(max-width:520px){
@@ -237,14 +241,22 @@ async function saveInventory(){
       localStorage.getItem("rensonInventory") || "[]"
     );
 
-    history.unshift({
+    const updatedEntry = {
       date: new Date().toLocaleString("en-PH"),
       items: validItems,
       total: total
-    });
+    };
+
+    if(window.editingIndex !== undefined && window.editingIndex !== null){
+      history[window.editingIndex] = updatedEntry;
+      window.editingIndex = null;
+    } else {
+      history.unshift(updatedEntry);
+    }
 
     localStorage.setItem("rensonInventory", JSON.stringify(history));
     renderHistory();
+    document.querySelector(".save").textContent = "💾 SAVE INVENTORY";
 
   } catch(error) {
     console.error(error);
@@ -264,7 +276,7 @@ function renderHistory(){
     return;
   }
 
-  box.innerHTML = history.slice(0,10).map(entry => `
+  box.innerHTML = history.slice(0,10).map((entry, index) => `
     <div class="history-item">
       <div><strong>${entry.date}</strong></div>
       <div class="muted">${entry.items.map(x =>
@@ -273,9 +285,44 @@ function renderHistory(){
       <div style="margin-top:6px;color:#39ff88;font-weight:bold">
         Total: ₱${entry.total.toFixed(2)}
       </div>
+      <div class="actions">
+        <button class="edit-btn" onclick="editEntry(${index})">✏️ EDIT</button>
+        <button class="delete-btn" onclick="deleteEntry(${index})">🗑️ DELETE</button>
+      </div>
     </div>
   `).join("");
 }
+
+function editEntry(index){
+  const history = JSON.parse(localStorage.getItem("rensonInventory") || "[]");
+  const entry = history[index];
+  if(!entry) return;
+
+  items = entry.items.map(x => ({
+    id: Date.now() + Math.random(),
+    description: x.description || "",
+    amount: x.amount || ""
+  }));
+
+  renderItems();
+  window.scrollTo({top:0, behavior:"smooth"});
+
+  // Keep the original entry for replacement after saving.
+  window.editingIndex = index;
+  document.querySelector(".save").textContent = "💾 UPDATE INVENTORY";
+}
+
+function deleteEntry(index){
+  const history = JSON.parse(localStorage.getItem("rensonInventory") || "[]");
+  const entry = history[index];
+  if(!entry) return;
+
+  if(!confirm("Delete this inventory entry?")) return;
+
+  history.splice(index, 1);
+  localStorage.setItem("rensonInventory", JSON.stringify(history));
+  renderHistory();
+} 
 
 function clearForm(){
   if(confirm("Clear current inventory details?")){
