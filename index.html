@@ -181,7 +181,7 @@ function previewReceipt(event){
   reader.readAsDataURL(file);
 }
 
-function saveInventory(){
+async function saveInventory(){
   const validItems = items.filter(x =>
     x.description.trim() !== "" || parseFloat(x.amount) > 0
   );
@@ -194,18 +194,65 @@ function saveInventory(){
   const total = validItems.reduce((sum, x) =>
     sum + (parseFloat(x.amount) || 0), 0);
 
-  const history = JSON.parse(localStorage.getItem("rensonInventory") || "[]");
+  const receiptFile = document.getElementById("receipt").files[0];
+  const receiptName = receiptFile ? receiptFile.name : "";
 
-  history.unshift({
-    date: new Date().toLocaleString("en-PH"),
-    items: validItems,
-    total: total
-  });
+  const WEB_APP_URL =
+    "https://script.google.com/macros/s/AKfycbwoULx5Wp4M_L5lR0l9aZ6Upwm7VUUu2eg3FT-sMz_WV6ka1LF3KYZtaOS704YNv_cG_Q/exec";
 
-  localStorage.setItem("rensonInventory", JSON.stringify(history));
-  renderHistory();
+  const saveButton = document.querySelector(".save");
+  saveButton.disabled = true;
+  saveButton.textContent = "⏳ SAVING...";
 
-  alert("Inventory saved successfully!\\nTotal: ₱" + total.toFixed(2));
+  try {
+    // Save each inventory detail as its own row.
+    for(const item of validItems){
+      const payload = {
+        receipt: receiptName,
+        description: item.description,
+        amount: parseFloat(item.amount) || 0,
+        total: total
+      };
+
+      await fetch(WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
+      });
+    }
+
+    alert(
+      "Inventory saved to Google Sheets!\n\n" +
+      "Total: ₱" + total.toLocaleString("en-PH", {
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+      })
+    );
+
+    // Keep local history as a backup.
+    const history = JSON.parse(
+      localStorage.getItem("rensonInventory") || "[]"
+    );
+
+    history.unshift({
+      date: new Date().toLocaleString("en-PH"),
+      items: validItems,
+      total: total
+    });
+
+    localStorage.setItem("rensonInventory", JSON.stringify(history));
+    renderHistory();
+
+  } catch(error) {
+    console.error(error);
+    alert("Hindi na-save. Pakicheck ang internet connection at Apps Script deployment.");
+  } finally {
+    saveButton.disabled = false;
+    saveButton.textContent = "💾 SAVE INVENTORY";
+  }
 }
 
 function renderHistory(){
